@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DungeonGame", "DungeonGame.vcxproj", "{9B27F82E-314C-4A02-AD93-D7126E26CA67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{903DA5A8-685F-430B-90BE-9C57A5E80613} = {903DA5A8-685F-430B-90BE-9C57A5E80613}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "..\..\..\LunaEngine\Engine\Engine.vcxproj", "{903DA5A8-685F-430B-90BE-9C57A5E80613}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B27F82E-314C-4A02-AD93-D7126E26CA67}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9B27F82E-314C-4A02-AD93-D7126E26CA67}.Debug|Win32.Build.0 = Debug|Win32
+		{9B27F82E-314C-4A02-AD93-D7126E26CA67}.Release|Win32.ActiveCfg = Release|Win32
+		{9B27F82E-314C-4A02-AD93-D7126E26CA67}.Release|Win32.Build.0 = Release|Win32
+		{903DA5A8-685F-430B-90BE-9C57A5E80613}.Debug|Win32.ActiveCfg = Debug|Win32
+		{903DA5A8-685F-430B-90BE-9C57A5E80613}.Debug|Win32.Build.0 = Debug|Win32
+		{903DA5A8-685F-430B-90BE-9C57A5E80613}.Release|Win32.ActiveCfg = Release|Win32
+		{903DA5A8-685F-430B-90BE-9C57A5E80613}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

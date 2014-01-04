@@ -11,3 +11,13 @@
 *.lai
 *.la
 *.a
+
+# Visual studio files
+*.filters
+*.user
+*.sdf
+*.opensdf
+
+Bin/
+Obj/
+ipch/

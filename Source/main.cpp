@@ -16,6 +16,10 @@ using namespace Engine;
 
 void Start()
 {
+#ifdef _WIN32
+	FolderAssetBundle* pAssetsBundle = new FolderAssetBundle( FileUtils::GetWorkingFolder() + "../Assets/");
+	AssetManager::Get().AddAssetBundle( pAssetsBundle );
+#endif
     FolderAssetBundle* pBundle = new FolderAssetBundle( FileUtils::GetWorkingFolder() );
     AssetManager::Get().AddAssetBundle( pBundle );
     
