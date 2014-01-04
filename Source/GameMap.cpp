@@ -32,6 +32,16 @@ void GameMap::Destroy()
     m_iSizeY = 0;
 }
 
+int GameMap::GetSizeX() const
+{
+    return m_iSizeX;
+}
+
+int GameMap::GetSizeY() const
+{
+    return m_iSizeY;
+}
+
 bool GameMap::Create( const BinaryResource* pResource )
 {
     Destroy();

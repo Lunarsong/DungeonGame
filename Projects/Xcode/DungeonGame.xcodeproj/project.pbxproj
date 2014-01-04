@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E600EF74186C1720009F165C /* Tileset.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = E600EF73186C1720009F165C /* Tileset.png */; };
-		E6181C3B186AEB2500C11FC0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6181C3A186AEB2500C11FC0 /* main.cpp */; };
 		E6181C3F186AEC6800C11FC0 /* libEngine Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6181C37186AEAF900C11FC0 /* libEngine Mac.a */; };
 		E6181C41186AECFD00C11FC0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6181C40186AECFD00C11FC0 /* Cocoa.framework */; };
 		E6181C43186AED0500C11FC0 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6181C42186AED0500C11FC0 /* IOKit.framework */; };
@@ -16,7 +15,17 @@
 		E6181C47186AED1A00C11FC0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E6181C46186AED1A00C11FC0 /* libz.dylib */; };
 		E6181C49186AED2800C11FC0 /* libangelscript.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6181C48186AED2800C11FC0 /* libangelscript.a */; };
 		E61B2AC4186C06EB00745E6B /* Map.map in CopyFiles */ = {isa = PBXBuildFile; fileRef = E61B2AC3186C06EB00745E6B /* Map.map */; };
-		E6A4DEC518783B4300ACAC89 /* GameMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DEC318783B4300ACAC89 /* GameMap.cpp */; };
+		E6A4DED618783F6E00ACAC89 /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DED418783F6E00ACAC89 /* Skill.cpp */; };
+		E6A4DED918783F7900ACAC89 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DED718783F7900ACAC89 /* Character.cpp */; };
+		E6A4DEDC18783F8100ACAC89 /* Ability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DEDA18783F8100ACAC89 /* Ability.cpp */; };
+		E6A4DEDF18783F8C00ACAC89 /* Combat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DEDD18783F8C00ACAC89 /* Combat.cpp */; };
+		E6C06EB01878940800D5C0E2 /* Floor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = E6C06EAF1878940800D5C0E2 /* Floor.png */; };
+		E6C06EB518789AFE00D5C0E2 /* Wall.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = E6C06EB418789AFE00D5C0E2 /* Wall.png */; };
+		E6C06EB718789D6B00D5C0E2 /* Characters.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = E6C06EB618789D6B00D5C0E2 /* Characters.png */; };
+		E6C06EBC1878A0FA00D5C0E2 /* DungeonGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6C06EBA1878A0FA00D5C0E2 /* DungeonGame.cpp */; };
+		E6C06EBE1878A87700D5C0E2 /* Chest.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = E6C06EBD1878A87700D5C0E2 /* Chest.png */; };
+		E6EC8DB71878401700405E7A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DED118783EFF00ACAC89 /* main.cpp */; };
+		E6EC8DB91878401B00405E7A /* GameMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DECF18783EFF00ACAC89 /* GameMap.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +59,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				E6C06EBE1878A87700D5C0E2 /* Chest.png in CopyFiles */,
 				E600EF74186C1720009F165C /* Tileset.png in CopyFiles */,
+				E6C06EB718789D6B00D5C0E2 /* Characters.png in CopyFiles */,
+				E6C06EB01878940800D5C0E2 /* Floor.png in CopyFiles */,
+				E6C06EB518789AFE00D5C0E2 /* Wall.png in CopyFiles */,
 				E61B2AC4186C06EB00745E6B /* Map.map in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,15 +74,29 @@
 		E600EF73186C1720009F165C /* Tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tileset.png; path = ../../Assets/Tileset.png; sourceTree = "<group>"; };
 		E6181C1C186AEA9900C11FC0 /* OSX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OSX; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6181C2F186AEAF800C11FC0 /* Engine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Engine.xcodeproj; path = ../../../LunaEngine/Projects/iOS/Engine.xcodeproj; sourceTree = "<group>"; };
-		E6181C3A186AEB2500C11FC0 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../Source/main.cpp; sourceTree = "<group>"; };
 		E6181C40186AECFD00C11FC0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E6181C42186AED0500C11FC0 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		E6181C44186AED0A00C11FC0 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E6181C46186AED1A00C11FC0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E6181C48186AED2800C11FC0 /* libangelscript.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libangelscript.a; path = ../../../LunaEngine/Engine/Externals/AngelScript/iOS/OSX/libangelscript.a; sourceTree = "<group>"; };
 		E61B2AC3186C06EB00745E6B /* Map.map */ = {isa = PBXFileReference; lastKnownFileType = text; name = Map.map; path = ../../Assets/Map.map; sourceTree = "<group>"; };
-		E6A4DEC318783B4300ACAC89 /* GameMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameMap.cpp; path = ../../../Source/GameMap.cpp; sourceTree = "<group>"; };
-		E6A4DEC418783B4300ACAC89 /* GameMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameMap.h; path = ../../../Source/GameMap.h; sourceTree = "<group>"; };
+		E6A4DECF18783EFF00ACAC89 /* GameMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameMap.cpp; sourceTree = "<group>"; };
+		E6A4DED018783EFF00ACAC89 /* GameMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMap.h; sourceTree = "<group>"; };
+		E6A4DED118783EFF00ACAC89 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E6A4DED418783F6E00ACAC89 /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Skill.cpp; sourceTree = "<group>"; };
+		E6A4DED518783F6E00ACAC89 /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
+		E6A4DED718783F7900ACAC89 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
+		E6A4DED818783F7900ACAC89 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		E6A4DEDA18783F8100ACAC89 /* Ability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ability.cpp; sourceTree = "<group>"; };
+		E6A4DEDB18783F8100ACAC89 /* Ability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ability.h; sourceTree = "<group>"; };
+		E6A4DEDD18783F8C00ACAC89 /* Combat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Combat.cpp; sourceTree = "<group>"; };
+		E6A4DEDE18783F8C00ACAC89 /* Combat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Combat.h; sourceTree = "<group>"; };
+		E6C06EAF1878940800D5C0E2 /* Floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Floor.png; path = ../../Assets/Floor.png; sourceTree = "<group>"; };
+		E6C06EB418789AFE00D5C0E2 /* Wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Wall.png; path = ../../Assets/Wall.png; sourceTree = "<group>"; };
+		E6C06EB618789D6B00D5C0E2 /* Characters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Characters.png; path = ../../Assets/Characters.png; sourceTree = "<group>"; };
+		E6C06EBA1878A0FA00D5C0E2 /* DungeonGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonGame.cpp; sourceTree = "<group>"; };
+		E6C06EBB1878A0FA00D5C0E2 /* DungeonGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonGame.h; sourceTree = "<group>"; };
+		E6C06EBD1878A87700D5C0E2 /* Chest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Chest.png; path = ../../Assets/Chest.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,15 +119,15 @@
 		E6181C11186AE9FF00C11FC0 = {
 			isa = PBXGroup;
 			children = (
+				E6A4DED218783EFF00ACAC89 /* Source */,
+				E6A4DED318783F2700ACAC89 /* Frameworks */,
 				E600EF73186C1720009F165C /* Tileset.png */,
+				E6C06EB418789AFE00D5C0E2 /* Wall.png */,
+				E6C06EB618789D6B00D5C0E2 /* Characters.png */,
+				E6C06EBD1878A87700D5C0E2 /* Chest.png */,
+				E6C06EAF1878940800D5C0E2 /* Floor.png */,
 				E61B2AC3186C06EB00745E6B /* Map.map */,
-				E6181C48186AED2800C11FC0 /* libangelscript.a */,
-				E6181C46186AED1A00C11FC0 /* libz.dylib */,
-				E6181C44186AED0A00C11FC0 /* OpenGL.framework */,
-				E6181C42186AED0500C11FC0 /* IOKit.framework */,
-				E6181C40186AECFD00C11FC0 /* Cocoa.framework */,
 				E6181C2F186AEAF800C11FC0 /* Engine.xcodeproj */,
-				E6181C1E186AEA9900C11FC0 /* Game */,
 				E6181C1D186AEA9900C11FC0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,16 +140,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E6181C1E186AEA9900C11FC0 /* Game */ = {
-			isa = PBXGroup;
-			children = (
-				E6A4DEC318783B4300ACAC89 /* GameMap.cpp */,
-				E6A4DEC418783B4300ACAC89 /* GameMap.h */,
-				E6181C3A186AEB2500C11FC0 /* main.cpp */,
-			);
-			path = Game;
-			sourceTree = "<group>";
-		};
 		E6181C30186AEAF800C11FC0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +147,39 @@
 				E6181C37186AEAF900C11FC0 /* libEngine Mac.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E6A4DED218783EFF00ACAC89 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E6A4DECF18783EFF00ACAC89 /* GameMap.cpp */,
+				E6A4DED018783EFF00ACAC89 /* GameMap.h */,
+				E6A4DED118783EFF00ACAC89 /* main.cpp */,
+				E6A4DED418783F6E00ACAC89 /* Skill.cpp */,
+				E6A4DED518783F6E00ACAC89 /* Skill.h */,
+				E6A4DED718783F7900ACAC89 /* Character.cpp */,
+				E6A4DED818783F7900ACAC89 /* Character.h */,
+				E6A4DEDA18783F8100ACAC89 /* Ability.cpp */,
+				E6A4DEDB18783F8100ACAC89 /* Ability.h */,
+				E6A4DEDD18783F8C00ACAC89 /* Combat.cpp */,
+				E6A4DEDE18783F8C00ACAC89 /* Combat.h */,
+				E6C06EBA1878A0FA00D5C0E2 /* DungeonGame.cpp */,
+				E6C06EBB1878A0FA00D5C0E2 /* DungeonGame.h */,
+			);
+			name = Source;
+			path = /Users/Nishry/Documents/LunaEngine/Projects/iOS/../../../DungeonGame/Source;
+			sourceTree = "<absolute>";
+		};
+		E6A4DED318783F2700ACAC89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6181C48186AED2800C11FC0 /* libangelscript.a */,
+				E6181C46186AED1A00C11FC0 /* libz.dylib */,
+				E6181C44186AED0A00C11FC0 /* OpenGL.framework */,
+				E6181C42186AED0500C11FC0 /* IOKit.framework */,
+				E6181C40186AECFD00C11FC0 /* Cocoa.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,8 +256,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6A4DEC518783B4300ACAC89 /* GameMap.cpp in Sources */,
-				E6181C3B186AEB2500C11FC0 /* main.cpp in Sources */,
+				E6A4DED618783F6E00ACAC89 /* Skill.cpp in Sources */,
+				E6A4DEDF18783F8C00ACAC89 /* Combat.cpp in Sources */,
+				E6A4DEDC18783F8100ACAC89 /* Ability.cpp in Sources */,
+				E6EC8DB71878401700405E7A /* main.cpp in Sources */,
+				E6C06EBC1878A0FA00D5C0E2 /* DungeonGame.cpp in Sources */,
+				E6EC8DB91878401B00405E7A /* GameMap.cpp in Sources */,
+				E6A4DED918783F7900ACAC89 /* Character.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

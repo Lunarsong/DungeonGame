@@ -26,6 +26,8 @@ public:
     char& operator() ( unsigned int iX, unsigned int iY );
     const char& operator() ( unsigned int iX, unsigned int iY ) const;
     
+    int GetSizeX() const;
+    int GetSizeY() const;
     
     enum TileType
     {
