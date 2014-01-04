@@ -35,6 +35,7 @@ void Start()
     
     pMapEntity->AddComponent( pTileMap );
     pTileMap->Start();
+    pTileMap->Release();
     
 }
 
