@@ -18,6 +18,12 @@
 *.sdf
 *.opensdf
 
+# Xcode
+*.pbxuser
+xcuserdata
+*.xcworkspace
+.DS_Store
+
 Bin/
 Obj/
 ipch/
