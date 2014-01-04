@@ -11,11 +11,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Ability.cpp" />
+    <ClCompile Include="..\..\Source\Character.cpp" />
+    <ClCompile Include="..\..\Source\Combat.cpp" />
+    <ClCompile Include="..\..\Source\DungeonGame.cpp" />
     <ClCompile Include="..\..\Source\GameMap.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\Skill.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Ability.h" />
+    <ClInclude Include="..\..\Source\Character.h" />
+    <ClInclude Include="..\..\Source\Combat.h" />
+    <ClInclude Include="..\..\Source\DungeonGame.h" />
     <ClInclude Include="..\..\Source\GameMap.h" />
+    <ClInclude Include="..\..\Source\Skill.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9B27F82E-314C-4A02-AD93-D7126E26CA67}</ProjectGuid>
