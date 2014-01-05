@@ -23,7 +23,6 @@ DungeonGame::~DungeonGame()
 {
     InputManager::Get()->RemoveMouseHandler( this );
     m_pCamera->Release();
-    m_pCameraEntity->Release();
 }
 
 void DungeonGame::VOnInit(void)
@@ -40,13 +39,11 @@ void DungeonGame::VOnInit(void)
     pChestMaterial->AddTextureRegister( "s_Texture01" );
     pChestMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_DefaultShader ) );
     pChestMaterial->SetTexture( 0, pChestTexture );
-    pChestTexture->Release();
     
     Material* pWallMaterial = new Material();
     pWallMaterial->AddTextureRegister( "s_Texture01" );
     pWallMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_DefaultShader ) );
     pWallMaterial->SetTexture( 0, pWallTexture );
-    pWallTexture->Release();
     
     
     m_PathGraph.Create( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, false );
@@ -63,6 +60,7 @@ void DungeonGame::VOnInit(void)
                                                               
                                                               MeshComponent* pMesh = pCubeEntity->AddComponent<MeshComponent>();
                                                               pMesh->SetMesh( Mesh::CreateBox() );
+															  pMesh->GetMesh()->Release();
                                                               pMesh->SetMaterial( pWallMaterial );
                                                               
                                                               pCubeEntity->GetTransform().SetPosition( Vector4( fX, 0.5f, fY ) );
@@ -76,6 +74,7 @@ void DungeonGame::VOnInit(void)
                                                               
                                                               MeshComponent* pMesh = pCubeEntity->AddComponent<MeshComponent>();
                                                               pMesh->SetMesh( Mesh::CreateBox() );
+															  pMesh->GetMesh()->Release();
                                                               pMesh->SetMaterial( pChestMaterial );
                                                               
                                                               pCubeEntity->GetTransform().SetPosition( Vector4( fX, -0.49f, fY ) );
@@ -100,7 +99,6 @@ void DungeonGame::VOnInit(void)
     pChestMaterial->Release();
     
     pMapEntity->AddComponent( pTileMap );
-    pTileMap->Start();
     pTileMap->Release();
     
     ITexture* pCharacterTexture = AssetManager::Get().GetAsset< ITexture >( "Characters.png" );
@@ -108,7 +106,6 @@ void DungeonGame::VOnInit(void)
     pCharacterMaterial->AddTextureRegister( "s_Texture01" );
     pCharacterMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_DefaultShader ) );
     pCharacterMaterial->SetTexture( 0, pCharacterTexture );
-    pCharacterTexture->Release();
     
     m_pPlayer = Game::CreateEntity();
     m_pPlayer->GetTransform().SetPosition( Vector4( 0.5f, 0.4f, 0.5f ) );
@@ -122,6 +119,7 @@ void DungeonGame::VOnInit(void)
     rect.height = 445.0f / (float)pCharacterTexture->VGetHeight();
     
     pMesh->SetMesh( Mesh::CreateBox( Vector4::ONE * 0.8f, rect ) );
+	pMesh->GetMesh()->Release();
     pMesh->SetMaterial( pCharacterMaterial );
     pCharacterMaterial->Release();
     
@@ -166,7 +164,6 @@ bool DungeonGame::VOnMouseButtonDown( const int iButtonIndex, const Vector3& vPo
 bool DungeonGame::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosition )
 {
     Vector3 vScreenPos = vPosition;
-    vScreenPos.z = m_pCamera->GetPosition().y / 1000.0f;
     Vector3 vRayPos, vRayDir;
     RenderUtils::Unproject( vScreenPos, m_pCamera->GetProjection(), m_pCamera->GetView(), vRayPos, vRayDir );
     vRayDir.Normalize();

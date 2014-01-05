@@ -60,7 +60,7 @@ bool GameMap::CreateFromAscii( const BinaryResource* pResource )
     bool bSuccess = false;
     for ( unsigned int i = 0; i < uiSize; ++i )
     {
-        if ( pBuffer[ i ] == '\n' )
+        if ( pBuffer[ i ] == '\n' || pBuffer[ i ] == '\r' )
         {
             m_iSizeX = i;
             m_iSizeY = i;
@@ -87,7 +87,14 @@ bool GameMap::CreateFromAscii( const BinaryResource* pResource )
         // Reach end of line
         if ( iX == m_iSizeX )
         {
-            if ( pBuffer[ i ] != '\n' )
+			if ( pBuffer[ i ] == '\r' )
+			{
+				iX = 0;
+				++i;
+				continue;
+			}
+
+            else if ( pBuffer[ i ] != '\n' )
             {
                 throw "Expected endline";
             }
