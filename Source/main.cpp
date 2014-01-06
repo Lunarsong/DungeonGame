@@ -30,13 +30,6 @@ void Start()
 
 void Update( float fDeltaSeconds )
 {
-    Skill skill0;
-    skill0.SetBase( 500 );
-    
-    Skill skill1;
-    skill1.SetBase( 700 );
-    
-    Skill::Check( skill0, skill1 );
     
     
 }

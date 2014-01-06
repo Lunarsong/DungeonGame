@@ -13,9 +13,11 @@
 #include <Engine.h>
 #include <Rendering/Utils/RenderUtils.h>
 #include <Rendering/Utils/DebugRenderer.h>
+#include "CharacterComponent.h"
 
 DungeonGame::DungeonGame()
 {
+    SetName( "Game" );
     InputManager::Get()->AddMouseHandler( this );
 }
 
@@ -27,101 +29,23 @@ DungeonGame::~DungeonGame()
 
 void DungeonGame::VOnInit(void)
 {
-    BinaryResource* pResource = AssetManager::Get().GetAsset< BinaryResource >( "Map.map" );
+    m_World.Init();
     
-    m_Map.Create( pResource );
-    
-    ITexture* pMapTexture = AssetManager::Get().GetAsset< ITexture >( "Floor.png" );
-    ITexture* pWallTexture = AssetManager::Get().GetAsset< ITexture >( "Wall.png" );
-    ITexture* pChestTexture = AssetManager::Get().GetAsset< ITexture >( "Chest.png" );
-    
-    Material* pChestMaterial = new Material();
-    pChestMaterial->AddTextureRegister( "s_Texture01" );
-    pChestMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_DefaultShader ) );
-    pChestMaterial->SetTexture( 0, pChestTexture );
-    
-    Material* pWallMaterial = new Material();
-    pWallMaterial->AddTextureRegister( "s_Texture01" );
-    pWallMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_DefaultShader ) );
-    pWallMaterial->SetTexture( 0, pWallTexture );
-    
-    
-    m_PathGraph.Create( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, false );
-    Entity* pMapEntity = Game::CreateEntity();
-    TileMapComponent* pTileMap = new TileMapComponent( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, pMapTexture, [&] ( unsigned int x, unsigned int y, RectF& rect )
-                                                      {
-                                                          float fX = -m_Map.GetSizeX() * 0.5f + 0.5f + (float)x;
-                                                          float fY =  -m_Map.GetSizeY() * 0.5f + 0.5f + (float)y;
-
-                                                          char myChar = m_Map( x, m_Map.GetSizeY() - 1 - y );
-                                                          if ( myChar == '#' )
-                                                          {
-                                                              Entity* pCubeEntity = Game::CreateEntity();
-                                                              
-                                                              MeshComponent* pMesh = pCubeEntity->AddComponent<MeshComponent>();
-                                                              pMesh->SetMesh( Mesh::CreateBox() );
-															  pMesh->GetMesh()->Release();
-                                                              pMesh->SetMaterial( pWallMaterial );
-                                                              
-                                                              pCubeEntity->GetTransform().SetPosition( Vector4( fX, 0.5f, fY ) );
-                                                              
-                                                              m_PathGraph.GetNode( x, y )->SetBlocked( true );
-                                                          }
-                                                          
-                                                          else if ( myChar == 'C' )
-                                                          {
-                                                              Entity* pCubeEntity = Game::CreateEntity();
-                                                              
-                                                              MeshComponent* pMesh = pCubeEntity->AddComponent<MeshComponent>();
-                                                              pMesh->SetMesh( Mesh::CreateBox() );
-															  pMesh->GetMesh()->Release();
-                                                              pMesh->SetMaterial( pChestMaterial );
-                                                              
-                                                              pCubeEntity->GetTransform().SetPosition( Vector4( fX, -0.49f, fY ) );
-                                                              
-                                                              m_PathGraph.GetNode( x, y )->SetBlocked( true );
-                                                          }
-                                                          
-                                                          int iRand = g_RandomNumGen.RandomInt( 4 );
-                                                          
-                                                          rect.x = 0.25f * iRand;
-                                                          rect.width = 0.25f + 0.25f * iRand;
-                                                          
-                                                          iRand = g_RandomNumGen.RandomInt( 4 );
-                                                          rect.y = 0.25f * iRand;
-                                                          rect.height = 0.25f + 0.25f * iRand;
-                                                          
-                                                          
-                                                      }
-                                                      );
-    
-    pWallMaterial->Release();
-    pChestMaterial->Release();
-    
-    pMapEntity->AddComponent( pTileMap );
-    pTileMap->Release();
+    // Load resources
     
     ITexture* pCharacterTexture = AssetManager::Get().GetAsset< ITexture >( "Characters.png" );
-    Material* pCharacterMaterial = new Material();
-    pCharacterMaterial->AddTextureRegister( "s_Texture01" );
-    pCharacterMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_DefaultShader ) );
-    pCharacterMaterial->SetTexture( 0, pCharacterTexture );
+    // Create the material
+    m_pCharactersMaterial = new StructuredMaterial<ColorF>();
+    m_pCharactersMaterial->GetBuffer()->VAddProperty( "u_Color", BP_VECTOR4 );
+    m_pCharactersMaterial->AddTextureRegister( "s_Texture01" );
+    m_pCharactersMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_uColor_DefaultShader ) );
+    m_pCharactersMaterial->GetData() = ColorF::WHITE;
+    m_pCharactersMaterial->SetTexture( 0, pCharacterTexture );
+    m_pCharactersMaterial->Release();
     
-    m_pPlayer = Game::CreateEntity();
-    m_pPlayer->GetTransform().SetPosition( Vector4( 0.5f, 0.4f, 0.5f ) );
-    MeshComponent* pMesh = m_pPlayer->AddComponent<MeshComponent>();
-    
-    RectF rect;
-    rect.x = 805.0f / (float)pCharacterTexture->VGetWidth();
-    rect.y = 365.0f / (float)pCharacterTexture->VGetHeight();
-
-    rect.width = 895.0f / (float)pCharacterTexture->VGetWidth();
-    rect.height = 445.0f / (float)pCharacterTexture->VGetHeight();
-    
-    pMesh->SetMesh( Mesh::CreateBox( Vector4::ONE * 0.8f, rect ) );
-	pMesh->GetMesh()->Release();
-    pMesh->SetMaterial( pCharacterMaterial );
-    pCharacterMaterial->Release();
+        
+    // Create the player
+    CreatePlayer();
     
     m_pCameraEntity = Game::CreateEntity();
     m_pCamera = new FreeCameraComponent();
@@ -153,6 +77,18 @@ void DungeonGame::VOnAbort(void)
 
 bool DungeonGame::VOnMouseMove( const Vector3& vPosition, const Vector3& vDeltaPosition )
 {
+    Vector3 vScreenPos = vPosition;
+    Vector3 vRayPos, vRayDir;
+    RenderUtils::Unproject( vScreenPos, m_pCamera->GetProjection(), m_pCamera->GetView(), vRayPos, vRayDir );
+    vRayDir.Normalize();
+    Plane groundPlane;
+    groundPlane.InitFromPointNormal( Vector4::ZERO, Vector4::UP );
+    
+    Vector3 vGroundPosition;
+    IntersectionUtils::RayPlaneIntersect( vRayPos, vRayPos + vRayDir * 1000.0f, groundPlane, vGroundPosition );
+    
+    DebugRenderer::AddLine( vRayPos, vRayPos + vRayDir * 1000.0f, ColorF::BLUE, 1.0f, 0.0f );
+    
     return true;
 }
 
@@ -172,7 +108,7 @@ bool DungeonGame::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosi
     
     Vector3 vGroundPosition;
     IntersectionUtils::RayPlaneIntersect( vRayPos, vRayPos + vRayDir * 1000.0f, groundPlane, vGroundPosition );
-    
+    m_pPathFollower->SetDestination( vGroundPosition );
     //vGroundPosition.x = (int)(vGroundPosition.x - 0.25f) + 0.5f;
     if ( vGroundPosition.x < 0.0f )
     {
@@ -192,11 +128,20 @@ bool DungeonGame::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosi
         vGroundPosition.z = (int)(vGroundPosition.z) + 0.5f;
     }
     
+    SceneNode* pSceneNode = SceneManager::Get()->VPickAndReturnClosest( vRayPos, vRayDir );
+    RenderComponent* pNode = dynamic_cast< RenderComponent* >( pSceneNode );
+    if ( pNode )
+    {
+        pNode = pNode;
+        Entity* pPickedEntity = pNode->GetOwner();
+        pPickedEntity->OnMessage( "Interact", m_pPlayer, NULL );
+        
+    }
+//    m_pPlayer->GetTransform().SetPosition( vGroundPosition );
     
-    m_pPlayer->GetTransform().SetPosition( vGroundPosition );
     
     DebugRenderer::AddLine( vRayPos, vRayPos + vRayDir * 100.0f, ColorF::RED, 1.0f, 10.0f );
-    DebugRenderer::AddLine( vRayPos, vRayPos + m_pCamera->GetDirection() * 100.0f, ColorF::BLUE, 1.0f, 10.0f );
+    
     return true;
 }
 
@@ -208,4 +153,35 @@ bool DungeonGame::VOnMouseButtonDClick( const int iButtonIndex, const Vector3& v
 bool DungeonGame::VOnMouseWheel( const Vector3& vPosition, const Vector3& vDelta )
 {
     return true;
+}
+
+
+
+void DungeonGame::CreatePlayer()
+{
+    m_pPlayer = Game::CreateEntity();
+    m_pPlayer->GetTransform().SetPosition( Vector4( 0.5f, 0.4f, 0.5f ) );
+    m_pPathFollower = m_pPlayer->AddComponent< PathFollowerComponent >();
+    m_pPathFollower->SetGraph( m_World.GetGraph() );
+    
+    MeshComponent* pMesh = m_pPlayer->AddComponent<MeshComponent>();
+    
+    RectF rect;
+    rect.x = 805.0f / (float)m_pCharactersMaterial->GetTexture( 0 )->VGetWidth();
+    rect.y = 365.0f / (float)m_pCharactersMaterial->GetTexture( 0 )->VGetHeight();
+    
+    rect.width = 895.0f / (float)m_pCharactersMaterial->GetTexture( 0 )->VGetWidth();
+    rect.height = 445.0f / (float)m_pCharactersMaterial->GetTexture( 0 )->VGetHeight();
+    
+    pMesh->SetMesh( Mesh::CreateBox( Vector4::ONE * 0.8f, rect ) );
+	pMesh->GetMesh()->Release();
+    pMesh->SetMaterial( m_pCharactersMaterial );
+    
+    CharacterComponent* pCharacter = m_pPlayer->AddComponent< CharacterComponent >();
+    
+}
+
+World& DungeonGame::GetWorld()
+{
+    return m_World;
 }

@@ -11,7 +11,13 @@
 
 Character::Character()
 {
+    m_uiConditions = Alive;
     
+    GetAttribute( HitPoints ).SetBase( 20 );
+    GetAttribute( HitPoints ).SetCap( 20 );
+    
+    GetAttribute( Mana ).SetBase( 20 );
+    GetAttribute( Mana ).SetCap( 20 );
 }
 
 Character::~Character()
@@ -26,7 +32,7 @@ bool Character::UseSkill( Skills eSkill, short sDifficulty )
     {
         if ( skill.GainCheck( sDifficulty ) )
         {
-            skill.SetBase( skill.GetBase() + 1 );
+            skill.AdjustBase( 1 );
         }
         
         return true;
@@ -56,4 +62,49 @@ Skill& Character::GetSkill( Skills eSkill )
     assert( eSkill < SkillsCount );
     
     return m_Skills[ eSkill ];
+}
+
+Attribute& Character::GetAttribute( Attributes eAttribute )
+{
+    assert( eAttribute < AttributesCount );
+    
+    return m_Attributes[ eAttribute ];
+}
+
+void Character::Attack( Character* pVictim )
+{
+    if ( !CanAct() )
+    {
+        return;
+    }
+    
+    if ( UseSkill( Swords, pVictim->GetSkill( Swords ).GetValue() ) == true )
+    {
+        pVictim->TakeDamage( 1 );
+    }
+}
+
+void Character::TakeDamage( short sDamage )
+{
+    GetAttribute( HitPoints ).AdjustModifier( -sDamage );
+    
+    OnDamage( sDamage );
+}
+
+void Character::OnDamage( short sDamage )
+{
+    if ( GetAttribute( HitPoints ).GetValue() <= 0 )
+    {
+        m_uiConditions = Dead;
+    }
+}
+
+bool Character::CanAct() const
+{
+    if ( m_uiConditions == Dead )
+    {
+        return false;
+    }
+    
+    return true;
 }

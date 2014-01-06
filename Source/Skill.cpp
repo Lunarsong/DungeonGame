@@ -88,6 +88,21 @@ void Skill::SetModifier( short sModifier )
     m_sModifier = sModifier;
 }
 
+void Skill::AdjustBase( short sValue )
+{
+    SetBase( GetBase() + 1 );
+}
+
+void Skill::AdjustModifier( short sValue )
+{
+    SetModifier( GetModifier() + 1 );
+}
+
+void Skill::AdjustCap( short sValue )
+{
+    SetCap( GetCap() + 1 );
+}
+
 double Skill::Value() const
 {
     return ((double)GetValue() / 10.0 );

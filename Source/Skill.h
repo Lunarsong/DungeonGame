@@ -38,6 +38,10 @@ public:
     void SetCap( short sCap );
     void SetModifier( short sModifier );
     
+    void AdjustBase( short sValue );
+    void AdjustModifier( short sValue );
+    void AdjustCap( short sValue );
+    
     double Value() const;
     double Base() const;
     double Cap() const;

@@ -9,11 +9,11 @@
 #pragma once
 
 #include <Core/Process/Process.h>
-#include <AI/Pathfinding/Graph/Implementations/SquarePathfindingGraph.h>
 #include <Core/Input/InputHandlers.h>
 #include <Game/Game.h>
 #include <Game/Entities/Components/Rendering/CameraComponent.h>
-#include "GameMap.h"
+#include <Game/Entities/Components/AI/PathFollowerComponent.h>
+#include "World.h"
 
 using namespace Engine;
 
@@ -36,11 +36,20 @@ public:
     virtual bool VOnMouseButtonDClick( const int iButtonIndex, const Vector3& vPosition );
     virtual bool VOnMouseWheel( const Vector3& vPosition, const Vector3& vDelta );
     
+    void CreatePlayer();
+    void AddEnemy( const Vector3& vPosition );
+    
+    World& GetWorld();
+    
 private:
-    GameMap m_Map;
-    SquarePathfindingGraph m_PathGraph;
+    World m_World;
+
     
     Entity* m_pPlayer;
+    PathFollowerComponent* m_pPathFollower;
     Entity* m_pCameraEntity;
     CameraComponent* m_pCamera;
+    
+    SmartPtr<StructuredMaterial<ColorF>> m_pCharactersMaterial;
+    
 };
