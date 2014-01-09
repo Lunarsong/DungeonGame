@@ -111,22 +111,40 @@ void World::Init()
     pTileMap->Release();
 }
 
-void World::AddCharacter( CharacterComponent* pCharacter )
+void World::AddEnemy( CharacterComponent* pCharacter )
 {
-    m_pCharacters.push_back( pCharacter );
+    m_pEnemies.push_back( pCharacter );
 }
 
-void World::RemoveCharacter( CharacterComponent* pCharacter )
+void World::RemoveEnemy( CharacterComponent* pCharacter )
 {
-    for ( std::vector<CharacterComponent*>::iterator pIter = m_pCharacters.begin(); pIter != m_pCharacters.end(); ++pIter )
+    for ( std::vector<CharacterComponent*>::iterator pIter = m_pEnemies.begin(); pIter != m_pEnemies.end(); ++pIter )
     {
         if ( (*pIter) == pCharacter )
         {
-            m_pCharacters.erase( pIter );
+            m_pEnemies.erase( pIter );
             return;
         }
     }
 }
+
+void World::AddPlayer( CharacterComponent* pCharacter )
+{
+    m_pPlayers.push_back( pCharacter );
+}
+
+void World::RemovePlayer( CharacterComponent* pCharacter )
+{
+    for ( std::vector<CharacterComponent*>::iterator pIter = m_pPlayers.begin(); pIter != m_pPlayers.end(); ++pIter )
+    {
+        if ( (*pIter) == pCharacter )
+        {
+            m_pPlayers.erase( pIter );
+            return;
+        }
+    }
+}
+
 
 void World::AddEnemy( const Vector3& vPosition )
 {
@@ -166,4 +184,14 @@ void World::AddEnemy( const Vector3& vPosition )
 SquarePathfindingGraph* World::GetGraph()
 {
     return m_PathGraph;
+}
+
+std::vector< CharacterComponent* >& World::GetEnemies()
+{
+    return m_pEnemies;
+}
+
+std::vector< CharacterComponent* >& World::GetPlayers()
+{
+    return m_pPlayers;
 }

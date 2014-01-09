@@ -14,6 +14,7 @@
 #include <Game/Entities/Components/Rendering/CameraComponent.h>
 #include <Game/Entities/Components/AI/PathFollowerComponent.h>
 #include "World.h"
+#include "GameController.h"
 
 using namespace Engine;
 
@@ -43,7 +44,7 @@ public:
     
 private:
     World m_World;
-
+    GameController m_GameController;
     
     Entity* m_pPlayer;
     PathFollowerComponent* m_pPathFollower;

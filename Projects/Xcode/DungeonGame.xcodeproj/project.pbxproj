@@ -17,8 +17,10 @@
 		E61B2AC4186C06EB00745E6B /* Map.map in CopyFiles */ = {isa = PBXBuildFile; fileRef = E61B2AC3186C06EB00745E6B /* Map.map */; };
 		E638BDBB1879DCF400C864FD /* Attribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638BDB91879DCF400C864FD /* Attribute.cpp */; };
 		E638BDBF187A832C00C864FD /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638BDBD187A832C00C864FD /* World.cpp */; };
-		E638BDC2187A88FB00C864FD /* AIController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638BDC0187A88FB00C864FD /* AIController.cpp */; };
+		E638BDC2187A88FB00C864FD /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638BDC0187A88FB00C864FD /* GameController.cpp */; };
 		E63C376B1879772F00DB5407 /* CharacterComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E63C37691879772F00DB5407 /* CharacterComponent.cpp */; };
+		E69A84A8187BD97A006047AE /* AIControllerProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E69A84A6187BD97A006047AE /* AIControllerProcess.cpp */; };
+		E69A84B3187C7DD2006047AE /* PlayerControllerProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E69A84B1187C7DD2006047AE /* PlayerControllerProcess.cpp */; };
 		E6A4DED618783F6E00ACAC89 /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DED418783F6E00ACAC89 /* Skill.cpp */; };
 		E6A4DED918783F7900ACAC89 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DED718783F7900ACAC89 /* Character.cpp */; };
 		E6A4DEDC18783F8100ACAC89 /* Ability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6A4DEDA18783F8100ACAC89 /* Ability.cpp */; };
@@ -88,10 +90,14 @@
 		E638BDBA1879DCF400C864FD /* Attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attribute.h; sourceTree = "<group>"; };
 		E638BDBD187A832C00C864FD /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		E638BDBE187A832C00C864FD /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
-		E638BDC0187A88FB00C864FD /* AIController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AIController.cpp; sourceTree = "<group>"; };
-		E638BDC1187A88FB00C864FD /* AIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIController.h; sourceTree = "<group>"; };
+		E638BDC0187A88FB00C864FD /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
+		E638BDC1187A88FB00C864FD /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		E63C37691879772F00DB5407 /* CharacterComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterComponent.cpp; sourceTree = "<group>"; };
 		E63C376A1879772F00DB5407 /* CharacterComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterComponent.h; sourceTree = "<group>"; };
+		E69A84A6187BD97A006047AE /* AIControllerProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AIControllerProcess.cpp; sourceTree = "<group>"; };
+		E69A84A7187BD97A006047AE /* AIControllerProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIControllerProcess.h; sourceTree = "<group>"; };
+		E69A84B1187C7DD2006047AE /* PlayerControllerProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerControllerProcess.cpp; sourceTree = "<group>"; };
+		E69A84B2187C7DD2006047AE /* PlayerControllerProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControllerProcess.h; sourceTree = "<group>"; };
 		E6A4DECF18783EFF00ACAC89 /* GameMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameMap.cpp; sourceTree = "<group>"; };
 		E6A4DED018783EFF00ACAC89 /* GameMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMap.h; sourceTree = "<group>"; };
 		E6A4DED118783EFF00ACAC89 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -183,8 +189,12 @@
 				E638BDBA1879DCF400C864FD /* Attribute.h */,
 				E638BDBD187A832C00C864FD /* World.cpp */,
 				E638BDBE187A832C00C864FD /* World.h */,
-				E638BDC0187A88FB00C864FD /* AIController.cpp */,
-				E638BDC1187A88FB00C864FD /* AIController.h */,
+				E638BDC0187A88FB00C864FD /* GameController.cpp */,
+				E638BDC1187A88FB00C864FD /* GameController.h */,
+				E69A84A6187BD97A006047AE /* AIControllerProcess.cpp */,
+				E69A84A7187BD97A006047AE /* AIControllerProcess.h */,
+				E69A84B1187C7DD2006047AE /* PlayerControllerProcess.cpp */,
+				E69A84B2187C7DD2006047AE /* PlayerControllerProcess.h */,
 			);
 			name = Source;
 			path = /Users/Nishry/Documents/LunaEngine/Projects/iOS/../../../DungeonGame/Source;
@@ -277,8 +287,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6A4DED618783F6E00ACAC89 /* Skill.cpp in Sources */,
-				E638BDC2187A88FB00C864FD /* AIController.cpp in Sources */,
+				E638BDC2187A88FB00C864FD /* GameController.cpp in Sources */,
+				E69A84B3187C7DD2006047AE /* PlayerControllerProcess.cpp in Sources */,
 				E6A4DEDF18783F8C00ACAC89 /* Combat.cpp in Sources */,
+				E69A84A8187BD97A006047AE /* AIControllerProcess.cpp in Sources */,
 				E6A4DEDC18783F8100ACAC89 /* Ability.cpp in Sources */,
 				E6EC8DB71878401700405E7A /* main.cpp in Sources */,
 				E6C06EBC1878A0FA00D5C0E2 /* DungeonGame.cpp in Sources */,

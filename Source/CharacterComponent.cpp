@@ -34,20 +34,12 @@ const HashedString& CharacterComponent::GetType() const
 
 void CharacterComponent::VStart()
 {
-    DungeonGame* pGame = (DungeonGame*)BaseApplication::Get()->GetProcessManager().GetProcessByName( "Game" );
-    if ( pGame )
-    {
-        pGame->GetWorld().AddCharacter( this );
-    }
+    
 }
 
 void CharacterComponent::VEnd()
 {
-    DungeonGame* pGame = (DungeonGame*)BaseApplication::Get()->GetProcessManager().GetProcessByName( "Game" );
-    if ( pGame )
-    {
-        pGame->GetWorld().RemoveCharacter( this );
-    }
+    
 }
 
 void CharacterComponent::VUpdate( float fDeltaSeconds )

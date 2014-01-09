@@ -57,7 +57,7 @@ void DungeonGame::VOnInit(void)
 
 void DungeonGame::VOnUpdate( const float fDeltaSeconds )
 {
-    
+    m_GameController.Update( m_World, fDeltaSeconds );
 }
 
 void DungeonGame::VOnSuccess(void)
@@ -89,12 +89,12 @@ bool DungeonGame::VOnMouseMove( const Vector3& vPosition, const Vector3& vDeltaP
     
     DebugRenderer::AddLine( vRayPos, vRayPos + vRayDir * 1000.0f, ColorF::BLUE, 1.0f, 0.0f );
     
-    return true;
+    return false;
 }
 
 bool DungeonGame::VOnMouseButtonDown( const int iButtonIndex, const Vector3& vPosition )
 {
-    return true;
+    return false;
 }
 
 bool DungeonGame::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosition )
@@ -108,7 +108,7 @@ bool DungeonGame::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosi
     
     Vector3 vGroundPosition;
     IntersectionUtils::RayPlaneIntersect( vRayPos, vRayPos + vRayDir * 1000.0f, groundPlane, vGroundPosition );
-    m_pPathFollower->SetDestination( vGroundPosition );
+
     //vGroundPosition.x = (int)(vGroundPosition.x - 0.25f) + 0.5f;
     if ( vGroundPosition.x < 0.0f )
     {
@@ -142,17 +142,17 @@ bool DungeonGame::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosi
     
     DebugRenderer::AddLine( vRayPos, vRayPos + vRayDir * 100.0f, ColorF::RED, 1.0f, 10.0f );
     
-    return true;
+    return false;
 }
 
 bool DungeonGame::VOnMouseButtonDClick( const int iButtonIndex, const Vector3& vPosition )
 {
-    return true;
+    return false;
 }
 
 bool DungeonGame::VOnMouseWheel( const Vector3& vPosition, const Vector3& vDelta )
 {
-    return true;
+    return false;
 }
 
 
@@ -178,7 +178,8 @@ void DungeonGame::CreatePlayer()
     pMesh->SetMaterial( m_pCharactersMaterial );
     
     CharacterComponent* pCharacter = m_pPlayer->AddComponent< CharacterComponent >();
-    
+    m_World.AddPlayer( pCharacter );
+    m_GameController.AddPlayer( pCharacter );
 }
 
 World& DungeonGame::GetWorld()

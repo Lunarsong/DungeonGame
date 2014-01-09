@@ -22,19 +22,24 @@ public:
     
     void Init();
     
-    void AddCharacter( CharacterComponent* pCharacter );
-    void RemoveCharacter( CharacterComponent* pCharacter );
+    void AddEnemy( CharacterComponent* pCharacter );
+    void RemoveEnemy( CharacterComponent* pCharacter );
+    
+    void AddPlayer( CharacterComponent* pCharacter );
+    void RemovePlayer( CharacterComponent* pCharacter );
     
     void AddEnemy( const Vector3& vPosition );
     
     SquarePathfindingGraph* GetGraph();
     
-    std::vector< CharacterComponent* >& GetCharacters();
+    std::vector< CharacterComponent* >& GetEnemies();
+    std::vector< CharacterComponent* >& GetPlayers();
     
 private:
     GameMap m_Map;
     SquarePathfindingGraph* m_PathGraph;
     
-    std::vector< CharacterComponent* > m_pCharacters;
+    std::vector< CharacterComponent* > m_pEnemies;
+    std::vector< CharacterComponent* > m_pPlayers;
     
 };
