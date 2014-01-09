@@ -17,11 +17,10 @@
 *.user
 *.sdf
 *.opensdf
-*.suo
 
 # Xcode
 *.pbxuser
-xcuserdata
+*.xcuserdata
 *.xcworkspace
 .DS_Store
 
