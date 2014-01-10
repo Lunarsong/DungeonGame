@@ -11,21 +11,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Ability.h" />
+    <ClInclude Include="..\..\Source\AIController.h" />
+    <ClInclude Include="..\..\Source\Attribute.h" />
+    <ClInclude Include="..\..\Source\Character.h" />
+    <ClInclude Include="..\..\Source\CharacterComponent.h" />
+    <ClInclude Include="..\..\Source\Combat.h" />
+    <ClInclude Include="..\..\Source\DungeonGame.h" />
+    <ClInclude Include="..\..\Source\GameMap.h" />
+    <ClInclude Include="..\..\Source\Skill.h" />
+    <ClInclude Include="..\..\Source\World.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="..\..\Source\Ability.cpp" />
+    <ClCompile Include="..\..\Source\AIController.cpp" />
+    <ClCompile Include="..\..\Source\Attribute.cpp" />
     <ClCompile Include="..\..\Source\Character.cpp" />
+    <ClCompile Include="..\..\Source\CharacterComponent.cpp" />
     <ClCompile Include="..\..\Source\Combat.cpp" />
     <ClCompile Include="..\..\Source\DungeonGame.cpp" />
     <ClCompile Include="..\..\Source\GameMap.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />
     <ClCompile Include="..\..\Source\Skill.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\Ability.h" />
-    <ClInclude Include="..\..\Source\Character.h" />
-    <ClInclude Include="..\..\Source\Combat.h" />
-    <ClInclude Include="..\..\Source\DungeonGame.h" />
-    <ClInclude Include="..\..\Source\GameMap.h" />
-    <ClInclude Include="..\..\Source\Skill.h" />
+    <ClCompile Include="..\..\Source\World.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9B27F82E-314C-4A02-AD93-D7126E26CA67}</ProjectGuid>
