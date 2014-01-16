@@ -27,7 +27,12 @@ public:
     virtual void VUpdate( float fDeltaSeconds );
     
     virtual bool VOnMessage( const HashedString& hMessage, Engine::Entity* pMessenger, const void* pData );
+
+	virtual const Engine::Vector3& GetPosition() const;
     
+	bool IsAI() const;
+	void SetAI( bool bSet );
+
 protected:
     bool m_bAI;
 

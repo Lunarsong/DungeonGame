@@ -11,29 +11,70 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Ability.h" />
-    <ClInclude Include="..\..\Source\AIController.h" />
-    <ClInclude Include="..\..\Source\Attribute.h" />
-    <ClInclude Include="..\..\Source\Character.h" />
-    <ClInclude Include="..\..\Source\CharacterComponent.h" />
-    <ClInclude Include="..\..\Source\Combat.h" />
-    <ClInclude Include="..\..\Source\DungeonGame.h" />
-    <ClInclude Include="..\..\Source\GameMap.h" />
-    <ClInclude Include="..\..\Source\Skill.h" />
-    <ClInclude Include="..\..\Source\World.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\Source\Ability.cpp" />
-    <ClCompile Include="..\..\Source\AIController.cpp" />
+    <ClCompile Include="..\..\Source\AIControllerProcess.cpp" />
+    <ClCompile Include="..\..\Source\Armor.cpp" />
     <ClCompile Include="..\..\Source\Attribute.cpp" />
     <ClCompile Include="..\..\Source\Character.cpp" />
     <ClCompile Include="..\..\Source\CharacterComponent.cpp" />
+    <ClCompile Include="..\..\Source\CharacterControllerProcess.cpp" />
+    <ClCompile Include="..\..\Source\CharacterMenu.cpp" />
     <ClCompile Include="..\..\Source\Combat.cpp" />
+    <ClCompile Include="..\..\Source\Consumable.cpp" />
     <ClCompile Include="..\..\Source\DungeonGame.cpp" />
+    <ClCompile Include="..\..\Source\Equipment.cpp" />
+    <ClCompile Include="..\..\Source\GameController.cpp" />
     <ClCompile Include="..\..\Source\GameMap.cpp" />
+    <ClCompile Include="..\..\Source\GameMenu.cpp" />
+    <ClCompile Include="..\..\Source\Inventory.cpp" />
+    <ClCompile Include="..\..\Source\InventoryMenu.cpp" />
+    <ClCompile Include="..\..\Source\Item.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\PlayerControllerProcess.cpp" />
+    <ClCompile Include="..\..\Source\PotionItem.cpp" />
     <ClCompile Include="..\..\Source\Skill.cpp" />
+    <ClCompile Include="..\..\Source\Tile.cpp" />
+    <ClCompile Include="..\..\Source\TileTrigger.cpp" />
+    <ClCompile Include="..\..\Source\Weapon.cpp" />
     <ClCompile Include="..\..\Source\World.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Ability.h" />
+    <ClInclude Include="..\..\Source\AIControllerProcess.h" />
+    <ClInclude Include="..\..\Source\Armor.h" />
+    <ClInclude Include="..\..\Source\Attribute.h" />
+    <ClInclude Include="..\..\Source\Character.h" />
+    <ClInclude Include="..\..\Source\CharacterComponent.h" />
+    <ClInclude Include="..\..\Source\CharacterControllerProcess.h" />
+    <ClInclude Include="..\..\Source\CharacterEvents.h" />
+    <ClInclude Include="..\..\Source\Combat.h" />
+    <ClInclude Include="..\..\Source\Consumable.h" />
+    <ClInclude Include="..\..\Source\DungeonGame.h" />
+    <ClInclude Include="..\..\Source\Equipment.h" />
+    <ClInclude Include="..\..\Source\GameController.h" />
+    <ClInclude Include="..\..\Source\GameMap.h" />
+    <ClInclude Include="..\..\Source\GameMenu.h" />
+    <ClInclude Include="..\..\Source\Inventory.h" />
+    <ClInclude Include="..\..\Source\InventoryMenu.h" />
+    <ClInclude Include="..\..\Source\Item.h" />
+    <ClInclude Include="..\..\Source\PlayerControllerProcess.h" />
+    <ClInclude Include="..\..\Source\PotionItem.h" />
+    <ClInclude Include="..\..\Source\Skill.h" />
+    <ClInclude Include="..\..\Source\Tile.h" />
+    <ClInclude Include="..\..\Source\TileTrigger.h" />
+    <ClInclude Include="..\..\Source\Weapon.h" />
+    <ClInclude Include="..\..\Source\World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\Assets\CharacterMenu.xml" />
+    <Xml Include="..\..\Assets\GameHUD.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+    <Xml Include="..\..\Assets\GameMenu.xml" />
+    <Xml Include="..\..\Assets\Inventory.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Assets\Map.map" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9B27F82E-314C-4A02-AD93-D7126E26CA67}</ProjectGuid>
@@ -82,7 +123,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NULL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../../../LunaEngine/Engine</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -101,7 +142,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NULL=0;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../../../LunaEngine/Engine</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -110,7 +151,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>../../../LunaEngine/Engine/Externals/OpenGL/lib/Release/Win32;$(SolutionDir)Bin\;$(FBX)\lib\vs2012\x86\debug;../../../LunaEngine/Engine/Externals/LibOVR/Lib/Win32;../../../LunaEngine/Engine/Externals/libvorbis/lib/Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../LunaEngine/Engine/Externals/OpenGL/lib/Release/Win32;$(SolutionDir)Bin\;$(FBX)\lib\vs2012\x86\release;../../../LunaEngine/Engine/Externals/LibOVR/Lib/Win32;../../../LunaEngine/Engine/Externals/libvorbis/lib/Release</AdditionalLibraryDirectories>
       <AdditionalDependencies>Engine.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

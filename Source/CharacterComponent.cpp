@@ -56,12 +56,9 @@ bool CharacterComponent::VOnMessage( const HashedString& hMessage, Entity* pMess
             CharacterComponent* pOther = pMessenger->GetComponent< CharacterComponent >();
             if ( pOther )
             {
-                pOther->Attack( this );
-                
-                Attack( pOther );
+                return pOther->Attack( this );
             }
         }
-        return true;
     }
     
     return false;
@@ -76,9 +73,24 @@ void CharacterComponent::OnDamage( short sDamage )
     {
         StructuredMaterial<ColorF>* pMaterial = (StructuredMaterial<ColorF>*)pMesh->GetMaterial();
      
-        double dPercent = GetAttribute( HitPoints ).GetPercent();
-        pMaterial->GetData().Red = dPercent;
-        pMaterial->GetData().Green = dPercent * 0.7f;
-        pMaterial->GetData().Blue = dPercent * 0.7f;
+        float fPercent = (float)GetAttribute( HitPoints ).GetPercent();
+        pMaterial->GetData().Red = fPercent;
+        pMaterial->GetData().Green = fPercent * 0.7f;
+        pMaterial->GetData().Blue = fPercent * 0.7f;
     }
+}
+
+const Vector3& CharacterComponent::GetPosition() const
+{
+	return GetTransform().GetPosition();
+}
+
+bool CharacterComponent::IsAI() const
+{
+	return m_bAI;
+}
+
+void CharacterComponent::SetAI( bool bSet )
+{
+	m_bAI = bSet;
 }

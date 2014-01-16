@@ -10,6 +10,8 @@
 
 #include "Skill.h"
 #include "Attribute.h"
+#include "Equipment.h"
+#include <Core/Math/Vector3.h>
 
 class Character
 {
@@ -33,15 +35,21 @@ public:
     Skill& GetSkill( Skills eSkill );
     Attribute& GetAttribute( Attributes eAttribute );
     
-    void Attack( Character* pVictim );
+    bool Attack( Character* pVictim );
     void TakeDamage( short sDamage );
     
     bool CanAct() const;
+
+	Equipment& GetEquipment();
+
+	virtual const Engine::Vector3& GetPosition() const = 0;
     
 protected:
     Skill m_Skills[ SkillsCount ];
     Attribute m_Attributes[ AttributesCount ];
     
+	Equipment m_Equipment;
+
     unsigned int m_uiConditions;
     
     //

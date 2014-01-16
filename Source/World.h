@@ -28,8 +28,9 @@ public:
     void AddPlayer( CharacterComponent* pCharacter );
     void RemovePlayer( CharacterComponent* pCharacter );
     
-    void AddEnemy( const Vector3& vPosition );
-    
+    void AddEnemy( unsigned int iTileX, unsigned int iTileY );
+    void CreatePlayer( unsigned int iTileX, unsigned iTileY );
+
     SquarePathfindingGraph* GetGraph();
     
     std::vector< CharacterComponent* >& GetEnemies();
@@ -42,4 +43,5 @@ private:
     std::vector< CharacterComponent* > m_pEnemies;
     std::vector< CharacterComponent* > m_pPlayers;
     
+	std::list< Item* > m_pItems;
 };

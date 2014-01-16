@@ -15,6 +15,7 @@
 #include <Game/Entities/Components/AI/PathFollowerComponent.h>
 #include "World.h"
 #include "GameController.h"
+#include <Core/EventManager/IEventManager.h>
 
 using namespace Engine;
 
@@ -37,20 +38,15 @@ public:
     virtual bool VOnMouseButtonDClick( const int iButtonIndex, const Vector3& vPosition );
     virtual bool VOnMouseWheel( const Vector3& vPosition, const Vector3& vDelta );
     
-    void CreatePlayer();
-    void AddEnemy( const Vector3& vPosition );
-    
     World& GetWorld();
     
 private:
     World m_World;
     GameController m_GameController;
     
-    Entity* m_pPlayer;
     PathFollowerComponent* m_pPathFollower;
     Entity* m_pCameraEntity;
-    CameraComponent* m_pCamera;
-    
-    SmartPtr<StructuredMaterial<ColorF>> m_pCharactersMaterial;
-    
+    CameraComponent* m_pCamera;    
+
+	void OnCharacterDied( Engine::Event pEvent );
 };

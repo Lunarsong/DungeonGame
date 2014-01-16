@@ -14,15 +14,22 @@
 #include <Rendering/Utils/RenderUtils.h>
 #include <Rendering/Utils/DebugRenderer.h>
 #include "CharacterComponent.h"
+#include "CharacterEvents.h"
 
 DungeonGame::DungeonGame()
 {
+	m_pCamera = NULL;
+
     SetName( "Game" );
     InputManager::Get()->AddMouseHandler( this );
+
+	EventManager::AddListener( "EventCharacterDied", MakeDelegate( this, &DungeonGame::OnCharacterDied ) );
 }
 
 DungeonGame::~DungeonGame()
 {
+	EventManager::RemoveListener( "EventCharacterDied", MakeDelegate( this, &DungeonGame::OnCharacterDied ) );
+
     InputManager::Get()->RemoveMouseHandler( this );
     m_pCamera->Release();
 }
@@ -30,29 +37,25 @@ DungeonGame::~DungeonGame()
 void DungeonGame::VOnInit(void)
 {
     m_World.Init();
-    
-    // Load resources
-    
-    ITexture* pCharacterTexture = AssetManager::Get().GetAsset< ITexture >( "Characters.png" );
-    // Create the material
-    m_pCharactersMaterial = new StructuredMaterial<ColorF>();
-    m_pCharactersMaterial->GetBuffer()->VAddProperty( "u_Color", BP_VECTOR4 );
-    m_pCharactersMaterial->AddTextureRegister( "s_Texture01" );
-    m_pCharactersMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_uColor_DefaultShader ) );
-    m_pCharactersMaterial->GetData() = ColorF::WHITE;
-    m_pCharactersMaterial->SetTexture( 0, pCharacterTexture );
-    m_pCharactersMaterial->Release();
-    
-        
-    // Create the player
-    CreatePlayer();
-    
+
+	auto players = m_World.GetPlayers();
+	for ( auto it : players )
+	{
+		m_GameController.AddPlayer( it );
+	}
+
+
+	auto enemies = m_World.GetEnemies();
+	for ( auto it : enemies )
+	{
+		m_GameController.AddAI( it );
+	}
+           
     m_pCameraEntity = Game::CreateEntity();
     m_pCamera = new FreeCameraComponent();
     m_pCameraEntity->AddComponent( m_pCamera );
     m_pCameraEntity->GetTransform().SetPosition( Vector3( 0.0f, 5.0f, 0.0f ) );
     m_pCameraEntity->GetTransform().SetDirection( -Vector4::UP );
-
 }
 
 void DungeonGame::VOnUpdate( const float fDeltaSeconds )
@@ -77,6 +80,9 @@ void DungeonGame::VOnAbort(void)
 
 bool DungeonGame::VOnMouseMove( const Vector3& vPosition, const Vector3& vDeltaPosition )
 {
+	if ( !m_pCamera )
+		return false;
+
     Vector3 vScreenPos = vPosition;
     Vector3 vRayPos, vRayDir;
     RenderUtils::Unproject( vScreenPos, m_pCamera->GetProjection(), m_pCamera->GetView(), vRayPos, vRayDir );
@@ -87,7 +93,7 @@ bool DungeonGame::VOnMouseMove( const Vector3& vPosition, const Vector3& vDeltaP
     Vector3 vGroundPosition;
     IntersectionUtils::RayPlaneIntersect( vRayPos, vRayPos + vRayDir * 1000.0f, groundPlane, vGroundPosition );
     
-    DebugRenderer::AddLine( vRayPos, vRayPos + vRayDir * 1000.0f, ColorF::BLUE, 1.0f, 0.0f );
+    //DebugRenderer::AddLine( vRayPos, vRayPos + vRayDir * 1000.0f, ColorF::BLUE, 1.0f, 0.0f );
     
     return false;
 }
@@ -134,13 +140,9 @@ bool DungeonGame::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosi
     {
         pNode = pNode;
         Entity* pPickedEntity = pNode->GetOwner();
-        pPickedEntity->OnMessage( "Interact", m_pPlayer, NULL );
+        //pPickedEntity->OnMessage( "Interact", m_pPlayer, NULL );
         
     }
-//    m_pPlayer->GetTransform().SetPosition( vGroundPosition );
-    
-    
-    DebugRenderer::AddLine( vRayPos, vRayPos + vRayDir * 100.0f, ColorF::RED, 1.0f, 10.0f );
     
     return false;
 }
@@ -155,34 +157,25 @@ bool DungeonGame::VOnMouseWheel( const Vector3& vPosition, const Vector3& vDelta
     return false;
 }
 
-
-
-void DungeonGame::CreatePlayer()
-{
-    m_pPlayer = Game::CreateEntity();
-    m_pPlayer->GetTransform().SetPosition( Vector4( 0.5f, 0.4f, 0.5f ) );
-    m_pPathFollower = m_pPlayer->AddComponent< PathFollowerComponent >();
-    m_pPathFollower->SetGraph( m_World.GetGraph() );
-    
-    MeshComponent* pMesh = m_pPlayer->AddComponent<MeshComponent>();
-    
-    RectF rect;
-    rect.x = 805.0f / (float)m_pCharactersMaterial->GetTexture( 0 )->VGetWidth();
-    rect.y = 365.0f / (float)m_pCharactersMaterial->GetTexture( 0 )->VGetHeight();
-    
-    rect.width = 895.0f / (float)m_pCharactersMaterial->GetTexture( 0 )->VGetWidth();
-    rect.height = 445.0f / (float)m_pCharactersMaterial->GetTexture( 0 )->VGetHeight();
-    
-    pMesh->SetMesh( Mesh::CreateBox( Vector4::ONE * 0.8f, rect ) );
-	pMesh->GetMesh()->Release();
-    pMesh->SetMaterial( m_pCharactersMaterial );
-    
-    CharacterComponent* pCharacter = m_pPlayer->AddComponent< CharacterComponent >();
-    m_World.AddPlayer( pCharacter );
-    m_GameController.AddPlayer( pCharacter );
-}
-
 World& DungeonGame::GetWorld()
 {
     return m_World;
+}
+
+void DungeonGame::OnCharacterDied( Event pEvent )
+{
+	EventCharacterDied* pEventData = (EventCharacterDied*)pEvent.get();
+	CharacterComponent* pCharacter = (CharacterComponent*)pEventData->GetCharacter();
+	
+	m_World.RemoveEnemy( pCharacter );
+	m_GameController.RemoveAI( pCharacter );
+
+	m_World.RemovePlayer( pCharacter );
+	m_GameController.RemovePlayer( pCharacter );
+
+	PathfindingNode* pPathNode = m_World.GetGraph()->VFindClosestNode( pCharacter->GetPosition() );
+	pPathNode->SetData( NULL );
+	pPathNode->SetBlocked( false );
+
+	Game::DestroyEntity( pCharacter->GetOwner() );
 }

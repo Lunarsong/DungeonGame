@@ -10,7 +10,7 @@
 
 Attribute::Attribute()
 {
-    m_sBase = 6;
+    m_sBase = 4;
     m_sCap = 100;
     m_sModifier = 0;
 }

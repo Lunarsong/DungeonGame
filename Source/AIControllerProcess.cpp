@@ -20,35 +20,68 @@ AIControllerProcess::~AIControllerProcess()
 
 void AIControllerProcess::VOnInit()
 {
-    m_fTimer = 5.0f;
+	CharacterControllerProcess::VOnInit();
+
+	float m_fTimer = 0.0f;
+	m_eAIState = Idle;
 }
 
 void AIControllerProcess::VOnSuccess()
 {
-    
+    CharacterControllerProcess::VOnSuccess();
 }
 
 void AIControllerProcess::VOnFail()
 {
-    
+    CharacterControllerProcess::VOnFail();
 }
 
 void AIControllerProcess::VOnAbort()
 {
-    
+    CharacterControllerProcess::VOnAbort();
 }
 
 void AIControllerProcess::VOnUpdate( const float fDeltaSeconds )
 {
-    m_fTimer -= fDeltaSeconds;
+	CharacterControllerProcess::VOnUpdate( fDeltaSeconds );
     
-    if ( m_fTimer <= 0.0f )
-    {
-        Succeed();
-    }
-}
+	const Vector3& vPosition = m_pCharacter->GetPosition();
 
-void AIControllerProcess::SetCharacter( CharacterComponent* pCharacter )
-{
-    m_pCharacter = pCharacter;
+	switch ( m_eAIState )
+	{
+	case Idle:
+		{
+			if ( !m_pAttackableNodes.empty() )
+			{
+				PathfindingNode* pNode = NULL;
+				float fDistance = FLT_MAX;
+				for ( auto it : m_pAttackableNodes )
+				{
+					float fCurrentDistance = vPosition.DistanceSQ( it->GetPosition() );
+					if ( fCurrentDistance < fDistance )
+					{
+						fDistance = fCurrentDistance;
+						pNode = it;
+					}
+				}
+
+				SelectNode( pNode );
+			}
+
+			else
+			{
+				SelectNode( m_pWalkableNodes[ g_RandomNumGen.RandomInt( m_pWalkableNodes.size() ) ] );
+			}
+
+			m_eAIState = Process;
+		} break;
+
+	case Process:
+		{
+
+		} break;
+
+	default:
+		break;
+	}
 }

@@ -10,8 +10,9 @@
 
 #include <Core/Process/Process.h>
 #include "CharacterComponent.h"
+#include "CharacterControllerProcess.h"
 
-class AIControllerProcess : public Engine::Process
+class AIControllerProcess : public CharacterControllerProcess
 {
 public:
     AIControllerProcess();
@@ -22,12 +23,15 @@ public:
     virtual void VOnFail();
     virtual void VOnAbort();
     
-    virtual void VOnUpdate( const float fDeltaSeconds );
+    virtual void VOnUpdate( const float fDeltaSeconds );    
     
-    void SetCharacter( CharacterComponent* pCharacter );
-    
-private:
-    Engine::SmartPtr<CharacterComponent> m_pCharacter;
-    
+private:    
     float m_fTimer;
+
+	enum AIState
+	{
+		Idle,
+		Process
+	};
+	AIState m_eAIState;
 };

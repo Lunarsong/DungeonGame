@@ -8,6 +8,10 @@
 
 #include "Character.h"
 #include <assert.h>
+#include "Weapon.h"
+#include <Core/Math/RandomNumGen.h>
+#include <Core/EventManager/EventManager.h>
+#include "CharacterEvents.h"
 
 Character::Character()
 {
@@ -71,22 +75,35 @@ Attribute& Character::GetAttribute( Attributes eAttribute )
     return m_Attributes[ eAttribute ];
 }
 
-void Character::Attack( Character* pVictim )
+bool Character::Attack( Character* pVictim )
 {
     if ( !CanAct() )
     {
-        return;
+        return false;
     }
     
-    if ( UseSkill( Swords, pVictim->GetSkill( Swords ).GetValue() ) == true )
+    /*if ( UseSkill( Swords, pVictim->GetSkill( Swords ).GetValue() ) == true )
     {
         pVictim->TakeDamage( 1 );
-    }
+    }*/
+
+	Weapon* pWeapon = (Weapon*)m_Equipment.GetWeapon();
+	float fDistance2 = GetPosition().DistanceSQ( pVictim->GetPosition() );
+	float fRange2 = pWeapon->Range * pWeapon->Range * 1.05f + 1.0f; // Added epsilon for floating errors
+	if ( fDistance2 <= fRange2 )
+	{
+		int iDamage = Engine::g_RandomNumGen.RandomInt( pWeapon->Damage.Min, pWeapon->Damage.Max );
+		pVictim->TakeDamage( iDamage );
+
+		return true;
+	}
+	
+	return false;
 }
 
 void Character::TakeDamage( short sDamage )
 {
-    GetAttribute( HitPoints ).AdjustModifier( -sDamage );
+    GetAttribute( HitPoints ).AdjustBase( -sDamage );
     
     OnDamage( sDamage );
 }
@@ -96,6 +113,7 @@ void Character::OnDamage( short sDamage )
     if ( GetAttribute( HitPoints ).GetValue() <= 0 )
     {
         m_uiConditions = Dead;
+		Engine::EventManager::TriggerEvent( Engine::Event( new EventCharacterDied( this ) ) );
     }
 }
 
@@ -107,4 +125,9 @@ bool Character::CanAct() const
     }
     
     return true;
+}
+
+Equipment& Character::GetEquipment()
+{
+	return m_Equipment;
 }

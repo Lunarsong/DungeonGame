@@ -33,6 +33,28 @@ GameController::~GameController()
 
 void GameController::Update( World& world, float fDeltaSeconds )
 {
+	for ( auto it : m_pPlayerCharacters )
+	{
+		if ( it->GetAttribute( HitPoints ).GetValue() <= 0 )
+		{
+			world.RemovePlayer( it );
+			RemovePlayer( it );
+
+			Game::DestroyEntity( it->GetOwner() );
+		}
+	}
+
+	for ( auto it : m_pAICharacters )
+	{
+		if ( it->GetAttribute( HitPoints ).GetValue() <= 0 )
+		{
+			world.RemoveEnemy( it );
+			RemoveAI( it );
+
+			Game::DestroyEntity( it->GetOwner() );
+		}
+	}
+
     switch ( m_eState )
     {
         case Idle:

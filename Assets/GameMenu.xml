@@ -1,0 +1,54 @@
+<Monitor>
+	<Size x="1280" y="720"/>
+	
+  <!-------------- Menus ---------->
+  <UI>
+    <ID>anchor_menu</ID>
+    <RelPosition x="0.5" y="0.5" />
+    <Position x="0" y="0" Type="Pixels" />
+    <Size x="0.0" y="0.0" />
+
+    <Color>
+      <Position x="0" y="-20" Type="Pixels" />
+      <Size x="340" y="300" />
+      <Color Red="60" Green="60" Blue="60" />
+      <Alignment>Center</Alignment>
+
+    </Color>
+
+    <Label>
+        <Size x="242" y="55" />
+        <Position x="0" y="-130" />
+        <Alignment>Center</Alignment>
+        <Text>Game Paused</Text>
+        <Font Name="Arial" Size="42"/>
+        <!--Color Red="218" Green="165" Blue="32" /-->
+      </Label>
+    
+      <ButtonImage>
+        <ID>btn_resume</ID>
+        <Size x="242" y="55" />
+        <Position x="0" y="-65" />
+        <Alignment>Center</Alignment>
+        <Texture>Resume.png</Texture>
+      </ButtonImage>
+
+      <ButtonImage>
+        <ID>btn_options</ID>
+        <Size x="242" y="55" />
+        <Position x="0" y="0" />
+        <Alignment>Center</Alignment>
+        <Texture>Options.png</Texture>
+      </ButtonImage>
+
+      <ButtonImage>
+        <ID>btn_exit</ID>
+        <Size x="242" y="55" />
+        <Position x="0" y="65" />
+        <Alignment>Center</Alignment>
+        <Texture>Exit.png</Texture>
+      </ButtonImage>
+
+  </UI>
+  
+</Monitor>
