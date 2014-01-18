@@ -12,6 +12,7 @@
 #include "Attribute.h"
 #include "Equipment.h"
 #include <Core/Math/Vector3.h>
+#include <functional>
 
 class Character
 {
@@ -29,10 +30,6 @@ public:
     Character();
     ~Character();
     
-    bool UseSkill( Skills eSkill, short sDifficulty );
-    bool UseSkill( Skills eSkill, short sDifficultyMin, short sDifficultyMax );
-    
-    Skill& GetSkill( Skills eSkill );
     Attribute& GetAttribute( Attributes eAttribute );
     
     bool Attack( Character* pVictim );
@@ -44,14 +41,36 @@ public:
 
 	virtual const Engine::Vector3& GetPosition() const = 0;
     
+	// Leveling
+	int GetExperience() const;
+	void SetExperience( int iExperience );
+	void AdjustExperience( int iExperience );
+
+	int GetLevel() const;
+	void SetLevel( int iLevel );
+	void AdjustLevel( int iLevel );
+
+	static int CalculateExperienceForLevel( int iLevel );
+
+	void SetLevelUpCallback( std::function< void( Character* ) >& pCallback );
+
 protected:
-    Skill m_Skills[ SkillsCount ];
+	// Stats
     Attribute m_Attributes[ AttributesCount ];
     
+	// Levels
+	int m_iExperience;
+	int m_iLevel;
+	void CalculateLevel();
+	void HandleLevelUp();
+
+	std::function< void( Character* ) > m_pLevelUpCallback; // Called on level up
+
+	// Equipment
 	Equipment m_Equipment;
 
-    unsigned int m_uiConditions;
-    
+
+	unsigned int m_uiConditions;
     //
     virtual void OnDamage( short sDamage );
 };

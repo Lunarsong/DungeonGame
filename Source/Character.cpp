@@ -29,45 +29,6 @@ Character::~Character()
     
 }
 
-bool Character::UseSkill( Skills eSkill, short sDifficulty )
-{
-    Skill skill = GetSkill( eSkill );
-    if ( Skill::Check( skill, sDifficulty ) )
-    {
-        if ( skill.GainCheck( sDifficulty ) )
-        {
-            skill.AdjustBase( 1 );
-        }
-        
-        return true;
-    }
-    
-    return false;
-}
-
-bool Character::UseSkill( Skills eSkill, short sDifficultyMin, short sDifficultyMax )
-{
-    Skill skill = GetSkill( eSkill );
-    if ( Skill::Check( skill, sDifficultyMin, sDifficultyMax ) )
-    {
-        if ( skill.GainCheck( sDifficultyMin, sDifficultyMax ) )
-        {
-            skill.SetBase( skill.GetBase() + 1 );
-        }
-        
-        return true;
-    }
-    
-    return false;
-}
-
-Skill& Character::GetSkill( Skills eSkill )
-{
-    assert( eSkill < SkillsCount );
-    
-    return m_Skills[ eSkill ];
-}
-
 Attribute& Character::GetAttribute( Attributes eAttribute )
 {
     assert( eAttribute < AttributesCount );
@@ -130,4 +91,82 @@ bool Character::CanAct() const
 Equipment& Character::GetEquipment()
 {
 	return m_Equipment;
+}
+
+int Character::GetExperience() const
+{
+	return m_iExperience;
+}
+
+void Character::SetExperience( int iExperience )
+{
+	AdjustExperience( iExperience - m_iExperience );
+}
+
+void Character::AdjustExperience( int iExperience )
+{
+	m_iExperience += iExperience;
+
+	if ( iExperience < 0 )
+	{
+
+	}
+
+	else
+	{
+		int iExperienceForNextLevel = CalculateExperienceForLevel( m_iLevel + 1 );
+		while ( m_iExperience >= iExperienceForNextLevel )
+		{
+			if ( m_iExperience >= iExperienceForNextLevel )
+			{
+				m_iLevel += 1;
+
+				HandleLevelUp();
+
+				iExperienceForNextLevel = CalculateExperienceForLevel( m_iLevel + 1 );
+			}
+		}
+	}
+}
+
+int Character::GetLevel() const
+{
+	return m_iLevel;
+}
+
+void Character::SetLevel( int iLevel )
+{
+	AdjustLevel( iLevel - GetLevel() );
+}
+
+void Character::AdjustLevel( int iLevel )
+{
+	int iNewLevel = GetLevel() + iLevel;
+	int iExperienceNeeded = CalculateExperienceForLevel( iNewLevel );
+
+	AdjustExperience( iExperienceNeeded - GetExperience() );
+}
+
+int Character::CalculateExperienceForLevel( int iLevel )
+{
+	int iExperience = 0;
+	for ( int i = 1; i < iLevel; ++i )
+	{
+		iExperience += iLevel * 1000;
+	}
+
+	return iExperience;
+}
+
+void Character::HandleLevelUp()
+{
+	if ( m_pLevelUpCallback )
+	{
+		m_pLevelUpCallback( this );
+	}
+}
+
+void Character::SetLevelUpCallback( std::function< void( Character* ) >& pCallback )
+{
+	m_pLevelUpCallback = pCallback;
 }

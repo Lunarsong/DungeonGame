@@ -10,12 +10,19 @@
 
 enum Attributes
 {
+	// Attributes
     HitPoints,
     Mana,
     
+	// Stats
     Strength,
+	Constitutions,
+	Dexterity,
     Intellect,
-    Dexterity,
+    Willpower,
+	Charisma,
+
+	// 
     Speed,
     
     AttributesCount
