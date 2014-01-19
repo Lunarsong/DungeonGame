@@ -16,14 +16,22 @@
 #include "CharacterComponent.h"
 #include "CharacterEvents.h"
 
-DungeonGame::DungeonGame()
+DungeonGame::DungeonGame( CharacterComponent* pCharacter /*= NULL */ )
 {
 	m_pCamera = NULL;
 
-    SetName( "Game" );
-    InputManager::Get()->AddMouseHandler( this );
+	SetName( "Game" );
+	InputManager::Get()->AddMouseHandler( this );
 
 	EventManager::AddListener( "EventCharacterDied", MakeDelegate( this, &DungeonGame::OnCharacterDied ) );
+
+	m_pPlayerCharacter = pCharacter;
+
+	m_World.SetCreateCharacterCallback( [&] ( const Vector3& vPosition )
+	{
+			return m_pPlayerCharacter;
+	}
+	);
 }
 
 DungeonGame::~DungeonGame()

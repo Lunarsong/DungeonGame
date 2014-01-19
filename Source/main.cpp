@@ -11,6 +11,7 @@
 #include <Core/Utils/FileUtils.h>
 #include "Skill.h"
 #include "DungeonGame.h"
+#include "Processes/MainMenuProcess.h"
 
 using namespace Engine;
 
@@ -23,9 +24,9 @@ void Start()
     FolderAssetBundle* pBundle = new FolderAssetBundle( FileUtils::GetWorkingFolder() );
     AssetManager::Get().AddAssetBundle( pBundle );
     
-    DungeonGame* pDungeonGame = new DungeonGame();
-    BaseApplication::Get()->AttachProcess( pDungeonGame );
-    pDungeonGame->Release();
+	MainMenuProcess* pMainMenu = new MainMenuProcess();
+	BaseApplication::Get()->AttachProcess( pMainMenu );
+	pMainMenu->Release();
 }
 
 void Update( float fDeltaSeconds )

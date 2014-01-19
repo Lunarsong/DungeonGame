@@ -30,8 +30,10 @@
     <ClCompile Include="..\..\Source\InventoryMenu.cpp" />
     <ClCompile Include="..\..\Source\Item.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\Menus\CharacterCreationMenu.cpp" />
     <ClCompile Include="..\..\Source\PlayerControllerProcess.cpp" />
     <ClCompile Include="..\..\Source\PotionItem.cpp" />
+    <ClCompile Include="..\..\Source\Processes\MainMenuProcess.cpp" />
     <ClCompile Include="..\..\Source\Skill.cpp" />
     <ClCompile Include="..\..\Source\Tile.cpp" />
     <ClCompile Include="..\..\Source\TileTrigger.cpp" />
@@ -57,8 +59,10 @@
     <ClInclude Include="..\..\Source\Inventory.h" />
     <ClInclude Include="..\..\Source\InventoryMenu.h" />
     <ClInclude Include="..\..\Source\Item.h" />
+    <ClInclude Include="..\..\Source\Menus\CharacterCreationMenu.h" />
     <ClInclude Include="..\..\Source\PlayerControllerProcess.h" />
     <ClInclude Include="..\..\Source\PotionItem.h" />
+    <ClInclude Include="..\..\Source\Processes\MainMenuProcess.h" />
     <ClInclude Include="..\..\Source\Skill.h" />
     <ClInclude Include="..\..\Source\Tile.h" />
     <ClInclude Include="..\..\Source\TileTrigger.h" />
@@ -66,6 +70,7 @@
     <ClInclude Include="..\..\Source\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="..\..\Assets\CharacterCreation.xml" />
     <Xml Include="..\..\Assets\CharacterMenu.xml">
       <SubType>Designer</SubType>
     </Xml>

@@ -16,12 +16,21 @@
 Character::Character()
 {
     m_uiConditions = Alive;
-    
+    m_iAttributePoints = 0;
+
+	for ( int i = 0; i < AttributesCount; ++i )
+	{
+		GetAttribute( (Attributes)i ).SetBase( 10 );
+		GetAttribute( (Attributes)i ).SetCap( 10 );
+	}
+
+	GetAttribute( HitPoints ).SetCap( 20 );
     GetAttribute( HitPoints ).SetBase( 20 );
-    GetAttribute( HitPoints ).SetCap( 20 );
     
-    GetAttribute( Mana ).SetBase( 20 );
     GetAttribute( Mana ).SetCap( 20 );
+    GetAttribute( Mana ).SetBase( 20 );
+
+	GetAttribute( Speed ).SetCap( 2 );
 }
 
 Character::~Character()
@@ -169,4 +178,32 @@ void Character::HandleLevelUp()
 void Character::SetLevelUpCallback( std::function< void( Character* ) >& pCallback )
 {
 	m_pLevelUpCallback = pCallback;
+}
+
+void Character::SetAttributePoints( int iAttributePoints )
+{
+	m_iAttributePoints = iAttributePoints;
+}
+
+void Character::AdjustAttributePoints( int iAttributePoints )
+{
+	m_iAttributePoints += iAttributePoints;
+}
+
+int Character::GetAttributePoints() const
+{
+	return m_iAttributePoints;
+}
+
+void Character::BuyAttribute( Attributes eAttribute )
+{
+	if ( eAttribute >= Strength && eAttribute <= Charisma )
+	{
+		if ( m_iAttributePoints > 0 )
+		{
+			AdjustAttributePoints( -1 );
+			m_Attributes[ eAttribute ].AdjustCap( 1 );
+			m_Attributes[ eAttribute ].AdjustBase( 1 );
+		}
+	}
 }

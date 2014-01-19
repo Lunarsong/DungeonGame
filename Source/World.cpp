@@ -56,7 +56,7 @@ void World::Init()
     // Create the map
     m_PathGraph = new SquarePathfindingGraph();
     m_PathGraph->SetTolerance( 0.01f );
-    m_PathGraph->Create( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, false );
+    m_PathGraph->Create( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, true );
     Entity* pMapEntity = Game::CreateEntity();
     TileMapComponent* pTileMap = new TileMapComponent( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, pMapTexture, [&] ( unsigned int x, unsigned int y, RectF& rect )
                                                       {
@@ -241,7 +241,23 @@ void World::CreatePlayer( unsigned int iTileX, unsigned iTileY )
 	pMesh->SetMaterial( pCharactersMaterial );
 	pCharactersMaterial->Release();
 
-	CharacterComponent* pCharacter = pPlayer->AddComponent< CharacterComponent >();
+
+	CharacterComponent* pCharacter = NULL;
+	if ( m_pCreateCharacterCallback )
+	{
+		pCharacter = m_pCreateCharacterCallback( vPosition );
+
+		if ( pCharacter )
+		{
+			pPlayer->AddComponent( pCharacter );
+		}
+	}
+	
+	if ( !pCharacter )
+	{		
+		pPlayer->AddComponent< CharacterComponent >();
+	}
+
 	AddPlayer( pCharacter );
 
 	m_PathGraph->GetNode( iTileX, iTileY )->SetData( (void*)pPlayer );
@@ -299,4 +315,9 @@ std::vector< CharacterComponent* >& World::GetEnemies()
 std::vector< CharacterComponent* >& World::GetPlayers()
 {
 	return m_pPlayers;
+}
+
+void World::SetCreateCharacterCallback( std::function< CharacterComponent*( const Vector3& ) > pCallback )
+{
+	m_pCreateCharacterCallback = pCallback;
 }

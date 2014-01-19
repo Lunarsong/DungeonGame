@@ -16,9 +16,9 @@ enum Attributes
     
 	// Stats
     Strength,
-	Constitutions,
+	Constitution,
 	Dexterity,
-    Intellect,
+    Intelligence,
     Willpower,
 	Charisma,
 

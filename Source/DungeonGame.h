@@ -22,7 +22,7 @@ using namespace Engine;
 class DungeonGame : public Engine::Process, public IMouseHandler
 {
 public:
-    DungeonGame();
+    DungeonGame( CharacterComponent* pCharacter = NULL );
     ~DungeonGame();
     
     virtual void VOnInit(void);
@@ -46,7 +46,9 @@ private:
     
     PathFollowerComponent* m_pPathFollower;
     Entity* m_pCameraEntity;
-    CameraComponent* m_pCamera;    
+    CameraComponent* m_pCamera;  
+
+	SmartPtr<CharacterComponent> m_pPlayerCharacter;
 
 	void OnCharacterDied( Engine::Event pEvent );
 };

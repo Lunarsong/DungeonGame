@@ -54,9 +54,15 @@ public:
 
 	void SetLevelUpCallback( std::function< void( Character* ) >& pCallback );
 
+	void SetAttributePoints( int iAttributePoints );
+	void AdjustAttributePoints( int iAttributePoints );
+	int GetAttributePoints() const;
+	void BuyAttribute( Attributes eAttribute );
+
 protected:
 	// Stats
     Attribute m_Attributes[ AttributesCount ];
+	int m_iAttributePoints; // points to spend
     
 	// Levels
 	int m_iExperience;

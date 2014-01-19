@@ -35,6 +35,8 @@ public:
     
     std::vector< CharacterComponent* >& GetEnemies();
     std::vector< CharacterComponent* >& GetPlayers();
+
+	void SetCreateCharacterCallback( std::function< CharacterComponent*( const Vector3& ) > pCallback );
     
 private:
     GameMap m_Map;
@@ -44,4 +46,6 @@ private:
     std::vector< CharacterComponent* > m_pPlayers;
     
 	std::list< Item* > m_pItems;
+
+	std::function< CharacterComponent*( const Vector3& ) > m_pCreateCharacterCallback;
 };
