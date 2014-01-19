@@ -18,6 +18,7 @@
 #include "InventoryMenu.h"
 #include "CharacterMenu.h"
 #include "CharacterControllerProcess.h"
+#include <UI/UIProgressBar.h>
 
 using namespace Engine;
 
@@ -77,6 +78,8 @@ private:
 	Vector3 m_vInitialPressLoc;
 	Vector3 m_vInputDeltaPosition;
 
+
+	UIProgressBar* m_pExperienceProgress;
 	void UpdateHealthAndMana();
 	void DrawGrid();
 };

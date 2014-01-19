@@ -8,6 +8,16 @@
     <Position x="0" y="0" Type="Pixels" />
     <Size x="0.0" y="0.0" />
 
+    <ProgressBar>
+      <ID>progress_xp</ID>
+      <Size x="200" y="10" />
+      <RelPosition x="0.5" y="1.0" />
+      <Position x="0" y="0"/>
+      <Alignment>Bottom</Alignment>
+      <Color Red="255" Green="215" Blue="0" />
+      <Progress Max="100" Value="100" />
+    </ProgressBar>
+    
     <Image>
       <Size x="150" y="150" />
       <RelPosition x="0.1" y="1.0" />

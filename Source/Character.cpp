@@ -15,8 +15,12 @@
 
 Character::Character()
 {
-    m_uiConditions = Alive;
-    m_iAttributePoints = 0;
+	m_iLevel			= 1;
+	m_iExperience		= 0;
+	m_iAttributePoints	= 0;
+	m_iTalentsPoints	= 0;
+
+	m_uiConditions		= Alive;
 
 	for ( int i = 0; i < AttributesCount; ++i )
 	{
@@ -31,6 +35,8 @@ Character::Character()
     GetAttribute( Mana ).SetBase( 20 );
 
 	GetAttribute( Speed ).SetCap( 2 );
+
+	CalculateSecondaryAttributes();
 }
 
 Character::~Character()
@@ -47,7 +53,7 @@ Attribute& Character::GetAttribute( Attributes eAttribute )
 
 bool Character::Attack( Character* pVictim )
 {
-    if ( !CanAct() )
+    if ( !CanAct() || !pVictim->IsAlive() )
     {
         return false;
     }
@@ -64,6 +70,11 @@ bool Character::Attack( Character* pVictim )
 	{
 		int iDamage = Engine::g_RandomNumGen.RandomInt( pWeapon->Damage.Min, pWeapon->Damage.Max );
 		pVictim->TakeDamage( iDamage );
+
+		if ( !pVictim->IsAlive() )
+		{
+			AdjustExperience( pVictim->GetLevel() * 500 );
+		}
 
 		return true;
 	}
@@ -161,7 +172,7 @@ int Character::CalculateExperienceForLevel( int iLevel )
 	int iExperience = 0;
 	for ( int i = 1; i < iLevel; ++i )
 	{
-		iExperience += iLevel * 1000;
+		iExperience += i * 1000;
 	}
 
 	return iExperience;
@@ -169,6 +180,9 @@ int Character::CalculateExperienceForLevel( int iLevel )
 
 void Character::HandleLevelUp()
 {
+	AdjustAttributePoints( 3 );
+	AdjustTalentPoints( 1 );
+	
 	if ( m_pLevelUpCallback )
 	{
 		m_pLevelUpCallback( this );
@@ -204,6 +218,47 @@ void Character::BuyAttribute( Attributes eAttribute )
 			AdjustAttributePoints( -1 );
 			m_Attributes[ eAttribute ].AdjustCap( 1 );
 			m_Attributes[ eAttribute ].AdjustBase( 1 );
+
+			CalculateSecondaryAttributes();
 		}
 	}
+}
+
+void Character::CalculateSecondaryAttributes()
+{
+	m_Attributes[ Speed ].SetCap( 1 + GetAttribute( Dexterity ).GetValue() * 0.25 );
+	m_Attributes[ Speed ].SetBase( 1 + GetAttribute( Dexterity ).GetValue() * 0.25 );
+}
+
+double Character::GetProgressToNextLevel() const
+{
+	int iExperienceForThisLevel = CalculateExperienceForLevel( m_iLevel );
+	int iExperienceForNextLevel = CalculateExperienceForLevel( m_iLevel + 1 );
+
+	return (double)( m_iExperience - iExperienceForThisLevel) / (double)( iExperienceForNextLevel - iExperienceForThisLevel );
+}
+
+bool Character::IsAlive() const
+{
+	return ( m_Attributes[ HitPoints ].GetValue() > 0 );
+}
+
+int Character::GetTalentPoints() const
+{
+	return m_iTalentsPoints;
+}
+
+void Character::SetTalentPoints( int iTalentPoints )
+{
+	m_iTalentsPoints = iTalentPoints;
+}
+
+void Character::AdjustTalentPoints( int iAdjustment )
+{
+	m_iTalentsPoints += iAdjustment;
+}
+
+bool Character::BuyTalent( Talent* pTalent )
+{
+	return false;
 }

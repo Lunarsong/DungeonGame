@@ -35,6 +35,7 @@
     <ClCompile Include="..\..\Source\PotionItem.cpp" />
     <ClCompile Include="..\..\Source\Processes\MainMenuProcess.cpp" />
     <ClCompile Include="..\..\Source\Skill.cpp" />
+    <ClCompile Include="..\..\Source\Talent.cpp" />
     <ClCompile Include="..\..\Source\Tile.cpp" />
     <ClCompile Include="..\..\Source\TileTrigger.cpp" />
     <ClCompile Include="..\..\Source\Weapon.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="..\..\Source\PotionItem.h" />
     <ClInclude Include="..\..\Source\Processes\MainMenuProcess.h" />
     <ClInclude Include="..\..\Source\Skill.h" />
+    <ClInclude Include="..\..\Source\Talent.h" />
     <ClInclude Include="..\..\Source\Tile.h" />
     <ClInclude Include="..\..\Source\TileTrigger.h" />
     <ClInclude Include="..\..\Source\Weapon.h" />

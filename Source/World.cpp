@@ -17,6 +17,9 @@
 
 using namespace Engine;
 
+
+static const float k_fCharacterWalkSpeed = 2.0f;
+
 World::World()
 {
     m_PathGraph = NULL;
@@ -56,7 +59,7 @@ void World::Init()
     // Create the map
     m_PathGraph = new SquarePathfindingGraph();
     m_PathGraph->SetTolerance( 0.01f );
-    m_PathGraph->Create( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, true );
+    m_PathGraph->Create( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, false );
     Entity* pMapEntity = Game::CreateEntity();
     TileMapComponent* pTileMap = new TileMapComponent( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, pMapTexture, [&] ( unsigned int x, unsigned int y, RectF& rect )
                                                       {
@@ -195,6 +198,7 @@ void World::AddEnemy( unsigned int iTileX, unsigned int iTileY )
 
 	CharacterComponent* pCharacter = pEntity->AddComponent< CharacterComponent >();
 	PathFollowerComponent* pFollowerComponent = pEntity->AddComponent< PathFollowerComponent >();
+	pFollowerComponent->SetSpeed( k_fCharacterWalkSpeed );
 	pFollowerComponent->SetGraph( m_PathGraph );
 
 	pEntity->GetTransform().SetPosition( vPosition );
@@ -214,6 +218,7 @@ void World::CreatePlayer( unsigned int iTileX, unsigned iTileY )
 	Entity* pPlayer = Game::CreateEntity();
 	pPlayer->GetTransform().SetPosition( vPosition );
 	PathFollowerComponent* pPathFollower = pPlayer->AddComponent< PathFollowerComponent >();
+	pPathFollower->SetSpeed( k_fCharacterWalkSpeed );
 	pPathFollower->SetGraph( GetGraph() );
 
 	MeshComponent* pMesh = pPlayer->AddComponent<MeshComponent>();

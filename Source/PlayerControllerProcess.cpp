@@ -24,7 +24,7 @@ PlayerControllerProcess::PlayerControllerProcess()
 	m_eInputState = NoInput;
 
     m_pHUD		= UserInterface::AddScreenFromFile( "GameHUD", "GameHUD.xml" );
-
+	m_pExperienceProgress = (UIProgressBar*)m_pHUD->GetElement( "progress_xp" );
 	m_pActionsHUD = m_pHUD->GetElement( "anchor_action" );
 	m_pActionsHUD->SetVisible( false, true );
 	
@@ -254,6 +254,12 @@ void PlayerControllerProcess::UpdateHealthAndMana()
 		vSize.y = iTextureHeight * dManaPercent;
 		pImage->SetSize( vSize );
 	}
+
+	int iExperienceForLevel = Character::CalculateExperienceForLevel( m_pCharacter->GetLevel() );
+	int iExperienceForNextLevel = Character::CalculateExperienceForLevel( m_pCharacter->GetLevel() + 1 ) - iExperienceForLevel;
+	int iExperience = m_pCharacter->GetExperience() - iExperienceForLevel;
+	m_pExperienceProgress->SetProgressMax( iExperienceForNextLevel );
+	m_pExperienceProgress->SetProgress( iExperience );
 }
 
 void PlayerControllerProcess::DrawGrid()
