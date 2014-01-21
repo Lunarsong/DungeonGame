@@ -32,7 +32,7 @@ InventoryMenu::InventoryMenu(void)
 
 	for ( int i = 0; i < 25; ++i )
 	{
-		UIButton* pButton = (UIButton*)m_pMenu->GetElement( "btn_" + std::to_string( i ) );
+		UIButton* pButton = (UIButton*)m_pMenu->GetElement( "btn_" + ToString( i ) );
 		if ( !pButton )
 		{
 			continue;			
@@ -88,7 +88,7 @@ void InventoryMenu::UpdateContents( Inventory& inventory )
 
 	for ( int i = 0; i < 25; ++i )
 	{
-		UIImage* pImage = (UIImage*)m_pMenu->GetElement( "img_" + std::to_string( i ) );
+		UIImage* pImage = (UIImage*)m_pMenu->GetElement( "img_" + ToString( i ) );
 		if ( pImage )
 		{
 			Item* pItem = items[ i ];

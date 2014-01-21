@@ -22,7 +22,6 @@ DungeonGame::DungeonGame( CharacterComponent* pCharacter /*= NULL */ )
 
 	SetName( "Game" );
 	InputManager::Get()->AddMouseHandler( this );
-
 	EventManager::AddListener( "EventCharacterDied", MakeDelegate( this, &DungeonGame::OnCharacterDied ) );
 
 	m_pPlayerCharacter = pCharacter;
@@ -44,6 +43,7 @@ DungeonGame::~DungeonGame()
 
 void DungeonGame::VOnInit(void)
 {
+	Log << "Game init";
     m_World.Init();
 
 	auto players = m_World.GetPlayers();
@@ -113,6 +113,9 @@ bool DungeonGame::VOnMouseButtonDown( const int iButtonIndex, const Vector3& vPo
 
 bool DungeonGame::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosition )
 {
+	if ( !m_pCamera )
+		return false;
+
     Vector3 vScreenPos = vPosition;
     Vector3 vRayPos, vRayDir;
     RenderUtils::Unproject( vScreenPos, m_pCamera->GetProjection(), m_pCamera->GetView(), vRayPos, vRayDir );

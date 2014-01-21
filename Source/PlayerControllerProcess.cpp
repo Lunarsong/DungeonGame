@@ -23,11 +23,11 @@ PlayerControllerProcess::PlayerControllerProcess()
 	m_pTargetNode = NULL;
 	m_eInputState = NoInput;
 
-    m_pHUD		= UserInterface::AddScreenFromFile( "GameHUD", "GameHUD.xml" );
+	m_pHUD		= UserInterface::AddScreenFromFile( "GameHUD", "GameHUD.xml" );
 	m_pExperienceProgress = (UIProgressBar*)m_pHUD->GetElement( "progress_xp" );
 	m_pActionsHUD = m_pHUD->GetElement( "anchor_action" );
 	m_pActionsHUD->SetVisible( false, true );
-	
+
 	((UIButton*)m_pHUD->GetElement( "btn_menu" ))->SetCallbackFunction( [ this ] ( UIElement* pElement, void* pData )
 	{
 		m_GameMenu.Show();
@@ -50,6 +50,9 @@ PlayerControllerProcess::~PlayerControllerProcess()
 
 void PlayerControllerProcess::VOnInit()
 {
+
+	Log << "Player init";
+
 	CharacterControllerProcess::VOnInit();
 
     m_ePlayerState = AwaitingInput;

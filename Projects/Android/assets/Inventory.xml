@@ -1,0 +1,358 @@
+<Monitor>
+	<Size x="1280" y="720"/>
+	
+  <!-------------- Menus ---------->
+  <Panel>
+    <ID>panel_inventory</ID>
+    <RelPosition x="0.5" y="0.5" />
+    <Position x="100" y="0" Type="Pixels" />
+    <Size x="350.0" y="370.0" />
+    <Alignment>Center</Alignment>
+
+    <Color>
+      <Position x="0" y="0" Type="Pixels" />
+      <Size x="350" y="370" />
+      <Color Red="122" Green="103" Blue="63" />
+      <Alignment>TopLeft</Alignment>
+    </Color>
+
+    <Color>
+      <Position x="6" y="26" Type="Pixels" />
+      <Size x="338" y="338" />
+      <Color Red="122" Green="103" Blue="63" />
+      <Alignment>TopLeft</Alignment>
+
+      <!-- Inventory -->
+      <Button>
+        <ID>btn_0</ID>
+        <Position x="3" y="3" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_0</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_1</ID>
+        <Position x="70" y="3" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_1</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_2</ID>
+        <Position x="137" y="3" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_2</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_3</ID>
+        <Position x="204" y="3" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_3</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_4</ID>
+        <Position x="271" y="3" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_4</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <!-- Second Layer -->
+      <Button>
+        <ID>btn_5</ID>
+        <Position x="3" y="70" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_5</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_6</ID>
+        <Position x="70" y="70" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_6</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_7</ID>
+        <Position x="137" y="70" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_7</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_8</ID>
+        <Position x="204" y="70" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_8</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_9</ID>
+        <Position x="271" y="70" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_9</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <!-- Third Layer -->
+      <Button>
+        <ID>btn_10</ID>
+        <Position x="3" y="137" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_10</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_11</ID>
+        <Position x="70" y="137" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_11</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_12</ID>
+        <Position x="137" y="137" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_12</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_13</ID>
+        <Position x="204" y="137" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_13</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_14</ID>
+        <Position x="271" y="137" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_14</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <!-- Fourth Layer -->
+      <Button>
+        <ID>btn_15</ID>
+        <Position x="3" y="204" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_15</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_16</ID>
+        <Position x="70" y="204" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_16</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_17</ID>
+        <Position x="137" y="204" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_17</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_18</ID>
+        <Position x="204" y="204" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_18</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_19</ID>
+        <Position x="271" y="204" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_19</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <!-- Fifth Layer -->
+      <Button>
+        <ID>btn_20</ID>
+        <Position x="3" y="271" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_20</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_21</ID>
+        <Position x="70" y="271" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_21</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_22</ID>
+        <Position x="137" y="271" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_22</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_23</ID>
+        <Position x="204" y="271" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_23</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+
+      <Button>
+        <ID>btn_24</ID>
+        <Position x="271" y="271" Type="Pixels" />
+        <Size x="64" y="64" />
+        <Color Red="61" Green="51" Blue="26" />
+        <Alignment>TopLeft</Alignment>
+
+        <Image>
+          <ID>img_24</ID>
+          <Size x="64" y="64" />
+        </Image>
+      </Button>
+      
+    </Color>
+  </Panel>
+  
+</Monitor>

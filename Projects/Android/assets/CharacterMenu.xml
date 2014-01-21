@@ -1,0 +1,93 @@
+<Monitor>
+	<Size x="1280" y="720"/>
+	
+  <!-------------- Menus ---------->
+  <Panel>
+    <ID>panel_character</ID>
+    <RelPosition x="0." y="0." />
+    <Position x="0" y="0" Type="Pixels" />
+    <Size x="450.0" y="500.0" />
+    <Alignment>TopLeft</Alignment>
+
+    <Color>
+      <Position x="0" y="0" Type="Pixels" />
+      <Size x="450" y="500" />
+      <Color Red="120" Green="120" Blue="120" />
+      <Alignment>TopLeft</Alignment>
+    </Color>
+
+    <Image>
+      <Position x="250" y="250" Type="Pixels" />
+      <Size x="322" y="450" />
+      <Texture>CharacterKnight.png</Texture>
+      <Alignment>Center</Alignment>
+    </Image>
+
+    <Label>
+      <Position x="250" y="250" Type="Pixels" />
+      <Font Name="Arial" Size="30" />
+      <Text>PLACEHOLDER</Text>
+      <Alignment>Center</Alignment>      
+    </Label>
+
+    <Color>
+      <Position x="3" y="3" Type="Pixels" />
+      <Size x="64" y="64" />
+      <Color Red="0" Green="0" Blue="0" />
+      <Alignment>TopLeft</Alignment>
+    </Color>
+
+    <Image>
+      <Position x="3" y="3" Type="Pixels" />
+      <Size x="64" y="64" />
+      <Texture>HelmIcon.png</Texture>
+      <Alignment>TopLeft</Alignment>
+    </Image>
+
+    <Color>
+      <Position x="3" y="70" Type="Pixels" />
+      <Size x="64" y="64" />
+      <Color Red="0" Green="0" Blue="0" />
+      <Alignment>TopLeft</Alignment>
+    </Color>
+
+    <Image>
+      <ID>img_pendant</ID>
+      <Position x="3" y="70" Type="Pixels" />
+      <Size x="64" y="64" />
+      <Texture>PendantIcon.png</Texture>
+      <Alignment>TopLeft</Alignment>
+    </Image>
+
+    <Color>
+      <Position x="3" y="137" Type="Pixels" />
+      <Size x="64" y="64" />
+      <Color Red="0" Green="0" Blue="0" />
+      <Alignment>TopLeft</Alignment>
+    </Color>
+
+    <Image>
+      <Position x="3" y="137" Type="Pixels" />
+      <Size x="64" y="64" />
+      <Texture>BreastplateIcon.png</Texture>
+      <Alignment>TopLeft</Alignment>
+    </Image>
+
+    <Color>
+      <Position x="3" y="204" Type="Pixels" />
+      <Size x="64" y="64" />
+      <Color Red="0" Green="0" Blue="0" />
+      <Alignment>TopLeft</Alignment>
+    </Color>
+
+    <Image>
+      <ID>img_hand</ID>
+      <Position x="3" y="204" Type="Pixels" />
+      <Size x="64" y="64" />
+      <Texture>HandIcon.png</Texture>
+      <Alignment>TopLeft</Alignment>
+    </Image>
+    
+  </Panel>
+  
+</Monitor>

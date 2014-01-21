@@ -73,7 +73,7 @@ bool Character::Attack( Character* pVictim )
 
 		if ( !pVictim->IsAlive() )
 		{
-			AdjustExperience( pVictim->GetLevel() * 500 );
+			AdjustExperience( pVictim->GetLevel() * 100 );
 		}
 
 		return true;

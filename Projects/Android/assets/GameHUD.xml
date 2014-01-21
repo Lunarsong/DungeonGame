@@ -1,0 +1,128 @@
+<Monitor>
+	<Size x="1280" y="720"/>
+	
+  <!-------------- Menus ---------->
+  <UI>
+    <ID>anchor_menu</ID>
+    <RelPosition x="0.0" y="0.0" />
+    <Position x="0" y="0" Type="Pixels" />
+    <Size x="0.0" y="0.0" />
+
+    <ProgressBar>
+      <ID>progress_xp</ID>
+      <Size x="200" y="10" />
+      <RelPosition x="0.5" y="1.0" />
+      <Position x="0" y="0"/>
+      <Alignment>Bottom</Alignment>
+      <Color Red="255" Green="215" Blue="0" />
+      <Progress Max="100" Value="100" />
+    </ProgressBar>
+    
+    <Image>
+      <Size x="150" y="150" />
+      <RelPosition x="0.1" y="1.0" />
+      <Position x="0" y="10"/>
+      <Alignment>Bottom</Alignment>
+      <Texture>Bar150.png</Texture>
+    </Image>
+
+    <Image>
+      <Size x="150" y="150" />
+      <Position x="0" y="10"/>
+      <RelPosition x="0.9" y="1.0" />
+      <Alignment>Bottom</Alignment>
+      <Texture>Bar150.png</Texture>
+    </Image>
+
+    <Image>
+      <ID>img_health</ID>
+      <Size x="150" y="150" />
+      <RelPosition x="0.1" y="1.0" />
+      <Position x="0" y="10"/>
+      <Alignment>Bottom</Alignment>
+      <Texture>Health150.png</Texture>
+    </Image>
+
+    <Image>
+      <ID>img_mana</ID>
+      <Size x="150" y="150" />
+      <Position x="0" y="10"/>
+      <RelPosition x="0.9" y="1.0" />
+      <Alignment>Bottom</Alignment>
+      <Texture>Mana150.png</Texture>
+    </Image>
+
+
+    <ButtonImage>
+      <ID>btn_menu</ID>
+      <RelPosition x="1.0" y="0.0" />
+      <Size x="100" y="100" />
+      <Position x="0" y="5" />
+      <Alignment>TopRight</Alignment>
+      <Texture>bookmarklet.png</Texture>
+    </ButtonImage>
+    
+    <ButtonImage>
+      <ID>btn_character</ID>
+      <RelPosition x="1.0" y="0.0" />
+      <Size x="100" y="100" />
+      <Position x="0" y="105" />
+      <Alignment>TopRight</Alignment>
+      <Texture>robe.png</Texture>
+    </ButtonImage>
+
+    <ButtonImage>
+      <RelPosition x="1.0" y="0.0" />
+      <Size x="100" y="100" />
+      <Position x="0" y="205" />
+      <Alignment>TopRight</Alignment>
+      <Texture>scroll-unfurled.png</Texture>
+    </ButtonImage>
+
+  </UI>
+  
+  <!--------------- Action buttons ------------------->
+  <UI>
+    <ID>anchor_action</ID>
+		<RelPosition x="0.5" y="0.5" />
+		<Position x="0" y="0" Type="Pixels" />
+		<Size x="0.0" y="0.0" />
+		
+		<ButtonImage>
+      <Soft>1</Soft>
+      <Position x="128" y="0" />
+      <Size x="128" y="128" />
+			<Alignment>Center</Alignment>
+      <Texture>footsteps.png</Texture>
+		</ButtonImage>
+
+    <ButtonImage>
+      <Soft>1</Soft>
+      <Position x="-128" y="0" />
+      <Size x="128" y="128" />
+      <Alignment>Center</Alignment>
+      <Texture>burningbook.png</Texture>
+    </ButtonImage>
+
+    <ButtonImage>
+      <Soft>1</Soft>
+      <Position x="0" y="-128" />
+      <Size x="128" y="128" />
+      <Alignment>Center</Alignment>
+      <Texture>swords.png</Texture>
+    </ButtonImage>
+
+    <ButtonImage>
+      <Soft>1</Soft>
+      <Position x="0" y="128" />
+      <Size x="128" y="128" />
+      <Alignment>Center</Alignment>
+      <Texture>potion.png</Texture>
+    </ButtonImage>
+    
+	</UI>
+  
+  
+  
+  
+</Monitor>

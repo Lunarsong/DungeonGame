@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Equipment.h"
+#include <string>
 
 class Item
 {

@@ -1,5 +1,6 @@
 #include "CharacterCreationMenu.h"
 #include <string>
+#include <Core/Logging/Log.h>
 
 
 CharacterCreationMenu::CharacterCreationMenu(void)
@@ -41,64 +42,81 @@ void CharacterCreationMenu::Init( Character* pCharacter )
 
 
 	// Attribute callbacks
-	auto pCallback = std::bind( &CharacterCreationMenu::BuyAbilityButton, this, std::placeholders::_1, std::placeholders::_2 );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_str" ))->SetCallbackArgs( (void*)Strength );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_str" ))->SetCallbackFunction( pCallback );
+	{
+		auto pCallback = std::bind( &CharacterCreationMenu::BuyAbilityButton, this, std::placeholders::_1, std::placeholders::_2 );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_str" ))->SetCallbackArgs( (void*)Strength );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_str" ))->SetCallbackFunction( pCallback );
 
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_con" ))->SetCallbackArgs( (void*)Constitution );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_con" ))->SetCallbackFunction( pCallback );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_con" ))->SetCallbackArgs( (void*)Constitution );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_con" ))->SetCallbackFunction( pCallback );
 
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_dex" ))->SetCallbackArgs( (void*)Dexterity );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_dex" ))->SetCallbackFunction( pCallback );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_dex" ))->SetCallbackArgs( (void*)Dexterity );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_dex" ))->SetCallbackFunction( pCallback );
 
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_int" ))->SetCallbackArgs( (void*)Intelligence );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_int" ))->SetCallbackFunction( pCallback );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_int" ))->SetCallbackArgs( (void*)Intelligence );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_int" ))->SetCallbackFunction( pCallback );
 
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_will" ))->SetCallbackArgs( (void*)Willpower );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_will" ))->SetCallbackFunction( pCallback );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_will" ))->SetCallbackArgs( (void*)Willpower );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_will" ))->SetCallbackFunction( pCallback );
 
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_cha" ))->SetCallbackArgs( (void*)Charisma );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_cha" ))->SetCallbackFunction( pCallback );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_cha" ))->SetCallbackArgs( (void*)Charisma );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_cha" ))->SetCallbackFunction( pCallback );
+	}
 
 	// Confirm callback
-	pCallback = std::bind( &CharacterCreationMenu::ButtonCustomConfirm, this, std::placeholders::_1, std::placeholders::_2 );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_confirm" ))->SetCallbackFunction( pCallback );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_confirm" ))->SetEnabled( false );
+	{
+		auto pCallback = std::bind( &CharacterCreationMenu::ButtonCustomConfirm, this, std::placeholders::_1, std::placeholders::_2 );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_confirm" ))->SetCallbackFunction( pCallback );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_confirm" ))->SetEnabled( false );
+	}
+	
 
 	// Weapon callback
-	pCallback = std::bind( &CharacterCreationMenu::ButtonSelectWeapon, this, std::placeholders::_1, std::placeholders::_2 );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_sword" ))->SetCallbackArgs( (void*)Sword );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_sword" ))->SetCallbackFunction( pCallback );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_bow" ))->SetCallbackArgs( (void*)Bow );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_bow" ))->SetCallbackFunction( pCallback );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_tome" ))->SetCallbackArgs( (void*)Tome );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_tome" ))->SetCallbackFunction( pCallback );
+	{
+		auto pCallback = std::bind( &CharacterCreationMenu::ButtonSelectWeapon, this, std::placeholders::_1, std::placeholders::_2 );	
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_sword" ))->SetCallbackArgs( (void*)Sword );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_sword" ))->SetCallbackFunction( pCallback );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_bow" ))->SetCallbackArgs( (void*)Bow );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_bow" ))->SetCallbackFunction( pCallback );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_tome" ))->SetCallbackArgs( (void*)Tome );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_tome" ))->SetCallbackFunction( pCallback );
+	}
 
 	// Class callbacks
-	pCallback = std::bind( &CharacterCreationMenu::ButtonSelectWarrior, this, std::placeholders::_1, std::placeholders::_2 );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_warrior" ))->SetCallbackFunction( pCallback );
+	{
+		auto pCallback = std::bind( &CharacterCreationMenu::ButtonSelectWarrior, this, std::placeholders::_1, std::placeholders::_2 );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_warrior" ))->SetCallbackFunction( pCallback );
+	}
 
-	pCallback = std::bind( &CharacterCreationMenu::ButtonSelectArcher, this, std::placeholders::_1, std::placeholders::_2 );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_archer" ))->SetCallbackFunction( pCallback );
+	{
+		auto pCallback = std::bind( &CharacterCreationMenu::ButtonSelectArcher, this, std::placeholders::_1, std::placeholders::_2 );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_archer" ))->SetCallbackFunction( pCallback );
+	}
 
-	pCallback = std::bind( &CharacterCreationMenu::ButtonSelectMage, this, std::placeholders::_1, std::placeholders::_2 );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_mage" ))->SetCallbackFunction( pCallback );
+	{
+		auto pCallback = std::bind( &CharacterCreationMenu::ButtonSelectMage, this, std::placeholders::_1, std::placeholders::_2 );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_mage" ))->SetCallbackFunction( pCallback );
+	}
 
-	pCallback = std::bind( &CharacterCreationMenu::ButtonSelectCustom, this, std::placeholders::_1, std::placeholders::_2 );
-	((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_custom" ))->SetCallbackFunction( pCallback );
+	{
+		auto pCallback = std::bind( &CharacterCreationMenu::ButtonSelectCustom, this, std::placeholders::_1, std::placeholders::_2 );
+		((UIButtonImage*)m_pCharacterCreationMenu->GetElement( "btn_custom" ))->SetCallbackFunction( pCallback );
+	}
+
+	//ButtonSelectWarrior( NULL, NULL );
 }
 
 void CharacterCreationMenu::UpdateStatFields()
 {
-	m_pLabelCustomSTR->SetString( std::to_string( m_pCharacter->GetAttribute( Strength ).GetValue() ) );
-	m_pLabelCustomCON->SetString( std::to_string( m_pCharacter->GetAttribute( Constitution ).GetValue() ) );
-	m_pLabelCustomDEX->SetString( std::to_string( m_pCharacter->GetAttribute( Dexterity ).GetValue() ) );
-	m_pLabelCustomINT->SetString( std::to_string( m_pCharacter->GetAttribute( Intelligence ).GetValue() ) );
-	m_pLabelCustomWILL->SetString( std::to_string( m_pCharacter->GetAttribute( Willpower ).GetValue() ) );
-	m_pLabelCustomCHA->SetString( std::to_string( m_pCharacter->GetAttribute( Charisma ).GetValue() ) );
+	m_pLabelCustomSTR->SetString( ToString( m_pCharacter->GetAttribute( Strength ).GetValue() ) );
+	m_pLabelCustomCON->SetString( ToString( m_pCharacter->GetAttribute( Constitution ).GetValue() ) );
+	m_pLabelCustomDEX->SetString( ToString( m_pCharacter->GetAttribute( Dexterity ).GetValue() ) );
+	m_pLabelCustomINT->SetString( ToString( m_pCharacter->GetAttribute( Intelligence ).GetValue() ) );
+	m_pLabelCustomWILL->SetString( ToString( m_pCharacter->GetAttribute( Willpower ).GetValue() ) );
+	m_pLabelCustomCHA->SetString( ToString( m_pCharacter->GetAttribute( Charisma ).GetValue() ) );
 
 	int iAttributePoints = m_pCharacter->GetAttributePoints();
-	m_pLabelStatPoints->SetString( "To Spend: " + std::to_string( iAttributePoints ) );
+	m_pLabelStatPoints->SetString( "To Spend: " + ToString( iAttributePoints ) );
 
 	if ( iAttributePoints == 0 && m_eWeaponSelected != None )
 	{

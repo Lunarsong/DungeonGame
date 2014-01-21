@@ -28,6 +28,8 @@ void MainMenuProcess::VOnUpdate( const float fDeltaSeconds )
 		pDungeonGame->Release();
 
 		Succeed();
+
+		Log << "MainMenu Done!";
 	}
 }
 
