@@ -30,7 +30,7 @@ private:
 
 	enum AIState
 	{
-		Idle,
+		ActionIdle,
 		Process
 	};
 	AIState m_eAIState;

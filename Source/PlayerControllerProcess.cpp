@@ -38,7 +38,7 @@ PlayerControllerProcess::PlayerControllerProcess()
 	{
 		m_InventoryMenu.UpdateContents( m_pCharacter->GetEquipment().GetInventory() );
 		m_InventoryMenu.ToggleVisibility();
-		//m_CharacterMenu.ToggleVisibility();
+		m_CharacterMenu.ToggleVisibility();
 	}
 	);
 }
@@ -199,7 +199,7 @@ bool PlayerControllerProcess::VOnMouseButtonUp( const int iButtonIndex, const Ve
 		PathfindingNode* pNode = m_pPathGraph->VFindClosestNode( vGroundPosition );
 		if ( SelectNode( pNode ) )
 		{
-			m_ePlayerState = Processing;
+			//m_ePlayerState = Processing;
 		}
 
 	}
@@ -267,7 +267,7 @@ void PlayerControllerProcess::UpdateHealthAndMana()
 
 void PlayerControllerProcess::DrawGrid()
 {
-	if ( !(m_eInputState == NoInput || m_eInputState == Pressed) || m_ePlayerState == Processing )
+	if ( !(m_eInputState == NoInput || m_eInputState == Pressed) || IsProcessing() )
 		return;
 
 	static const ColorF k_WalkColor( 0.0f, 0.0f, 1.0f, 0.2f );
@@ -309,14 +309,14 @@ void PlayerControllerProcess::DrawGrid()
 		QueryTileActions( m_pTargetNode, m_ActionsQuery );
 		for ( auto it : m_ActionsQuery )
 		{
-			if ( it == Attack )
+			if ( it == AttackTile )
 			{
 				DebugRenderer::AddAABB( vPosition - Vector3::ONE * 0.5f, vPosition + Vector3::ONE * 0.5f, k_LegalColor, 1.0f, 0.0f );
 				bActionFound = true;
 				break;
 			}
 
-			else if ( it == Walk )
+			else if ( it == WalkTile )
 			{
 				DebugRenderer::AddAABB( vPosition - Vector3::ONE * 0.5f, vPosition + Vector3::ONE * 0.5f, k_LegalColor, 1.0f, 0.0f );
 				bActionFound = true;

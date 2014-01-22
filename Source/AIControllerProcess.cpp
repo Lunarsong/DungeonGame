@@ -23,7 +23,7 @@ void AIControllerProcess::VOnInit()
 	CharacterControllerProcess::VOnInit();
 
 	float m_fTimer = 0.0f;
-	m_eAIState = Idle;
+	m_eAIState = ActionIdle;
 }
 
 void AIControllerProcess::VOnSuccess()
@@ -47,11 +47,14 @@ void AIControllerProcess::VOnUpdate( const float fDeltaSeconds )
     
 	const Vector3& vPosition = m_pCharacter->GetPosition();
 
+	if ( IsProcessing() )
+		return;
+
 	switch ( m_eAIState )
 	{
-	case Idle:
+	case ActionIdle:
 		{
-			if ( !m_pAttackableNodes.empty() )
+			if ( IsActionAvailable( Attack ) && !m_pAttackableNodes.empty() )
 			{
 				PathfindingNode* pNode = NULL;
 				float fDistance = FLT_MAX;
@@ -68,12 +71,11 @@ void AIControllerProcess::VOnUpdate( const float fDeltaSeconds )
 				SelectNode( pNode );
 			}
 
-			else
+			else if ( IsActionAvailable( Walk ) )
 			{
 				SelectNode( m_pWalkableNodes[ g_RandomNumGen.RandomInt( m_pWalkableNodes.size() ) ] );
 			}
 
-			m_eAIState = Process;
 		} break;
 
 	case Process:

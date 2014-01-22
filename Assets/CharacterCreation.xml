@@ -118,301 +118,301 @@
 	<!-- End of "Choose your path menu" -->
 	
 	<!-- Choose your path menu -->
-	<UI>
-		<ID>menu_custom</ID>
-		<Visible>0</Visible>
-		<RelPosition x="0.0" y="0.0" />
-		<Alignment>Center</Alignment>
+  <UI>
+    <ID>menu_custom</ID>
+    <Visible>0</Visible>
+    <RelPosition x="0.0" y="0.0" />
+    <Alignment>Center</Alignment>
 		
-		<Label>
-			<Position x="0" y="0" Type="Pixels" />
-			<RelPosition x="0.5" y="0.1" />
-			<Font Name="Avatar" Size="40" />
-			<Text>Tell me about thyself</Text>
-			<Alignment>Center</Alignment>
-		</Label>
-		
-		<UI>
-			<RelPosition x="0.5" y="0.25" />
-			<Alignment>Center</Alignment>
-			<Position x="-200" y="0" Type="Pixels" />
+    <Label>
+      <Position x="0" y="0" Type="Pixels" />
+      <RelPosition x="0.5" y="0.1" />
+      <Font Name="Avatar" Size="40" />
+      <Text>Tell me about thyself</Text>
+      <Alignment>Center</Alignment>
+    </Label>
+    <UI>
+      <RelPosition x="0.5" y="0.25" />
+			  <Alignment>Center</Alignment>
+			  <Position x="-200" y="0" Type="Pixels" />
 			
-			<Color>
-				<Position x="-40" y="-80" Type="Pixels" />
-				<Size x="500" y="550" />
-				<Color Red="80" Green="80" Blue="80" />
+			  <Color>
+				  <Position x="-40" y="-80" Type="Pixels" />
+				  <Size x="500" y="550" />
+				  <Color Red="80" Green="80" Blue="80" />
 				
-				<ButtonImage>
-          <ID>btn_confirm</ID>
-					<Position x="250" y="510" Type="Pixels" />
-					<Size x="240" y="60" />
-					<Alignment>Center</Alignment>
-					<Texture>ButtonConfirm.png</Texture>							
+				  <ButtonImage>
+            <ID>btn_confirm</ID>
+					  <Position x="250" y="510" Type="Pixels" />
+					  <Size x="240" y="60" />
+					  <Alignment>Center</Alignment>
+					  <Texture>ButtonConfirm.png</Texture>							
 					
-					<Label>
-						<Position x="125" y="35" Type="Pixels" />
-						<Font Name="Avatar" Size="40" />
-						<Text>Confirm</Text>
-						<Alignment>Center</Alignment>
-					</Label>
-				</ButtonImage>
-			</Color>
+					  <Label>
+						  <Position x="125" y="35" Type="Pixels" />
+						  <Font Name="Avatar" Size="40" />
+						  <Text>Confirm</Text>
+						  <Alignment>Center</Alignment>
+					  </Label>
+				  </ButtonImage>
+			  </Color>
 			
-			<Label>
-				<Position x="10" y="-30" Type="Pixels" />
-				<Font Name="Avatar" Size="40" />
-				<Text>Stats</Text>
-				<Alignment>Bottom</Alignment>
-			</Label>
+			  <Label>
+				  <Position x="10" y="-30" Type="Pixels" />
+				  <Font Name="Avatar" Size="40" />
+				  <Text>Stats</Text>
+				  <Alignment>Bottom</Alignment>
+			  </Label>
 			
-			<Label>
-				<ID>lbl_stat_points</ID>
-				<Position x="120" y="-35" Type="Pixels" />
-				<Font Name="Avatar" Size="20" />
-				<Text>To Spend: 5</Text>
-				<Alignment>Bottom</Alignment>
-				<Color Red="150" Green="150" Blue="150" />
-			</Label>
+			  <Label>
+				  <ID>lbl_stat_points</ID>
+				  <Position x="120" y="-35" Type="Pixels" />
+				  <Font Name="Avatar" Size="20" />
+				  <Text>To Spend: 5</Text>
+				  <Alignment>Bottom</Alignment>
+				  <Color Red="150" Green="150" Blue="150" />
+			  </Label>
 					
-			<ButtonImage>
-        <ID>btn_str</ID>
-				<Position x="0" y="0" Type="Pixels" />
-				<Size x="50" y="50" />
-				<Alignment>Center</Alignment>
-				<Texture>ButtonSquareRed.png</Texture>
+			  <ButtonImage>
+          <ID>btn_str</ID>
+				  <Position x="0" y="0" Type="Pixels" />
+				  <Size x="50" y="50" />
+				  <Alignment>Center</Alignment>
+				  <Texture>ButtonSquareRed.png</Texture>
 				
-				<Image>
-					<Position x="3" y="3" Type="Pixels" />
-					<Size x="44" y="44" />
-					<Texture>muscle-up.png</Texture>
+				  <Image>
+					  <Position x="3" y="3" Type="Pixels" />
+					  <Size x="44" y="44" />
+					  <Texture>muscle-up.png</Texture>
 					
-					<Label>
-						<Position x="55" y="25" Type="Pixels" />
-						<Font Name="Avatar" Size="25" />
-						<Text>Strength</Text>
-						<Alignment>BottomLeft</Alignment>
-					</Label>
+					  <Label>
+						  <Position x="55" y="25" Type="Pixels" />
+						  <Font Name="Avatar" Size="25" />
+						  <Text>Strength</Text>
+						  <Alignment>BottomLeft</Alignment>
+					  </Label>
 					
-					<Label>
-						<ID>lbl_str</ID>
-						<Position x="55" y="25" Type="Pixels" />
-						<Font Name="Avatar" Size="25" />
-						<Text>10</Text>
-						<Alignment>TopLeft</Alignment>
-					</Label>
-				</Image>
-			</ButtonImage>
+					  <Label>
+						  <ID>lbl_str</ID>
+						  <Position x="55" y="25" Type="Pixels" />
+						  <Font Name="Avatar" Size="25" />
+						  <Text>10</Text>
+						  <Alignment>TopLeft</Alignment>
+					  </Label>
+				  </Image>
+			  </ButtonImage>
 			
-			<ButtonImage>
-        <ID>btn_con</ID>
-				<Position x="0" y="70" Type="Pixels" />
-				<Size x="50" y="50" />
-				<Alignment>Center</Alignment>
-				<Texture>ButtonSquareRed.png</Texture>
+			  <ButtonImage>
+          <ID>btn_con</ID>
+				  <Position x="0" y="70" Type="Pixels" />
+				  <Size x="50" y="50" />
+				  <Alignment>Center</Alignment>
+				  <Texture>ButtonSquareRed.png</Texture>
 				
-				<Image>
-					<Position x="3" y="3" Type="Pixels" />
-					<Size x="44" y="44" />
-					<Texture>health-normal.png</Texture>
-				</Image>
+				  <Image>
+					  <Position x="3" y="3" Type="Pixels" />
+					  <Size x="44" y="44" />
+					  <Texture>health-normal.png</Texture>
+				  </Image>
 				
-				<Label>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>Constitution</Text>
-					<Alignment>BottomLeft</Alignment>
-				</Label>
+				  <Label>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>Constitution</Text>
+					  <Alignment>BottomLeft</Alignment>
+				  </Label>
 				
-				<Label>
-					<ID>lbl_con</ID>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>10</Text>
-					<Alignment>TopLeft</Alignment>
-				</Label>
-			</ButtonImage>
+				  <Label>
+					  <ID>lbl_con</ID>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>10</Text>
+					  <Alignment>TopLeft</Alignment>
+				  </Label>
+			  </ButtonImage>
 			
-			<ButtonImage>
-        <ID>btn_dex</ID>
-				<Position x="0" y="140" Type="Pixels" />
-				<Size x="50" y="50" />
-				<Alignment>Center</Alignment>
-				<Texture>ButtonSquareRed.png</Texture>
+			  <ButtonImage>
+          <ID>btn_dex</ID>
+				  <Position x="0" y="140" Type="Pixels" />
+				  <Size x="50" y="50" />
+				  <Alignment>Center</Alignment>
+				  <Texture>ButtonSquareRed.png</Texture>
 				
-				<Image>
-					<Position x="3" y="3" Type="Pixels" />
-					<Size x="44" y="44" />
-					<Texture>sprint.png</Texture>
-				</Image>
+				  <Image>
+					  <Position x="3" y="3" Type="Pixels" />
+					  <Size x="44" y="44" />
+					  <Texture>sprint.png</Texture>
+				  </Image>
 				
-				<Label>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>Dexterity</Text>
-					<Alignment>BottomLeft</Alignment>
-				</Label>
+				  <Label>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>Dexterity</Text>
+					  <Alignment>BottomLeft</Alignment>
+				  </Label>
 				
-				<Label>
-					<ID>lbl_dex</ID>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>10</Text>
-					<Alignment>TopLeft</Alignment>
-				</Label>
+				  <Label>
+					  <ID>lbl_dex</ID>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>10</Text>
+					  <Alignment>TopLeft</Alignment>
+				  </Label>
 				
-			</ButtonImage>
+			  </ButtonImage>
 			
-			<ButtonImage>
-        <ID>btn_int</ID>
-				<Position x="0" y="210" Type="Pixels" />
-				<Size x="50" y="50" />
-				<Alignment>Center</Alignment>
-				<Texture>ButtonSquareRed.png</Texture>
+			  <ButtonImage>
+          <ID>btn_int</ID>
+				  <Position x="0" y="210" Type="Pixels" />
+				  <Size x="50" y="50" />
+				  <Alignment>Center</Alignment>
+				  <Texture>ButtonSquareRed.png</Texture>
 				
-				<Image>
-					<Position x="3" y="3" Type="Pixels" />
-					<Size x="44" y="44" />
-					<Texture>bookmarkletIcon.png</Texture>
-				</Image>
+				  <Image>
+					  <Position x="3" y="3" Type="Pixels" />
+					  <Size x="44" y="44" />
+					  <Texture>bookmarkletIcon.png</Texture>
+				  </Image>
 				
-				<Label>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>Intelligence</Text>
-					<Alignment>BottomLeft</Alignment>
-				</Label>
+				  <Label>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>Intelligence</Text>
+					  <Alignment>BottomLeft</Alignment>
+				  </Label>
 				
-				<Label>
-					<ID>lbl_int</ID>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>10</Text>
-					<Alignment>TopLeft</Alignment>
-				</Label>
-			</ButtonImage>
+				  <Label>
+					  <ID>lbl_int</ID>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>10</Text>
+					  <Alignment>TopLeft</Alignment>
+				  </Label>
+			  </ButtonImage>
 			
-			<ButtonImage>
-        <ID>btn_will</ID>
-				<Position x="0" y="280" Type="Pixels" />
-				<Size x="50" y="50" />
-				<Alignment>Center</Alignment>
-				<Texture>ButtonSquareRed.png</Texture>
+			  <ButtonImage>
+          <ID>btn_will</ID>
+				  <Position x="0" y="280" Type="Pixels" />
+				  <Size x="50" y="50" />
+				  <Alignment>Center</Alignment>
+				  <Texture>ButtonSquareRed.png</Texture>
 				
-				<Image>
-					<Position x="3" y="3" Type="Pixels" />
-					<Size x="44" y="44" />
-					<Texture>meditation.png</Texture>
-				</Image>
+				  <Image>
+					  <Position x="3" y="3" Type="Pixels" />
+					  <Size x="44" y="44" />
+					  <Texture>meditation.png</Texture>
+				  </Image>
 				
-				<Label>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>Willpower</Text>
-					<Alignment>BottomLeft</Alignment>
-				</Label>
+				  <Label>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>Willpower</Text>
+					  <Alignment>BottomLeft</Alignment>
+				  </Label>
 				
-				<Label>
-					<ID>lbl_will</ID>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>10</Text>
-					<Alignment>TopLeft</Alignment>
-				</Label>
-			</ButtonImage>
+				  <Label>
+					  <ID>lbl_will</ID>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>10</Text>
+					  <Alignment>TopLeft</Alignment>
+				  </Label>
+			  </ButtonImage>
 			
-			<ButtonImage>
-        <ID>btn_cha</ID>
-				<Position x="0" y="350" Type="Pixels" />
-				<Size x="50" y="50" />
-				<Alignment>Center</Alignment>
-				<Texture>ButtonSquareRed.png</Texture>
+			  <ButtonImage>
+          <ID>btn_cha</ID>
+				  <Position x="0" y="350" Type="Pixels" />
+				  <Size x="50" y="50" />
+				  <Alignment>Center</Alignment>
+				  <Texture>ButtonSquareRed.png</Texture>
 				
-				<Image>
-					<Position x="3" y="3" Type="Pixels" />
-					<Size x="44" y="44" />
-					<Texture>sly.png</Texture>
-				</Image>
+				  <Image>
+					  <Position x="3" y="3" Type="Pixels" />
+					  <Size x="44" y="44" />
+					  <Texture>sly.png</Texture>
+				  </Image>
 				
-				<Label>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>Charisma</Text>
-					<Alignment>BottomLeft</Alignment>
-				</Label>
+				  <Label>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>Charisma</Text>
+					  <Alignment>BottomLeft</Alignment>
+				  </Label>
 				
-				<Label>
-					<ID>lbl_cha</ID>
-					<Position x="55" y="25" Type="Pixels" />
-					<Font Name="Avatar" Size="25" />
-					<Text>10</Text>
-					<Alignment>TopLeft</Alignment>
-				</Label>
-			</ButtonImage>
+				  <Label>
+					  <ID>lbl_cha</ID>
+					  <Position x="55" y="25" Type="Pixels" />
+					  <Font Name="Avatar" Size="25" />
+					  <Text>10</Text>
+					  <Alignment>TopLeft</Alignment>
+				  </Label>
+			  </ButtonImage>
 			
 			
-			<!-- Weapon -->
-			<UI>
-				<Position x="270" y="0" Type="Pixels" />
-				<Label>
-					<Position x="30" y="-30" Type="Pixels" />
-					<Font Name="Avatar" Size="40" />
-					<Text>Weapon</Text>
-					<Alignment>Bottom</Alignment>
-				</Label>
+			  <!-- Weapon -->
+			  <UI>
+				  <Position x="270" y="0" Type="Pixels" />
+				  <Label>
+					  <Position x="30" y="-30" Type="Pixels" />
+					  <Font Name="Avatar" Size="40" />
+					  <Text>Weapon</Text>
+					  <Alignment>Bottom</Alignment>
+				  </Label>
 				
-				<Radio>
-          <ID>btn_sword</ID>
-					<Position x="0" y="40" Type="Pixels" />
-					<Size x="80" y="80" />
-					<Alignment>Center</Alignment>
-					<Texture>AbilitySwords.png</Texture>
-          <Group>Weapon</Group>
+				  <Radio>
+            <ID>btn_sword</ID>
+					  <Position x="0" y="40" Type="Pixels" />
+					  <Size x="80" y="80" />
+					  <Alignment>Center</Alignment>
+					  <Texture>AbilitySwords.png</Texture>
+            <Group>Weapon</Group>
           
-					<Label>
-						<Position x="85" y="40" Type="Pixels" />
-						<Font Name="Avatar" Size="25" />
-						<Text>Sword</Text>
-						<Alignment>Left</Alignment>
-					</Label>
+					  <Label>
+						  <Position x="85" y="40" Type="Pixels" />
+						  <Font Name="Avatar" Size="25" />
+						  <Text>Sword</Text>
+						  <Alignment>Left</Alignment>
+					  </Label>
 					
-				</Radio>
+				  </Radio>
 
-        <Radio>
-          <ID>btn_bow</ID>
-					<Position x="0" y="140" Type="Pixels" />
-					<Size x="80" y="80" />
-					<Alignment>Center</Alignment>
-					<Texture>AbilityBow.png</Texture>
-          <Group>Weapon</Group>
+          <Radio>
+            <ID>btn_bow</ID>
+					  <Position x="0" y="140" Type="Pixels" />
+					  <Size x="80" y="80" />
+					  <Alignment>Center</Alignment>
+					  <Texture>AbilityBow.png</Texture>
+            <Group>Weapon</Group>
           
-					<Label>
-						<Position x="85" y="40" Type="Pixels" />
-						<Font Name="Avatar" Size="25" />
-						<Text>Bow</Text>
-						<Alignment>Left</Alignment>
-					</Label>
+					  <Label>
+						  <Position x="85" y="40" Type="Pixels" />
+						  <Font Name="Avatar" Size="25" />
+						  <Text>Bow</Text>
+						  <Alignment>Left</Alignment>
+					  </Label>
 					
-				</Radio>
+				  </Radio>
 
-        <Radio>
-          <ID>btn_tome</ID>
-					<Position x="0" y="240" Type="Pixels" />
-					<Size x="80" y="80" />
-					<Alignment>Center</Alignment>
-					<Texture>AbilityBurningBook.png</Texture>
-          <Group>Weapon</Group>
+          <Radio>
+            <ID>btn_tome</ID>
+					  <Position x="0" y="240" Type="Pixels" />
+					  <Size x="80" y="80" />
+					  <Alignment>Center</Alignment>
+					  <Texture>AbilityBurningBook.png</Texture>
+            <Group>Weapon</Group>
           
-					<Label>
-						<Position x="85" y="40" Type="Pixels" />
-						<Font Name="Avatar" Size="25" />
-						<Text>Magic Tome</Text>
-						<Alignment>Left</Alignment>
-					</Label>
+					  <Label>
+						  <Position x="85" y="40" Type="Pixels" />
+						  <Font Name="Avatar" Size="25" />
+						  <Text>Magic Tome</Text>
+						  <Alignment>Left</Alignment>
+					  </Label>
 					
-				</Radio>
-			</UI>
-			
-		</UI>		
+				  </Radio>
+			  </UI>
+
+		  </UI>
+    
     </UI>
 	<!-- End of "Choose your path menu" -->
 	

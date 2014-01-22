@@ -30,10 +30,10 @@ public:
 	enum TileAction
 	{
 		None,
-		Walk,
-		Attack,
-		Search,
-		Use,
+		WalkTile,
+		AttackTile,
+		SearchTile,
+		UseTile,
 
 		Default
 	};
@@ -44,12 +44,24 @@ public:
 	
 	enum ActionState
 	{
-		Idle,
-		Walking,
-		Attacking,
+		ActionIdle,
+		ActionWalking,
+		ActionAttacking,
 
 		ActionStateCount
 	};
+
+	enum Actions
+	{
+		Attack,
+		Walk
+	};
+	bool IsActionAvailable( Actions eAction );
+	void AddAction( Actions eAction );
+	void RemoveAction( Actions eAction );
+	size_t GetNumActions() const;
+
+	bool IsProcessing() const;
 
 protected:
 	ActionState m_eState;
@@ -64,6 +76,7 @@ protected:
 	std::vector< Entity* > m_AttackableCharacters;
 	PathfindingNode* m_pTargetNode;
 
+	std::list< Actions> m_Actions;
 
 	Entity* m_pEntityToAttack;
 

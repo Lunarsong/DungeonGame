@@ -25,6 +25,11 @@ CharacterControllerProcess::~CharacterControllerProcess(void)
 
 void CharacterControllerProcess::GetLegalWalkTiles()
 {
+	m_pWalkableNodes.clear();
+
+	if ( IsActionAvailable( Walk ) == false )
+		return;
+
 	float fSpeed = (float)m_pCharacter->GetAttribute( Speed ).GetValue();
 	Vector3 vPosition = m_pCharacter->GetTransform().GetPosition();
 
@@ -33,7 +38,10 @@ void CharacterControllerProcess::GetLegalWalkTiles()
 
 void CharacterControllerProcess::VOnInit()
 {
+	AddAction( Attack );
+	AddAction( Walk );
 	m_pEntityToAttack = NULL;
+	m_eState = ActionIdle;
 }
 
 void CharacterControllerProcess::VOnSuccess()
@@ -60,24 +68,33 @@ void CharacterControllerProcess::VOnUpdate( const float fDeltaSeconds )
 	// Get the current weapon for the entity
 	m_pEquippedWeapon = m_pCharacter->GetEquipment().GetWeapon();
 
-	GetLegalWalkTiles();
-	QueryAttackableTiles( m_AttackableCharacters );
+	if ( !IsProcessing() )
+	{
+		// acquire possible actions
+		GetLegalWalkTiles();
+		QueryAttackableTiles( m_AttackableCharacters );
+	}
 
-	if ( m_eState == Walking )
+	if ( m_eState == ActionWalking )
 	{
 		if ( !m_pPathFollower->IsFollowingPath() )
 		{
-			m_eState = Idle;
+			m_eState = ActionIdle;
 
+			// Are we walking to attack?
 			if ( m_pEntityToAttack )
 			{
 				PathfindingNode* pNode = m_pPathGraph->VFindClosestNode( m_pEntityToAttack->GetTransform().GetPosition() );
 
 				SelectNode( pNode );
+				m_pEntityToAttack = NULL;
 			}
-
-			Succeed();
 		}
+	}
+
+	else if ( GetNumActions() == 0 )
+	{
+		Succeed();
 	}
 }
 
@@ -100,8 +117,8 @@ void CharacterControllerProcess::QueryTileActions( PathfindingNode* pNode, std::
 
 	if ( pNode->IsTraversable() && ( std::find( m_pWalkableNodes.begin(), m_pWalkableNodes.end(), pNode ) != m_pWalkableNodes.end() ) )
 	{
-		out.push_back( Walk );
-		out.push_back( Search );
+		out.push_back( WalkTile );
+		out.push_back( SearchTile );
 	}
 
 	else
@@ -111,7 +128,7 @@ void CharacterControllerProcess::QueryTileActions( PathfindingNode* pNode, std::
 		{
 			if ( std::find( m_AttackableCharacters.begin(), m_AttackableCharacters.end(), pEntity ) != m_AttackableCharacters.end()  )
 			{
-				out.push_back( Attack );
+				out.push_back( AttackTile );
 			}
 		}
 	}
@@ -124,11 +141,11 @@ bool CharacterControllerProcess::SelectNode( PathfindingNode* pNode, TileAction 
 		Entity* pEntity = (Entity*)pNode->GetData();
 		if ( pEntity )
 		{
+			RemoveAction( Attack );
 			const Vector3& vTargetPosition = pEntity->GetTransform().GetPosition();
 			if ( IsInWeaponRange( vTargetPosition ) )
 			{
 				pEntity->OnMessage( "Interact", m_pCharacter->GetOwner(), NULL );
-				Succeed();
 			}
 
 			else
@@ -144,6 +161,7 @@ bool CharacterControllerProcess::SelectNode( PathfindingNode* pNode, TileAction 
 
 	else if ( pNode->IsTraversable() && ( std::find( m_pWalkableNodes.begin(), m_pWalkableNodes.end(), pNode ) != m_pWalkableNodes.end() ) )
 	{
+		RemoveAction( Walk );
 		WalkTo( pNode );
 
 		return true;
@@ -157,6 +175,9 @@ void CharacterControllerProcess::QueryAttackableTiles( std::vector< Entity* >& o
 	// Clear the vector
 	out.clear();
 	m_pAttackableNodes.clear();
+
+	if ( !IsActionAvailable( Attack ) )
+		return;
 
 	// Get the game for enemies list
 	DungeonGame* pGame = (DungeonGame*)BaseApplication::Get()->GetProcessManager().GetProcessByName( "Game" );
@@ -173,8 +194,17 @@ void CharacterControllerProcess::QueryAttackableTiles( std::vector< Entity* >& o
 	if ( m_pEquippedWeapon->Range == 1.0f )
 	{
 		// Handle melee
-		float fSpeed = m_pCharacter->GetAttribute( Speed ).GetValue();
-		fWeaponRange2 = m_pEquippedWeapon->Range + fSpeed;
+		if ( IsActionAvailable( Walk ) )
+		{
+			float fSpeed = m_pCharacter->GetAttribute( Speed ).GetValue();
+			fWeaponRange2 = m_pEquippedWeapon->Range + fSpeed;
+		}
+
+		else
+		{
+			fWeaponRange2 = 1.5f;
+		}
+		
 		fWeaponRange2 *= fWeaponRange2 * 1.05f; // Added epsilon for floating errors;
 	}
 
@@ -198,6 +228,9 @@ void CharacterControllerProcess::QueryAttackableTiles( std::vector< Entity* >& o
 		const auto& enemies = pGame->GetWorld().GetEnemies();
 		TestEnemiesInRange( fWeaponRange2, ( fWeaponRange == 1.0f ), enemies, out );
 	}
+
+	if ( m_pAttackableNodes.empty() && !IsActionAvailable( Walk ) )
+		RemoveAction( Attack );
 }
 
 void CharacterControllerProcess::TestEnemiesInRange( float fWeaponRange2, bool bMelee, const std::vector< CharacterComponent* >& enemies, std::vector< Entity* >& out )
@@ -287,7 +320,7 @@ void CharacterControllerProcess::WalkTo( PathfindingNode* pNode )
 	}
 
 	m_pPathFollower->SetDestination( pNode->GetPosition() );
-	m_eState = Walking;
+	m_eState = ActionWalking;
 }
 
 void CharacterControllerProcess::WalkTo( const Vector3& vPosition )
@@ -301,4 +334,37 @@ void CharacterControllerProcess::WalkTo( const Vector3& vPosition )
 	}
 
 	m_pPathFollower->SetDestination( pNode->GetPosition() );
+}
+
+bool CharacterControllerProcess::IsProcessing() const
+{
+	if ( m_eState != ActionIdle )
+		return true;
+
+	return false;
+}
+
+bool CharacterControllerProcess::IsActionAvailable( Actions eAction )
+{
+	if ( std::find( m_Actions.begin(), m_Actions.end(), eAction ) != m_Actions.end() )
+	{
+		return true;
+	}
+
+	return false;
+}
+
+void CharacterControllerProcess::AddAction( Actions eAction )
+{
+	m_Actions.push_back( eAction );
+}
+
+void CharacterControllerProcess::RemoveAction( Actions eAction )
+{
+	m_Actions.remove( eAction );
+}
+
+size_t CharacterControllerProcess::GetNumActions() const
+{
+	return m_Actions.size();
 }
