@@ -11,7 +11,7 @@
 enum Attributes
 {
 	// Attributes
-    HitPoints,
+    Health,
     Mana,
     
 	// Stats

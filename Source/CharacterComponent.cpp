@@ -73,7 +73,7 @@ void CharacterComponent::OnDamage( short sDamage )
     {
         StructuredMaterial<ColorF>* pMaterial = (StructuredMaterial<ColorF>*)pMesh->GetMaterial();
      
-        float fPercent = (float)GetAttribute( HitPoints ).GetPercent();
+        float fPercent = (float)GetAttribute( Health ).GetPercent();
         pMaterial->GetData().Red = fPercent;
         pMaterial->GetData().Green = fPercent * 0.7f;
         pMaterial->GetData().Blue = fPercent * 0.7f;

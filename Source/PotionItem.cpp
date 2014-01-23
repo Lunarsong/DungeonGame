@@ -13,6 +13,6 @@ PotionItem::~PotionItem(void)
 
 void PotionItem::VOnUse( Character* pUsingCharacter )
 {
-	pUsingCharacter->GetAttribute( HitPoints ).AdjustBase( 5 );
+	pUsingCharacter->GetAttribute( Health ).AdjustBase( 5 );
 	pUsingCharacter->GetEquipment().GetInventory().RemoveItem( this );
 }

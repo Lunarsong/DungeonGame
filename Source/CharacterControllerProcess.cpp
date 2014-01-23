@@ -49,8 +49,11 @@ void CharacterControllerProcess::VOnSuccess()
 	PathfindingNode* pCurrentNode = m_pPathGraph->VFindClosestNode( m_pCharacter->GetPosition() );
 	if ( pCurrentNode )
 	{
-		pCurrentNode->SetBlocked( true );
-		pCurrentNode->SetData( m_pCharacter->GetOwner() );
+		if ( m_pCharacter->IsAlive() )
+		{
+			pCurrentNode->SetBlocked( true );
+			pCurrentNode->SetData( m_pCharacter->GetOwner() );
+		}
 	}
 }
 
@@ -92,7 +95,7 @@ void CharacterControllerProcess::VOnUpdate( const float fDeltaSeconds )
 		}
 	}
 
-	else if ( GetNumActions() == 0 )
+	if ( m_eState == ActionIdle && GetNumActions() == 0 )
 	{
 		Succeed();
 	}
@@ -161,13 +164,12 @@ bool CharacterControllerProcess::SelectNode( PathfindingNode* pNode, TileAction 
 
 	else if ( pNode->IsTraversable() && ( std::find( m_pWalkableNodes.begin(), m_pWalkableNodes.end(), pNode ) != m_pWalkableNodes.end() ) )
 	{
-		RemoveAction( Walk );
 		WalkTo( pNode );
 
 		return true;
 	}
 
-	return false;
+ 	return false;
 }
 
 void CharacterControllerProcess::QueryAttackableTiles( std::vector< Entity* >& out )
@@ -202,7 +204,7 @@ void CharacterControllerProcess::QueryAttackableTiles( std::vector< Entity* >& o
 
 		else
 		{
-			fWeaponRange2 = 1.5f;
+			fWeaponRange2 = 1.6f;
 		}
 		
 		fWeaponRange2 *= fWeaponRange2 * 1.05f; // Added epsilon for floating errors;
@@ -312,6 +314,10 @@ bool CharacterControllerProcess::IsInWeaponRange( const Vector3& vPosition )
 
 void CharacterControllerProcess::WalkTo( PathfindingNode* pNode )
 {
+	if ( !IsActionAvailable( Walk ) )
+		return;
+
+	RemoveAction( Walk );
 	PathfindingNode* pCurrentNode = m_pPathGraph->VFindClosestNode( m_pCharacter->GetPosition() );
 	if ( pCurrentNode )
 	{

@@ -17,6 +17,7 @@
     </Color>
 
     <Label>
+      <ID>lbl_name</ID>
       <Position x="250" y="40" Type="Pixels" />
       <Font Name="Avatar" Size="40" />
       <Text>Lolo the Bard[?}</Text>
@@ -24,6 +25,7 @@
     </Label>
 
     <Label>
+      <ID>lbl_level</ID>
       <Position x="250" y="75" Type="Pixels" />
       <Font Name="Avatar" Size="26" />
       <Text>Level 1</Text>

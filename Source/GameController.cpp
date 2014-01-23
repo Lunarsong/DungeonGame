@@ -35,7 +35,7 @@ void GameController::Update( World& world, float fDeltaSeconds )
 {
 	for ( auto it : m_pPlayerCharacters )
 	{
-		if ( it->GetAttribute( HitPoints ).GetValue() <= 0 )
+		if ( it->GetAttribute( Health ).GetValue() <= 0 )
 		{
 			world.RemovePlayer( it );
 			RemovePlayer( it );
@@ -46,7 +46,7 @@ void GameController::Update( World& world, float fDeltaSeconds )
 
 	for ( auto it : m_pAICharacters )
 	{
-		if ( it->GetAttribute( HitPoints ).GetValue() <= 0 )
+		if ( it->GetAttribute( Health ).GetValue() <= 0 )
 		{
 			world.RemoveEnemy( it );
 			RemoveAI( it );

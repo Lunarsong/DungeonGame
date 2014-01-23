@@ -28,8 +28,8 @@ Character::Character()
 		GetAttribute( (Attributes)i ).SetCap( 10 );
 	}
 
-	GetAttribute( HitPoints ).SetCap( 20 );
-    GetAttribute( HitPoints ).SetBase( 20 );
+	GetAttribute( Health ).SetCap( 20 );
+    GetAttribute( Health ).SetBase( 20 );
     
     GetAttribute( Mana ).SetCap( 20 );
     GetAttribute( Mana ).SetBase( 20 );
@@ -84,14 +84,14 @@ bool Character::Attack( Character* pVictim )
 
 void Character::TakeDamage( short sDamage )
 {
-    GetAttribute( HitPoints ).AdjustBase( -sDamage );
+    GetAttribute( Health ).AdjustBase( -sDamage );
     
     OnDamage( sDamage );
 }
 
 void Character::OnDamage( short sDamage )
 {
-    if ( GetAttribute( HitPoints ).GetValue() <= 0 )
+    if ( GetAttribute( Health ).GetValue() <= 0 )
     {
         m_uiConditions = Dead;
 		Engine::EventManager::TriggerEvent( Engine::Event( new EventCharacterDied( this ) ) );
@@ -228,6 +228,12 @@ void Character::CalculateSecondaryAttributes()
 {
 	m_Attributes[ Speed ].SetCap( 1 + GetAttribute( Dexterity ).GetValue() * 0.25 );
 	m_Attributes[ Speed ].SetBase( 1 + GetAttribute( Dexterity ).GetValue() * 0.25 );
+
+	m_Attributes[ Health ].SetCap( 20 + ( GetAttribute( Constitution ).GetValue() - 10 ) * 5 );
+	m_Attributes[ Health ].SetBase( 20 + ( GetAttribute( Constitution ).GetValue() - 10 ) * 5 );
+
+	m_Attributes[ Mana ].SetCap( 20 + ( GetAttribute( Willpower ).GetValue() - 10 ) * 4 );
+	m_Attributes[ Mana ].SetBase( 20 + ( GetAttribute( Willpower ).GetValue() - 10 ) * 4 );
 }
 
 double Character::GetProgressToNextLevel() const
@@ -240,7 +246,7 @@ double Character::GetProgressToNextLevel() const
 
 bool Character::IsAlive() const
 {
-	return ( m_Attributes[ HitPoints ].GetValue() > 0 );
+	return ( m_Attributes[ Health ].GetValue() > 0 );
 }
 
 int Character::GetTalentPoints() const

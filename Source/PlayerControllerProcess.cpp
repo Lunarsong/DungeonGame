@@ -231,7 +231,7 @@ void PlayerControllerProcess::UpdateHealthAndMana()
 		//int iTextureWidth = pImage->GetSprite().GetTexture()->VGetWidth();
 		int iTextureHeight = pImage->GetSprite().GetTexture()->VGetHeight();
 
-		double dHealthPercent = m_pCharacter->GetAttribute( Attributes::HitPoints ).GetPercent();
+		double dHealthPercent = m_pCharacter->GetAttribute( Attributes::Health ).GetPercent();
 		RectF uv = pImage->GetSprite().GetUV();
 		uv.y = 1.0f - (float)dHealthPercent;
 		pImage->GetSprite().SetUV( uv );
