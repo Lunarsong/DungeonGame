@@ -48,4 +48,6 @@ private:
     
     void UpdatePlayers( World& world, float fDeltaSeconds );
     void UpdateAIs( World& world, float fDeltaSeconds );
+
+	void AddAIs( World& world );
 };

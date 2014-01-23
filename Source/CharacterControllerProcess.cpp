@@ -199,7 +199,7 @@ void CharacterControllerProcess::QueryAttackableTiles( std::vector< Entity* >& o
 		if ( IsActionAvailable( Walk ) )
 		{
 			float fSpeed = m_pCharacter->GetAttribute( Speed ).GetValue();
-			fWeaponRange2 = m_pEquippedWeapon->Range + fSpeed;
+			fWeaponRange2 = m_pEquippedWeapon->Range + fSpeed + 0.6f;
 		}
 
 		else

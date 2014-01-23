@@ -50,8 +50,17 @@ PlayerControllerProcess::~PlayerControllerProcess()
 
 void PlayerControllerProcess::VOnInit()
 {
+	CameraComponent* pCamera = (CameraComponent*)SceneManager::Get()->GetActiveCamera();
+	if ( pCamera )
+	{
+		Vector4 vCameraPosition = pCamera->GetTransform().GetPosition();
+		const Vector3& vCharacterPosition = m_pCharacter->GetPosition();
 
-	Log << "Player init";
+		vCameraPosition.x = vCharacterPosition.x;
+		vCameraPosition.z = vCharacterPosition.z;
+
+		pCamera->GetTransform().SetPosition( vCameraPosition );
+	}
 
 	CharacterControllerProcess::VOnInit();
 

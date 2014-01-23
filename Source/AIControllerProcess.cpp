@@ -7,6 +7,8 @@
 //
 
 #include "AIControllerProcess.h"
+#include "DungeonGame.h"
+#include <Core/Application/BaseApplication.h>
 
 AIControllerProcess::AIControllerProcess()
 {
@@ -73,7 +75,54 @@ void AIControllerProcess::VOnUpdate( const float fDeltaSeconds )
 
 			else if ( IsActionAvailable( Walk ) )
 			{
-				SelectNode( m_pWalkableNodes[ g_RandomNumGen.RandomInt( m_pWalkableNodes.size() ) ] );
+				bool bWander = true;
+				// Get the game for enemies list
+				DungeonGame* pGame = (DungeonGame*)BaseApplication::Get()->GetProcessManager().GetProcessByName( "Game" );
+				if ( pGame )
+				{
+					float fDistance = FLT_MAX;
+					CharacterComponent* pClosestPlayer = NULL;
+					std::vector< CharacterComponent* > players = pGame->GetWorld().GetPlayers();
+
+					for ( auto it : players )
+					{
+						float fCurrentDistance = it->GetPosition().DistanceSQ( m_pCharacter->GetPosition() );
+						if ( fCurrentDistance < fDistance )
+						{
+							fDistance = fCurrentDistance;
+							pClosestPlayer = it;
+						}
+					}
+
+					if ( pClosestPlayer )
+					{
+						PathfindingNode* pClosestNode = NULL;
+						fDistance = FLT_MAX;
+						for ( auto it : m_pWalkableNodes )
+						{
+							float fCurrentDistance = it->GetPosition().DistanceSQ( pClosestPlayer->GetPosition() );
+							if ( fCurrentDistance <= fDistance )
+							{
+								fDistance = fCurrentDistance;
+								pClosestNode = it;
+							}
+						}
+
+						if ( pClosestNode )
+						{
+							SelectNode( pClosestNode );
+							bWander = false;
+						}
+					}
+
+				}
+
+				if ( bWander )
+				{
+					SelectNode( m_pWalkableNodes[ g_RandomNumGen.RandomInt( m_pWalkableNodes.size() ) ] );
+				}
+
+				
 			}
 
 		} break;

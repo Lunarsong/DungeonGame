@@ -83,6 +83,7 @@ void GameController::UpdatePlayers( World& world, float fDeltaSeconds )
         
         if ( m_uiIteratorIndex > m_pPlayerCharacters.size() )
         {
+			AddAIs( world );
             m_eState = UpdatingAI;
             m_uiIteratorIndex = 0;
             
@@ -117,7 +118,15 @@ void GameController::UpdateAIs( World& world, float fDeltaSeconds )
 
 void GameController::AddAI( CharacterComponent* pCharacter )
 {
-    m_pAICharacters.push_back( pCharacter );
+	CharacterComponent* pAI = NULL;
+	for ( auto it : m_pAICharacters )
+	{
+		pAI = it;
+		if ( pAI == pCharacter )
+			return;
+	}
+	
+	m_pAICharacters.push_back( pCharacter );
 }
 
 void GameController::RemoveAI( CharacterComponent* pCharacter )
@@ -151,4 +160,20 @@ void GameController::RemovePlayer( CharacterComponent* pCharacter )
             return;
         }
     }
+}
+
+void GameController::AddAIs( World& world )
+{
+	std::vector<CharacterComponent*>& enemies = world.GetEnemies();
+	for ( auto it : enemies )
+	{
+		for ( auto player : m_pPlayerCharacters )
+		{
+			static const float k_fEnemyWakeThreshold2 = 5.0f * 5.0f;
+			if ( it->GetPosition().DistanceSQ( player->GetPosition() ) <= k_fEnemyWakeThreshold2 )
+			{
+				AddAI( it );
+			}
+		}
+	}
 }

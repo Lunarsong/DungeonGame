@@ -51,13 +51,6 @@ void DungeonGame::VOnInit(void)
 	{
 		m_GameController.AddPlayer( it );
 	}
-
-
-	auto enemies = m_World.GetEnemies();
-	for ( auto it : enemies )
-	{
-		m_GameController.AddAI( it );
-	}
            
     m_pCameraEntity = Game::CreateEntity();
     m_pCamera = new FreeCameraComponent();

@@ -73,6 +73,8 @@ public:
 	// States
 	bool IsAlive() const;
 
+	void CalculateSecondaryAttributes();
+
 protected:
 	// Stats
     Attribute m_Attributes[ AttributesCount ];
@@ -96,7 +98,5 @@ protected:
 
 	unsigned int m_uiConditions;
     //
-    virtual void OnDamage( short sDamage );
-
-	void CalculateSecondaryAttributes();
+    virtual void OnDamage( short sDamage );	
 };

@@ -58,7 +58,7 @@ void World::Init()
     
     // Create the map
     m_PathGraph = new SquarePathfindingGraph();
-    m_PathGraph->SetTolerance( 0.01f );
+    m_PathGraph->SetTolerance( 0.05f );
     m_PathGraph->Create( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, false );
     Entity* pMapEntity = Game::CreateEntity();
     TileMapComponent* pTileMap = new TileMapComponent( m_Map.GetSizeX(), m_Map.GetSizeY(), 1.0f, pMapTexture, [&] ( unsigned int x, unsigned int y, RectF& rect )
@@ -205,6 +205,10 @@ void World::AddEnemy( unsigned int iTileX, unsigned int iTileY )
 
 	m_PathGraph->GetNode( iTileX, iTileY )->SetData( (void*)pEntity );
 	m_PathGraph->GetNode( iTileX, iTileY )->SetBlocked( true );
+
+	pCharacter->GetAttribute( Constitution ).SetCap( 8 );
+	pCharacter->GetAttribute( Strength ).SetCap( 6 );
+	pCharacter->CalculateSecondaryAttributes();
 
 	AddEnemy( pCharacter );
 }
