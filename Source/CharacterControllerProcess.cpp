@@ -145,9 +145,11 @@ bool CharacterControllerProcess::SelectNode( PathfindingNode* pNode, TileAction 
 		if ( pEntity )
 		{
 			RemoveAction( Attack );
+
 			const Vector3& vTargetPosition = pEntity->GetTransform().GetPosition();
 			if ( IsInWeaponRange( vTargetPosition ) )
 			{
+				RemoveAction( Walk );
 				pEntity->OnMessage( "Interact", m_pCharacter->GetOwner(), NULL );
 			}
 

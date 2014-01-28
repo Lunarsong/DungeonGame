@@ -151,7 +151,7 @@
 					  <Label>
 						  <Position x="125" y="35" Type="Pixels" />
 						  <Font Name="Avatar" Size="40" />
-						  <Text>Confirm</Text>
+						  <Text>Onward!</Text>
 						  <Alignment>Center</Alignment>
 					  </Label>
 				  </ButtonImage>

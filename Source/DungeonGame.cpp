@@ -89,7 +89,7 @@ bool DungeonGame::VOnMouseMove( const Vector3& vPosition, const Vector3& vDeltaP
     RenderUtils::Unproject( vScreenPos, m_pCamera->GetProjection(), m_pCamera->GetView(), vRayPos, vRayDir );
     vRayDir.Normalize();
     Plane groundPlane;
-    groundPlane.InitFromPointNormal( Vector4::ZERO, Vector4::UP );
+    groundPlane.InitFromPointNormal( Vector3::ZERO, Vector3::UP );
     
     Vector3 vGroundPosition;
     IntersectionUtils::RayPlaneIntersect( vRayPos, vRayPos + vRayDir * 1000.0f, groundPlane, vGroundPosition );
@@ -114,7 +114,7 @@ bool DungeonGame::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosi
     RenderUtils::Unproject( vScreenPos, m_pCamera->GetProjection(), m_pCamera->GetView(), vRayPos, vRayDir );
     vRayDir.Normalize();
     Plane groundPlane;
-    groundPlane.InitFromPointNormal( Vector4::ZERO, Vector4::UP );
+    groundPlane.InitFromPointNormal( Vector3::ZERO, Vector3::UP );
     
     Vector3 vGroundPosition;
     IntersectionUtils::RayPlaneIntersect( vRayPos, vRayPos + vRayDir * 1000.0f, groundPlane, vGroundPosition );
@@ -182,4 +182,9 @@ void DungeonGame::OnCharacterDied( Event pEvent )
 	pPathNode->SetBlocked( false );
 
 	Game::DestroyEntity( pCharacter->GetOwner() );
+}
+
+CameraComponent* DungeonGame::GetCamera()
+{
+	return m_pCamera;
 }

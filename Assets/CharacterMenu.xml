@@ -43,6 +43,15 @@
         <Text>Stats</Text>
         <Alignment>Bottom</Alignment>
       </Label>
+
+      <Label>
+        <ID>lbl_stat_points</ID>
+        <Position x="120" y="-35" Type="Pixels" />
+        <Font Name="Avatar" Size="20" />
+        <Text>To Spend: 5</Text>
+        <Alignment>Bottom</Alignment>
+        <Color Red="150" Green="0" Blue="0" />
+      </Label>
       
       <ButtonImage>
         <ID>btn_str</ID>

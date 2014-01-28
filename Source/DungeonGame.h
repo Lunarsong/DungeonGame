@@ -39,6 +39,8 @@ public:
     virtual bool VOnMouseWheel( const Vector3& vPosition, const Vector3& vDelta );
     
     World& GetWorld();
+
+	CameraComponent* GetCamera();
     
 private:
     World m_World;

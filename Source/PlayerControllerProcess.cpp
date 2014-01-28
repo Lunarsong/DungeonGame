@@ -50,18 +50,6 @@ PlayerControllerProcess::~PlayerControllerProcess()
 
 void PlayerControllerProcess::VOnInit()
 {
-	CameraComponent* pCamera = (CameraComponent*)SceneManager::Get()->GetActiveCamera();
-	if ( pCamera )
-	{
-		Vector4 vCameraPosition = pCamera->GetTransform().GetPosition();
-		const Vector3& vCharacterPosition = m_pCharacter->GetPosition();
-
-		vCameraPosition.x = vCharacterPosition.x;
-		vCameraPosition.z = vCharacterPosition.z;
-
-		pCamera->GetTransform().SetPosition( vCameraPosition );
-	}
-
 	CharacterControllerProcess::VOnInit();
 
     m_ePlayerState = AwaitingInput;
@@ -129,8 +117,8 @@ void PlayerControllerProcess::VOnUpdate( const float fDeltaSeconds )
 			Vector4 vCameraPosition = pCamera->GetTransform().GetPosition();
 
 			static const float k_fScrollSpeed = 0.005f;
-			vCameraPosition.x -= m_vInputDeltaPosition.x * k_fScrollSpeed;
-			vCameraPosition.z += m_vInputDeltaPosition.y * k_fScrollSpeed;
+			vCameraPosition.x -= m_vInputDeltaPosition.x * k_fScrollSpeed;// * fDeltaSeconds;
+			vCameraPosition.z += m_vInputDeltaPosition.y * k_fScrollSpeed;// * fDeltaSeconds;
 
 			m_vInputDeltaPosition = Vector3::ZERO;
 
@@ -147,7 +135,7 @@ bool PlayerControllerProcess::VOnMouseMove( const Vector3& vPosition, const Vect
 	RenderUtils::Unproject( vScreenPos, pCamera->GetProjection(), pCamera->GetView(), vRayPos, vRayDir );
 	vRayDir.Normalize();
 	Plane groundPlane;
-	groundPlane.InitFromPointNormal( Vector4::ZERO, Vector4::UP );
+	groundPlane.InitFromPointNormal( Vector3::ZERO, Vector3::UP );
 
 	Vector3 vGroundPosition;
 	IntersectionUtils::RayPlaneIntersect( vRayPos, vRayPos + vRayDir * 1000.0f, groundPlane, vGroundPosition );
@@ -164,7 +152,7 @@ bool PlayerControllerProcess::VOnMouseMove( const Vector3& vPosition, const Vect
 
 	else if ( m_eInputState == Scroll )
 	{
-		m_vInputDeltaPosition = vDeltaPosition;
+		m_vInputDeltaPosition += vDeltaPosition;
 	}
 
     return false;
@@ -197,7 +185,7 @@ bool PlayerControllerProcess::VOnMouseButtonUp( const int iButtonIndex, const Ve
     RenderUtils::Unproject( vScreenPos, pCamera->GetProjection(), pCamera->GetView(), vRayPos, vRayDir );
     vRayDir.Normalize();
     Plane groundPlane;
-    groundPlane.InitFromPointNormal( Vector4::ZERO, Vector4::UP );
+    groundPlane.InitFromPointNormal( Vector3::ZERO, Vector3::UP );
     
     Vector3 vGroundPosition;
     IntersectionUtils::RayPlaneIntersect( vRayPos, vRayPos + vRayDir * 1000.0f, groundPlane, vGroundPosition );
@@ -246,7 +234,7 @@ void PlayerControllerProcess::UpdateHealthAndMana()
 		pImage->GetSprite().SetUV( uv );
 
 		Vector3 vSize = pImage->GetSize().GetCoordinates();
-		vSize.y = iTextureHeight * dHealthPercent;
+		vSize.y = (float)(iTextureHeight * dHealthPercent);
 		pImage->SetSize( vSize );
 	}
 
@@ -263,7 +251,7 @@ void PlayerControllerProcess::UpdateHealthAndMana()
 		pImage->GetSprite().SetUV( uv );
 
 		Vector3 vSize = pImage->GetSize().GetCoordinates();
-		vSize.y = iTextureHeight * dManaPercent;
+		vSize.y = (float)(iTextureHeight * dManaPercent);
 		pImage->SetSize( vSize );
 	}
 
@@ -339,6 +327,30 @@ void PlayerControllerProcess::DrawGrid()
 		}
 		
 	}
+}
+
+void PlayerControllerProcess::SetCharacter( CharacterComponent* pCharacter )
+{
+	if ( pCharacter && pCharacter != m_pCharacter )
+	{
+		DungeonGame* pGame = (DungeonGame*)BaseApplication::Get()->GetProcessManager().GetProcessByName( "Game" );
+		if ( pGame )
+		{
+			CameraComponent* pCamera = pGame->GetCamera();
+			if ( pCamera )
+			{
+				Vector4 vCameraPosition = pCamera->GetTransform().GetPosition();
+				const Vector3& vCharacterPosition = pCharacter->GetPosition();
+
+				vCameraPosition.x = vCharacterPosition.x;
+				vCameraPosition.z = vCharacterPosition.z;
+
+				pCamera->GetTransform().SetPosition( vCameraPosition );
+			}
+		}
+	}	
+
+	CharacterControllerProcess::SetCharacter( pCharacter );
 }
 
 

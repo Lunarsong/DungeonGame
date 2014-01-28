@@ -34,6 +34,8 @@ public:
     virtual void VOnAbort();
     
     virtual void VOnUpdate( const float fDeltaSeconds );
+
+	virtual void SetCharacter( CharacterComponent* pCharacter );
     
     // Mouse handling
     virtual bool VOnMouseMove( const Vector3& vPosition, const Vector3& vDeltaPosition );

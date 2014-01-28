@@ -206,7 +206,7 @@ void World::AddEnemy( unsigned int iTileX, unsigned int iTileY )
 	m_PathGraph->GetNode( iTileX, iTileY )->SetData( (void*)pEntity );
 	m_PathGraph->GetNode( iTileX, iTileY )->SetBlocked( true );
 
-	pCharacter->GetAttribute( Constitution ).SetCap( 8 );
+	pCharacter->GetAttribute( Constitution ).SetCap( 10 );
 	pCharacter->GetAttribute( Strength ).SetCap( 6 );
 	pCharacter->CalculateSecondaryAttributes();
 

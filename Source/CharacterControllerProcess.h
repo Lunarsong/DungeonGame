@@ -25,7 +25,7 @@ public:
 
 	virtual void VOnUpdate( const float fDeltaSeconds );
 
-	void SetCharacter( CharacterComponent* pCharacter );
+	virtual void SetCharacter( CharacterComponent* pCharacter );
 
 	enum TileAction
 	{

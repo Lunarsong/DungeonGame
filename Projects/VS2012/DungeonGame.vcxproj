@@ -71,20 +71,6 @@
     <ClInclude Include="..\..\Source\Weapon.h" />
     <ClInclude Include="..\..\Source\World.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Xml Include="..\..\Assets\CharacterCreation.xml" />
-    <Xml Include="..\..\Assets\CharacterMenu.xml">
-      <SubType>Designer</SubType>
-    </Xml>
-    <Xml Include="..\..\Assets\GameHUD.xml">
-      <SubType>Designer</SubType>
-    </Xml>
-    <Xml Include="..\..\Assets\GameMenu.xml" />
-    <Xml Include="..\..\Assets\Inventory.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Assets\Map.map" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9B27F82E-314C-4A02-AD93-D7126E26CA67}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
