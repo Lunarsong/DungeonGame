@@ -174,27 +174,14 @@ void World::AddEnemy( unsigned int iTileX, unsigned int iTileY )
 	Entity* pEntity = Game::CreateEntity();
 
 	MeshComponent* pMesh = pEntity->AddComponent<MeshComponent>();
-	RectF rect;
-	rect.x = 6.0f / (float)pCharacterTexture->VGetWidth();
-	rect.y = 6.0f / (float)pCharacterTexture->VGetHeight();
-
-	rect.width = 95.0f / (float)pCharacterTexture->VGetWidth();
-	rect.height = 85.0f / (float)pCharacterTexture->VGetHeight();
-
-	pMesh->SetMesh( Mesh::CreateBox( Vector4::ONE * 0.8f, rect ) );
+	pMesh->SetMesh( Mesh::CreateBox( Vector4::ONE * 0.8f ) );
 	pMesh->GetMesh()->Release();
 
 	// Create the material
-	StructuredMaterial<ColorF>* pMaterial = new StructuredMaterial<ColorF>();
-	pMaterial->GetBuffer()->VAddProperty( "u_Color", BP_VECTOR4 );
-	pMaterial->AddTextureRegister( "s_Texture01" );
-	pMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_uColor_DefaultShader ) );
-	pMaterial->GetData() = ColorF::WHITE;
-	pMaterial->SetTexture( 0, pCharacterTexture );
+	Material* pMaterial = (Material*)AssetManager::Get().GetAsset( "Materials/GhoulMat.xmat" );
 
 	// Set the material
 	pMesh->SetMaterial( pMaterial );
-	pMaterial->Release();
 
 	CharacterComponent* pCharacter = pEntity->AddComponent< CharacterComponent >();
 	PathFollowerComponent* pFollowerComponent = pEntity->AddComponent< PathFollowerComponent >();

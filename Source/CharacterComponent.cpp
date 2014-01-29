@@ -68,7 +68,7 @@ void CharacterComponent::OnDamage( short sDamage )
 {
     Character::OnDamage( sDamage );
     
-    MeshComponent* pMesh = m_pOwner->GetComponent<MeshComponent>();
+    /*MeshComponent* pMesh = m_pOwner->GetComponent<MeshComponent>();
     if ( pMesh )
     {
         StructuredMaterial<ColorF>* pMaterial = (StructuredMaterial<ColorF>*)pMesh->GetMaterial();
@@ -77,7 +77,7 @@ void CharacterComponent::OnDamage( short sDamage )
         pMaterial->GetData().Red = fPercent;
         pMaterial->GetData().Green = fPercent * 0.7f;
         pMaterial->GetData().Blue = fPercent * 0.7f;
-    }
+    }*/
 }
 
 const Vector3& CharacterComponent::GetPosition() const

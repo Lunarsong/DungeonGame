@@ -1,0 +1,4 @@
+<Material>
+	<Shader>Shaders/MainShader.xfx</Shader>
+	<Texture Register="s_Texture01" Resource="Icons/BTNGhoul.png"/>	
+</Material>

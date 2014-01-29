@@ -1,0 +1,9 @@
+<Shader>
+	<Vertex ResourceGL="Shaders/PositionTextureNormal.vert">
+		<Attribute Name="u_vPosition" Type="0"/>
+		<Attribute Name="u_vTexCoords" Type="1"/>
+		<Attribute Name="u_vNormal" Type="2"/>
+	</Vertex>
+	
+	<Pixel ResourceGL="Shaders/PositionTextureNormal.frag"/>
+</Shader>
