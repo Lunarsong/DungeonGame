@@ -1,6 +1,6 @@
 #include "MainMenuProcess.h"
-#include "..\DungeonGame.h"
 #include <Engine.h>
+#include "GameProcess.h"
 
 MainMenuProcess::MainMenuProcess(void)
 {
@@ -9,33 +9,30 @@ MainMenuProcess::MainMenuProcess(void)
 
 MainMenuProcess::~MainMenuProcess(void)
 {
-	m_pCharacter->Release();
+
 }
 
 void MainMenuProcess::VOnInit( void )
 {
-	m_pCharacter = new CharacterComponent();
-	m_pCharacter->AdjustAttributePoints( 5 );
-	m_CharacterCreation.Init( m_pCharacter );
+	UIElement* pScreen = UserInterface::AddScreenFromFile( "MainMenu", "Screens/MainMenu.xml" );
+	pScreen->GetElement<UIButton>( "btn_new_game" )->SetCallbackFunction( [&] ( UIElement* pElement, void* pArgs )
+	{
+		GameProcess* pGameProcess = new GameProcess();
+		AttachChild( pGameProcess );
+		pGameProcess->Release();
+
+		Succeed();
+	});
 }
 
 void MainMenuProcess::VOnUpdate( const float fDeltaSeconds )
 {
-	if ( m_CharacterCreation.IsCompleted() )
-	{
-		DungeonGame* pDungeonGame = new DungeonGame( (CharacterComponent*)m_pCharacter );
-		AttachChild( pDungeonGame );
-		pDungeonGame->Release();
 
-		Succeed();
-
-		Log << "MainMenu Done!";
-	}
 }
 
 void MainMenuProcess::VOnSuccess( void )
 {
-
+	UserInterface::RemoveScreen( "MainMenu" );
 }
 
 void MainMenuProcess::VOnFail( void )

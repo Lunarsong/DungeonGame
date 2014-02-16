@@ -4,8 +4,6 @@
 #include <Core/Input/InputHandlers.h>
 #include <Core/EventManager/IEventManager.h>
 #include <UI/UserInterface.h>
-#include "../Menus/CharacterCreationMenu.h"
-#include "../CharacterComponent.h"
 
 using namespace Engine;
 
@@ -22,8 +20,6 @@ public:
 	virtual void VOnAbort(void);
 
 private:
-	CharacterCreationMenu m_CharacterCreation;
 
-	CharacterComponent* m_pCharacter;
 };
 

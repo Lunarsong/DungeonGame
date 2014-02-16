@@ -1,0 +1,167 @@
+<Buildings>
+	
+	<Structure Name="Marketplace">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>	
+	
+	<Structure Name="Spellforge">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Rangers Sanctum">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Ancestral Library">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Whispering Well">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Moon Shrine">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Treant Grove">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Arcane Academy">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Spire of Knowledge">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Sky Tower">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Sacred Grove">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+			
+			<!-- Produces Silversteed Riders -->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Leafbread Farm">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Arcane Weavers">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Sun Altar">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Moon Altar">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Spellswords Sanctum">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Enchanters Halls">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Owlery">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<!--Cost Resource="Gold" Amount="500" />
+			<Cost Resource="Wood" Amount="800" />
+			
+			<Upkeep Resource="Gold" Amount="1" /-->
+		</Producible>
+	</Structure>
+	
+</Buildings>

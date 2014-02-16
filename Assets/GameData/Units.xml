@@ -1,0 +1,7 @@
+<Units>
+	<Unit>
+		<Name>Archer</Name>
+		
+		<Cost Resource="Gold" Amount="250" />
+	</Unit>
+</Units>

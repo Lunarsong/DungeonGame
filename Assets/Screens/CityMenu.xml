@@ -1,0 +1,66 @@
+<Monitor>
+  <Size x="1280" y="800"/>
+	
+    <!-------------- Menus ---------->
+    <UI>
+      <ID>anchor_menu</ID>
+      <RelPosition x="0.0" y="0.0" />
+      <Position x="0" y="0" Type="Pixels" />
+      <Size x="0.0" y="0.0" />
+
+		
+		
+	<Panel>
+		<Static/>
+		<RelPosition x="0.25" y="0.5" />
+		<Size x="400" y="600" Type="Pixels"/>
+		<Color Red="2" Green="12" Blue="22" Alpha="200" />
+		<Alignment>Center</Alignment>
+		
+		<Border Size="2"/>
+		
+		<List>
+			<ID>build_list_structures</ID>
+			<Position x="50" y="50" Type="Pixels" />
+			<Size x="200" y="500" Type="Pixels"/>
+			
+			<Button>
+				<ID>btn_new_game</ID>
+				<Position x="400" y="300" Type="Pixels" />
+				<Size x="140" y="60" Type="Pixels"/>
+				<Alignment>Center</Alignment>
+				
+				<Color Red="40" Green="40" Blue="120" />
+				
+				<Label>
+					<Position x="70" y="30" Type="Pixels" />
+					<Size x="30" y="30" Type="Pixels"/>
+					<Alignment>Center</Alignment>
+					<Font Name="Arial" Size="20"/>
+					<Text>New Game</Text>
+				</Label>
+			</Button>
+			
+			<Button>
+				<ID>btn_new_game</ID>
+				<Position x="400" y="300" Type="Pixels" />
+				<Size x="140" y="60" Type="Pixels"/>
+				<Alignment>Center</Alignment>
+				
+				<Color Red="40" Green="40" Blue="120" />
+				
+				<Label>
+					<Position x="70" y="30" Type="Pixels" />
+					<Size x="30" y="30" Type="Pixels"/>
+					<Alignment>Center</Alignment>
+					<Font Name="Arial" Size="20"/>
+					<Text>New Game</Text>
+				</Label>
+			</Button>
+		</List>
+		
+	</Panel>
+	
+  </UI>
+  
+</Monitor>

@@ -1,0 +1,39 @@
+<Monitor>
+  <Size x="1280" y="800"/>
+	
+    <!-------------- Menus ---------->
+    <UI>
+      <ID>anchor_menu</ID>
+      <RelPosition x="0.0" y="0.0" />
+      <Position x="0" y="0" Type="Pixels" />
+      <Size x="0.0" y="0.0" />
+
+		<Image>
+			<Size x="1280" y="800" Type="MinScale"/>
+			<Position x="640" y="0"/>
+			<Texture>DungeonScreen.png</Texture>
+			<Alignment>Top</Alignment>
+		</Image>
+		
+		<!--Panel>
+			<Position x="640" y="10" Type="Pixels" />
+			<Size x="500" y="50" Type="Pixels"/>
+			<Color Red="2" Green="12" Blue="22" Alpha="200" />
+			<Alignment>Top</Alignment>
+			
+			<Border Size="2"/>
+			<Static/>
+		</Panel-->
+		
+		<Panel>
+			<Static/>
+			<Position x="640" y="790" Type="Pixels" />
+			<Size x="800" y="200" Type="Pixels"/>
+			<Color Red="2" Green="12" Blue="22" Alpha="200" />
+			<Alignment>Bottom</Alignment>
+			
+			<Border Size="2"/>
+		</Panel>
+  </UI>
+  
+</Monitor>

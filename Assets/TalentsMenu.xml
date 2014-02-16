@@ -1,0 +1,76 @@
+<Monitor>
+  <Size x="1280" y="720"/>
+	
+    <!-------------- Menus ---------->
+    <UI>
+      <ID>anchor_menu</ID>
+      <RelPosition x="0.5" y="0.5" />
+      <Position x="0" y="0" Type="Pixels" />
+      <Size x="0.0" y="0.0" />
+
+      <Color>
+        <Position x="0" y="-20" Type="Pixels" />
+        <Size x="1100" y="600" />
+        <Color Red="60" Green="60" Blue="60" />
+        <Alignment>Center</Alignment>
+
+        <Label>
+          <Size x="0" y="55" />
+          <Position x="550" y="35" />
+          <Alignment>Center</Alignment>
+          <Text>Talents</Text>
+          <Font Name="Avatar" Size="42"/>
+          <!--Color Red="218" Green="165" Blue="32" /-->
+        </Label>
+        
+        <Color>
+          <Position x="550" y="70"/>
+          <Size x="1050" y="400"/>
+          <Alignment>Top</Alignment>
+          <Color Red="150" Green="150" Blue="150" />
+        </Color>
+
+        <ButtonImage>
+          <ID>CloseButton</ID>
+          <Position x="1098" y="2" z="1" />
+          <Size x="65" y="65"/>
+          <Alignment>TopRight</Alignment>
+          <Texture>CloseButtonRound88.png</Texture>
+        </ButtonImage>
+
+        <!-- Talent Trees -->
+        <Radio>
+          <Position x="220" y="500"/>
+          <Size x="80" y="80"/>
+          <Alignment>Top</Alignment>
+          <Texture>AbilitySwords.png</Texture>
+          <Group>talent_category</Group>
+        </Radio>
+
+        <Radio>
+          <Position x="440" y="500"/>
+          <Size x="80" y="80"/>
+          <Alignment>Top</Alignment>
+          <Texture>AbilityBow.png</Texture>
+          <Group>talent_category</Group>
+        </Radio>
+
+        <Radio>
+          <Position x="660" y="500"/>
+          <Size x="80" y="80"/>
+          <Alignment>Top</Alignment>
+          <Texture>AbilityBurningBook.png</Texture>
+          <Group>talent_category</Group>
+        </Radio>
+
+        <Radio>
+          <Position x="880" y="500"/>
+          <Size x="80" y="80"/>
+          <Alignment>Top</Alignment>
+          <Texture>AbilityBackstab.png</Texture>
+          <Group>talent_category</Group>
+        </Radio>
+      </Color>
+  </UI>
+  
+</Monitor>

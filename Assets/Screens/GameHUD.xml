@@ -1,0 +1,166 @@
+<Monitor>
+  <Size x="1280" y="800"/>
+	
+    <!-------------- Menus ---------->
+    <UI>
+      <ID>anchor_menu</ID>
+      <RelPosition x="0.0" y="0.0" />
+      <Position x="0" y="0" Type="Pixels" />
+      <Size x="0.0" y="0.0" />
+		
+		<Panel>
+			<Static/>
+			<Position x="640" y="10" Type="Pixels" />
+			<Size x="500" y="50" Type="Pixels"/>
+			<Color Red="2" Green="12" Blue="22" Alpha="200" />
+			<Alignment>Top</Alignment>
+			
+			<Border Size="2"/>
+			
+			<Image>
+				<Position x="30" y="25" Type="Pixels" />
+				<Size x="48" y="48" Type="Pixels"/>
+				<Texture>Art/Icons/Gold-icon.png</Texture>
+				<Alignment>Center</Alignment>
+			</Image>
+			
+			<Label>
+				<ID>lbl_gold</ID>				
+				<Position x="50" y="25" Type="Pixels" />
+				<Size x="30" y="30" Type="Pixels"/>
+				<Alignment>Left</Alignment>
+				<Font Name="Arial" Size="26"/>
+				<Text>10000</Text>
+				<Color Red="232" Green="215" Blue="120" />
+			</Label>
+			
+			<Image>
+				<Position x="180" y="25" Type="Pixels" />
+				<Size x="48" y="48" Type="Pixels"/>
+				<Texture>Art/Icons/Home-icon.png</Texture>
+				<Alignment>Center</Alignment>
+			</Image>
+			
+			<Label>
+				<ID>lbl_stone</ID>
+				<Position x="210" y="25" Type="Pixels" />
+				<Size x="30" y="30" Type="Pixels"/>
+				<Alignment>Left</Alignment>
+				<Font Name="Arial" Size="26"/>
+				<Text>100</Text>
+				<Color Red="232" Green="215" Blue="120" />
+			</Label>
+			
+			<Image>
+				<Position x="290" y="25" Type="Pixels" />
+				<Size x="48" y="48" Type="Pixels"/>
+				<Texture>Art/Icons/Potion-icon.png</Texture>
+				<Alignment>Center</Alignment>
+			</Image>
+			
+			<Label>
+				<ID>lbl_crystal</ID>
+				<Position x="320" y="25" Type="Pixels" />
+				<Size x="30" y="30" Type="Pixels"/>
+				<Alignment>Left</Alignment>
+				<Font Name="Arial" Size="26"/>
+				<Text>100</Text>
+				<Color Red="232" Green="215" Blue="120" />
+			</Label>
+			
+			<Image>
+				<Position x="400" y="25" Type="Pixels" />
+				<Size x="48" y="48" Type="Pixels"/>
+				<Texture>Art/Icons/Document-icon.png</Texture>
+				<Alignment>Center</Alignment>
+			</Image>
+			
+			<Label>
+				<ID>lbl_wood</ID>
+				<Position x="430" y="25" Type="Pixels" />
+				<Size x="30" y="30" Type="Pixels"/>
+				<Alignment>Left</Alignment>
+				<Font Name="Arial" Size="26"/>
+				<Text>100</Text>
+				<Color Red="232" Green="215" Blue="120" />
+			</Label>
+		</Panel>
+		
+		<Panel>
+			<Round/>
+			<Static/>
+			<Position x="1270" y="790" Type="Pixels" />
+			<Size x="200" y="200" Type="Pixels"/>
+			<Color Red="2" Green="12" Blue="22" Alpha="200" />
+			<Alignment>BottomRight</Alignment>
+			
+			<Border Size="2"/>
+			
+			
+			<Panel>
+				<Round/>
+				<Static/>
+				<Position x="100" y="100" Type="Pixels" />
+				<Size x="160" y="160" Type="Pixels"/>
+				<Color Red="6" Green="45" Blue="75" Alpha="255" />
+				<Alignment>Center</Alignment>				
+				<Border Size="2"/>
+				
+				<ButtonImage>
+					<ID>btn_end_turn</ID>
+					<Position x="80" y="80" Type="Pixels" />
+					<Size x="100" y="100" Type="Pixels"/>
+					<Alignment>Center</Alignment>
+					<Texture>Art/UI/HourglassIcon.png</Texture>
+					<Color Red="207" Green="190" Blue="80" />
+				</ButtonImage>
+			
+			</Panel>
+			
+			<Panel>
+				<Round/>
+				<Static/>
+				<Position x="170" y="30" Type="Pixels" />
+				<Size x="60" y="60" Type="Pixels"/>
+				<Color Red="6" Green="45" Blue="75" Alpha="255" />
+				<Alignment>Center</Alignment>				
+				<Border Size="2"/>
+				
+				<ButtonImage>
+					<Position x="30" y="30" Type="Pixels" />
+					<Size x="44" y="44" Type="Pixels"/>
+					<Alignment>Center</Alignment>
+					<Texture>Art/UI/SettingsIcon.png</Texture>
+					<Color Red="207" Green="190" Blue="80" />
+				</ButtonImage>
+			
+			</Panel>
+			
+			<!--Button>
+				<Position x="0" y="0" Type="Pixels" />
+				<Size x="200" y="60" Type="Pixels"/>
+				<Color Red="2" Green="82" Blue="12" />
+				
+				<Image>
+					<Position x="170" y="30" Type="Pixels" />
+					<Size x="50" y="50" Type="Pixels"/>
+					<Alignment>Center</Alignment>
+					<Texture>Art/UI/HourglassIcon.png</Texture>
+				</Image>
+			</Button>
+			
+			<Button>
+				<Position x="0" y="60" Type="Pixels" />
+				<Size x="200" y="80" Type="Pixels"/>
+				<Color Red="2" Green="12" Blue="82" />
+			</Button>
+			
+			<Button>
+				<Position x="0" y="140" Type="Pixels" />
+				<Size x="200" y="60" Type="Pixels"/>
+				<Color Red="82" Green="12" Blue="2" />
+			</Button-->
+		</Panel>
+  </UI>
+  
+</Monitor>

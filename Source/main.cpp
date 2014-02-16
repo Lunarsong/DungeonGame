@@ -9,8 +9,6 @@
 #include <stdio.h>
 #include <Engine.h>
 #include <Core/Utils/FileUtils.h>
-#include "Skill.h"
-#include "DungeonGame.h"
 #include "Processes/MainMenuProcess.h"
 
 using namespace Engine;
@@ -27,6 +25,12 @@ void Start()
 	MainMenuProcess* pMainMenu = new MainMenuProcess();
 	BaseApplication::Get()->AttachProcess( pMainMenu );
 	pMainMenu->Release();
+
+	/*Process* pProcess = new GameHUDProcess();
+	BaseApplication::Get()->AttachProcess( pProcess );
+	pProcess->Release();*/
+
+	//UserInterface::AddScreenFromFile( "Test Screen", "Screens/TownScreen.xml" );
 }
 
 void Update( float fDeltaSeconds )
