@@ -1,0 +1,10 @@
+<Buildings>
+
+	<File Path="GameData/Buildings.xml" />
+	<File Path="GameData/Units.xml" />
+	
+	<!-- Necropolis -->
+	<File Path="GameData/NecropolisBuildings.xml" />
+	<File Path="GameData/NecropolisUnits.xml" />
+	
+</Buildings>

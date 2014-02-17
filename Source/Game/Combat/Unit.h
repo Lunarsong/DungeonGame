@@ -1,29 +1,46 @@
 #pragma once
 #include <Externals/HashedString/HashedString.h>
 #include "Combat.h"
+#include <Game/Entities/Component.h>
 
-class Unit : public Engine::IXMLResource
+class UnitData : public Engine::ComponentData
+{
+public:
+	UnitData();
+	~UnitData();
+
+	SET_TYPE( Unit );
+	AUTO_SIZE;
+
+	virtual tinyxml2::XMLElement* VToXML( tinyxml2::XMLElement* pTo ) const;
+	virtual bool VFromXML( tinyxml2::XMLElement* pData );
+
+	const Damage& GetDamage() const { return m_Damage; }
+	int GetMovement() const { return m_iMovement; }
+	int GetHitPoints() const { return m_iHitPoints; }
+
+public:
+	Damage m_Damage;
+
+	int m_iHitPoints;
+	int m_iMovement;
+	
+};
+
+class Unit : public Engine::Component
 {
 public:
 	Unit(void);
 	~Unit(void);
 
-	const Damage& GetDamage() const { return m_Damage; }
+	SET_TYPE( Unit );
+
+	const Damage& GetDamage() const { return ((const UnitData*)m_pData)->GetDamage(); }
+	int GetMovement() const { return ((const UnitData*)m_pData)->GetMovement(); }
 
 	virtual tinyxml2::XMLElement* VToXML( tinyxml2::XMLElement* pTo ) const;
 	virtual bool VFromXML( tinyxml2::XMLElement* pData );
 
 private:
-	int m_iHitPoints;
 
-	Damage m_Damage;
-
-	int m_iAttack;
-	int m_iDefense;
-
-	int m_iInitiative;
-
-	int m_iSpeed;
-
-	int m_iAttackRange;
 };

@@ -92,6 +92,8 @@
 	
 	<Structure Name="Sacred Grove">
 		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+			<Prerequisite Name="Rangers Sanctum" Level="City" />
+			<Prerequisite Name="Wilderness Lore" Level="Faction" />
 			<!--Cost Resource="Gold" Amount="500" />
 			<Cost Resource="Wood" Amount="800" />
 			

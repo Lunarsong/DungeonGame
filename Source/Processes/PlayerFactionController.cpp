@@ -93,7 +93,6 @@ bool PlayerFactionController::VOnMouseButtonUp( const int iButtonIndex, const Ve
 
 			if ( prods.size() )
 			{
-				pCity->Build( prods[ 0 ]->GetName() );
 				m_CityMenu.SetCity( pCity );
 			}
 			

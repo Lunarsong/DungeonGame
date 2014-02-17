@@ -44,7 +44,9 @@ void City::UpdateProduction()
 
 void City::FinishProduction( const HashedString& hProduction, int iAmount )
 {
+	AdjustResource( hProduction, iAmount );
 
+	m_Faction->AdjustProduction( hProduction, iAmount );
 }
 
 void City::SetFaction( Faction* pFaction )
@@ -133,10 +135,37 @@ void City::UpdateProducibles()
 	auto& producibles = GameData::Get().GetProducibles();
 	for ( auto it : producibles )
 	{
+		if ( VerifyPrerequisites( *it.second ) )
+		{
+			m_Producibles.push_back( GameData::Get().GetEntity( it.first ) );
+		}
 		
-
-		m_Producibles.push_back( GameData::Get().GetEntity( it.first ) );
 	}
+}
+
+bool City::VerifyPrerequisites( const Producible& producible ) const
+{
+	const auto& prerequisites = producible.GetPrerequisite();
+	for ( const auto& it : prerequisites )
+	{
+		if ( it.mLevel == Producible::Prerequisite::City )
+		{
+			if ( GetResourceAmount( it.mName ) < it.mAmount )
+			{
+				return false;
+			}
+		}
+
+		else if ( it.mLevel == Producible::Prerequisite::Faction )
+		{
+			if ( m_Faction->GetResourceAmount( it.mName ) < it.mAmount )
+			{
+				//return false;
+			}
+		}
+	}
+
+	return true;
 }
 
 tinyxml2::XMLElement* CityData::VToXML( tinyxml2::XMLElement* pTo ) const
@@ -159,4 +188,31 @@ bool CityData::VFromXML( tinyxml2::XMLElement* pData )
 	}
 
 	return true;
+}
+
+int City::GetResourceAmount( const HashedString& hResource ) const
+{
+	std::map< HashedString, int >::const_iterator pIter = m_Resources.find( hResource );
+	if ( pIter != m_Resources.end() )
+	{
+		return pIter->second;
+	}
+
+	return 0;
+}
+
+void City::AdjustResource( const HashedString& hResource, int iAmount )
+{
+	std::map< HashedString, int >::iterator pIter = m_Resources.find( hResource );
+	if ( pIter != m_Resources.end() )
+	{
+		pIter->second += iAmount;
+	}
+
+	else
+	{
+		m_Resources[ hResource ] = iAmount;
+	}	
+
+	UpdateProducibles();
 }

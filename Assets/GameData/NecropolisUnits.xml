@@ -1,0 +1,81 @@
+<Units>
+	<Unit Name="Skeleton Archers">
+		
+		<Unit HP="10" Movement="3" >
+			<Damage Min="2" Max="5" />
+		</Unit>
+		<Producible ProductionTime="3" Type="Unit">
+			<Cost Resource="Gold" Amount="250" />
+		</Producible>
+	</Unit>
+	
+	<Unit Name="Animated Corpses">
+		
+		<Unit HP="10" Movement="3" >
+			<Damage Min="2" Max="5" />
+		</Unit>
+		<Producible ProductionTime="3" Type="Unit">
+			<Cost Resource="Gold" Amount="250" />
+		</Producible>
+	</Unit>
+	
+	<Unit Name="Ghouls">
+		
+		<Unit HP="10" Movement="3" >
+			<Damage Min="2" Max="5" />
+		</Unit>
+		<Producible ProductionTime="3" Type="Unit">
+			<Cost Resource="Gold" Amount="250" />
+		</Producible>
+	</Unit>
+	
+	<Unit Name="Vampires">
+		
+		<Unit HP="10" Movement="3" >
+			<Damage Min="2" Max="5" />
+		</Unit>
+		<Producible ProductionTime="3" Type="Unit">
+			<Cost Resource="Gold" Amount="250" />
+		</Producible>
+	</Unit>
+	
+	<Unit Name="Death Knight">
+		
+		<Unit HP="10" Movement="3" >
+			<Damage Min="2" Max="5" />
+		</Unit>
+		<Producible ProductionTime="3" Type="Unit">
+			<Cost Resource="Gold" Amount="250" />
+		</Producible>
+	</Unit>
+	
+	<Unit Name="Lich Lord">
+		
+		<Unit HP="10" Movement="3" >
+			<Damage Min="2" Max="5" />
+		</Unit>
+		<Producible ProductionTime="3" Type="Unit">
+			<Cost Resource="Gold" Amount="250" />
+		</Producible>
+	</Unit>
+	
+	<Unit Name="Bone Dragon">
+		
+		<Unit HP="10" Movement="3" >
+			<Damage Min="2" Max="5" />
+		</Unit>
+		<Producible ProductionTime="3" Type="Unit">
+			<Cost Resource="Gold" Amount="250" />
+		</Producible>
+	</Unit>
+	
+	<Unit Name="Wraiths">
+		
+		<Unit HP="10" Movement="3" >
+			<Damage Min="2" Max="5" />
+		</Unit>
+		<Producible ProductionTime="3" Type="Unit">
+			<Cost Resource="Gold" Amount="250" />
+		</Producible>
+	</Unit>
+</Units>

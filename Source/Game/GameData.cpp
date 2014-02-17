@@ -9,7 +9,8 @@ GameData::GameData(void)
 {
 	Engine::Component::Register<City>();
 	Engine::ComponentData::Register<Producible>();
-
+	Engine::Component::Register<Unit>();
+	Engine::ComponentData::Register<UnitData>();
 }
 
 
@@ -166,7 +167,16 @@ void GameData::ParseXML( tinyxml2::XMLElement* pRoot )
 		tinyxml2::XMLElement* pEntityData = pRoot->FirstChildElement();
 		while ( pEntityData )
 		{
-			ParseEntity( pEntityData );
+			if ( strcmp( pEntityData->Name(), "File" ) )
+			{
+				LoadFromFile( pEntityData->Attribute( "Path" ) );
+			}
+
+			else
+			{
+				ParseEntity( pEntityData );
+			}
+			
 
 			pEntityData = pEntityData->NextSiblingElement();
 		}

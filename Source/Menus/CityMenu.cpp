@@ -3,10 +3,19 @@
 
 CityMenu::CityMenu(void)
 {
+	m_pCity = NULL;
 	m_pMenu = Engine::UserInterface::AddScreenFromFile( "City", "Screens/CityMenu.xml" );
 	auto pLoader = new Engine::UIListLoaderText();
 	m_pMenu->GetElement<Engine::UIList>( "build_list_structures" )->SetListLoader( pLoader );
 	pLoader->Release();
+
+	m_pMenu->GetElement<Engine::UIList>( "build_list_structures" )->SetListCallback( [=] ( int iIndex )
+		{
+			if ( m_pCity )
+			{
+				m_pCity->Build( m_pCity->GetProducibles()[ iIndex ]->GetName() );
+			}
+		});
 }
 
 

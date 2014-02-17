@@ -47,8 +47,7 @@ tinyxml2::XMLElement* Producible::VToXML( tinyxml2::XMLElement* pTo ) const
 	for ( auto it : m_Prerequisites )
 	{
 		tinyxml2::XMLElement* pPrerequisite = pTo->GetDocument()->NewElement( "Prerequisite" );
-		pPrerequisite->SetAttribute( "Name", it.first.getStr().c_str() );
-		pPrerequisite->SetAttribute( "Amount", it.second );
+		it.VToXML( pPrerequisite );
 
 		pTo->LinkEndChild( pPrerequisite );
 	}
@@ -89,7 +88,9 @@ bool Producible::VFromXML( tinyxml2::XMLElement* pData )
 	tinyxml2::XMLElement* pPrerequisite = pData->FirstChildElement( "Prerequisite" );
 	while ( pPrerequisite )
 	{
-		m_Prerequisites[ pPrerequisite->Attribute( "Name" ) ] = pPrerequisite->IntAttribute( "Amount" );
+		Prerequisite preq;
+		preq.VFromXML( pPrerequisite );
+		m_Prerequisites.push_back( preq );
 
 		pPrerequisite = pPrerequisite->NextSiblingElement( "Prerequisite" );
 	}
@@ -104,4 +105,36 @@ bool Producible::VFromXML( tinyxml2::XMLElement* pData )
 	}
 
 	return true;
+}
+
+tinyxml2::XMLElement* Producible::Prerequisite::VToXML( tinyxml2::XMLElement* pTo ) const
+{
+	throw "Unimplemented";
+}
+
+bool Producible::Prerequisite::VFromXML( tinyxml2::XMLElement* pData )
+{
+	pData->QueryIntAttribute( "Amount", &mAmount );
+	mName = pData->Attribute( "Name" );
+	const char* pLevel = pData->Attribute( "Level" );
+	if ( pLevel )
+	{
+		if ( strcmp( pLevel, "City" ) == 0 )
+		{
+			mLevel = City;
+		}
+
+		else if ( strcmp( pLevel, "Faction" ) == 0 )
+		{
+			mLevel = Faction;
+		}
+	}
+
+
+	return true;
+}
+
+Producible::Prerequisite::Prerequisite()
+{
+	mAmount = 1;
 }

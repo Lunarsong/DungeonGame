@@ -47,6 +47,11 @@ public:
 
 	const std::vector< const Engine::EntityData* >& GetProducibles() const { return m_Producibles; }
 
+	bool VerifyPrerequisites( const Producible& producible ) const;
+
+	void AdjustResource( const HashedString& hName, int iAmount );
+	int GetResourceAmount( const HashedString& hName ) const;
+
 private:
 	// Owner Faction
 	Faction*						m_Faction;
@@ -56,6 +61,7 @@ private:
 
 	// Produced & Producible
 	std::vector< const Engine::EntityData* >	m_Producibles;
+	std::map< HashedString, int >				m_Resources;
 	/*std::vector< const Building* >	m_Buildings;
 	std::vector< const Building* >	m_ProducibleBuildings;
 

@@ -13,7 +13,7 @@ Game::Game(void)
 
 	m_iCurrentFaction = 0;
 
-	m_GameData.LoadFromFile( "GameData/Buildings.xml" );
+	m_GameData.LoadFromFile( "GameData/GameData.xml" );
 }
 
 

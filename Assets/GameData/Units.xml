@@ -1,7 +1,11 @@
 <Units>
-	<Unit>
-		<Name>Archer</Name>
+	<Unit Name="Archer">
 		
-		<Cost Resource="Gold" Amount="250" />
+		<Unit HP="10" Movement="3" >
+			<Damage Min="2" Max="5" />
+		</Unit>
+		<Producible ProductionTime="3" Type="Unit">
+			<Cost Resource="Gold" Amount="250" />
+		</Producible>
 	</Unit>
 </Units>

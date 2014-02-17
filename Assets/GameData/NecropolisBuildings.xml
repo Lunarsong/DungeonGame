@@ -1,0 +1,63 @@
+<Buildings>
+	
+	<Structure Name="Graveyard">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Haunted Mine">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Boneyard">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Unholy Tomb">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Graveyard">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Halls of the Dead">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Black Citadel">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Sacrificial Pit">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Crypt">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Temple of the Damned">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Altar of Darkness">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+	<Structure Name="Ziggurat">
+		<Producible ProductionTime="5" Icon="Art/Icons/Storage-icon.png">
+		</Producible>
+	</Structure>
+	
+</Buildings>
