@@ -3,11 +3,13 @@
 #include "Combat.h"
 #include <Game/Entities/Component.h>
 
-class UnitData : public Engine::ComponentData
+class Unit : public Engine::Component
 {
 public:
-	UnitData();
-	~UnitData();
+	Unit();
+	~Unit();
+
+	virtual Component& operator=( const Component& other );
 
 	SET_TYPE( Unit );
 	AUTO_SIZE;
@@ -27,7 +29,7 @@ public:
 	
 };
 
-class Unit : public Engine::Component
+/*class Unit : public Engine::Component
 {
 public:
 	Unit(void);
@@ -41,6 +43,11 @@ public:
 	virtual tinyxml2::XMLElement* VToXML( tinyxml2::XMLElement* pTo ) const;
 	virtual bool VFromXML( tinyxml2::XMLElement* pData );
 
+	virtual Component& operator=( const Component& other )
+	{
+		return *this;
+	}
+
 private:
 
-};
+};*/

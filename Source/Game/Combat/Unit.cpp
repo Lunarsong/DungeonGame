@@ -1,38 +1,6 @@
 #include "Unit.h"
 
-
-Unit::Unit(void)
-{
-
-}
-
-
-Unit::~Unit(void)
-{
-}
-
-tinyxml2::XMLElement* Unit::VToXML( tinyxml2::XMLElement* pTo ) const
-{
-	throw "Unimplemented";
-
-	return pTo;
-}
-
 bool Unit::VFromXML( tinyxml2::XMLElement* pData )
-{
-	throw "Unimplemented";
-
-	return true;
-}
-
-tinyxml2::XMLElement* UnitData::VToXML( tinyxml2::XMLElement* pTo ) const
-{
-	throw "Unimplemented";
-
-	return pTo;
-}
-
-bool UnitData::VFromXML( tinyxml2::XMLElement* pData )
 {
 	tinyxml2::XMLElement* pDamage = pData->FirstChildElement( "Damage" );
 	if ( pDamage )
@@ -46,13 +14,32 @@ bool UnitData::VFromXML( tinyxml2::XMLElement* pData )
 	return true;
 }
 
-UnitData::UnitData()
+Unit::Unit()
 {
 	m_iHitPoints = 1;
 	m_iMovement = 1;
 }
 
-UnitData::~UnitData()
+Unit::~Unit()
 {
 
+}
+
+tinyxml2::XMLElement* Unit::VToXML( tinyxml2::XMLElement* pTo ) const
+{
+	throw "Unimplemented";
+
+	return pTo;
+}
+
+Engine::Component& Unit::operator=( const Component& other )
+{
+	const Unit& unit = (const Unit&)other;
+
+	m_Damage		= unit.m_Damage;
+
+	m_iHitPoints	= unit.m_iHitPoints;
+	m_iMovement		= unit.m_iMovement;
+
+	return *this;
 }

@@ -82,21 +82,24 @@ bool PlayerFactionController::VOnMouseButtonDown( const int iButtonIndex, const 
 bool PlayerFactionController::VOnMouseButtonUp( const int iButtonIndex, const Vector3& vPosition )
 {
 	Point pos = MouseToTilePos( vPosition );
-	auto& entities = GetGame()->GetWorld().GetTileMap()( pos.x, pos.y ).mEntities;
-	for ( auto it : entities )
+	if ( pos.x > 0 && pos.y > 0 && pos.x < GetGame()->GetWorld().GetTileMap().SizeX() && pos.y < GetGame()->GetWorld().GetTileMap().SizeY() )
 	{
-		if ( it->GetComponent<City>() )
+		auto& entities = GetGame()->GetWorld().GetTileMap()( pos.x, pos.y ).mEntities;
+		for ( auto it : entities )
 		{
-			Engine::Log << "Whee";
-			City* pCity = it->GetComponent<City>();
-			const std::vector< const Engine::EntityData* >& prods = pCity->GetProducibles();
-
-			if ( prods.size() )
+			if ( it->GetComponent<City>() )
 			{
-				m_CityMenu.SetCity( pCity );
-			}
+				Engine::Log << "Whee";
+				City* pCity = it->GetComponent<City>();
+				const std::vector< const Engine::Entity* >& prods = pCity->GetProducibles();
+
+				if ( prods.size() )
+				{
+					m_CityMenu.SetCity( pCity );
+				}
 			
 
+			}
 		}
 	}
 

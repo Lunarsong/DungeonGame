@@ -8,9 +8,8 @@ using namespace  Engine;
 GameData::GameData(void)
 {
 	Engine::Component::Register<City>();
-	Engine::ComponentData::Register<Producible>();
+	Engine::Component::Register<Producible>();
 	Engine::Component::Register<Unit>();
-	Engine::ComponentData::Register<UnitData>();
 }
 
 
@@ -132,15 +131,16 @@ const std::map< HashedString, Producible* >& GameData::GetProducibles() const
 	return m_Producibles;
 }
 
-EntityData* GameData::ParseEntity( tinyxml2::XMLElement* pElement )
+Entity* GameData::ParseEntity( tinyxml2::XMLElement* pElement )
 {
 	const char* pName = pElement->Attribute( "Name" );
-	EntityData* pEntity = new EntityData( pName );
+	Entity* pEntity = new Entity();
+	pEntity->SetName( pName );
 
 	tinyxml2::XMLElement* pComponentElement = pElement->FirstChildElement();
 	while ( pComponentElement )
 	{
-		ComponentData* pComponent = ComponentData::Instantiate( pComponentElement->Name() );
+		Component* pComponent = Component::Instantiate( pComponentElement->Name() );
 
 		if ( pComponent )
 		{
@@ -167,7 +167,7 @@ void GameData::ParseXML( tinyxml2::XMLElement* pRoot )
 		tinyxml2::XMLElement* pEntityData = pRoot->FirstChildElement();
 		while ( pEntityData )
 		{
-			if ( strcmp( pEntityData->Name(), "File" ) )
+			if ( strcmp( pEntityData->Name(), "File" ) == 0 )
 			{
 				LoadFromFile( pEntityData->Attribute( "Path" ) );
 			}
@@ -182,7 +182,7 @@ void GameData::ParseXML( tinyxml2::XMLElement* pRoot )
 		}
 	}
 }
-void GameData::AddComponent( const HashedString& hName, ComponentData* pComponent, const HashedString& hType )
+void GameData::AddComponent( const HashedString& hName, Component* pComponent, const HashedString& hType )
 {
 	if ( hType == Producible::GetComponentType() )
 	{
@@ -195,9 +195,9 @@ void GameData::AddComponent( const HashedString& hName, ComponentData* pComponen
 	}
 }
 
-const EntityData* GameData::GetEntity( const HashedString& hName ) const
+const Entity* GameData::GetEntity( const HashedString& hName ) const
 {
-	std::map< HashedString, EntityData* >::const_iterator pIter = mEntities.find( hName );
+	std::map< HashedString, Entity* >::const_iterator pIter = mEntities.find( hName );
 	if ( pIter != mEntities.end() )
 	{
 		return pIter->second;

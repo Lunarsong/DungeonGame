@@ -45,7 +45,7 @@
 			<Damage Min="2" Max="5" />
 		</Unit>
 		<Producible ProductionTime="3" Type="Unit">
-			<Cost Resource="Gold" Amount="250" />
+			<!--Cost Resource="Gold" Amount="250" /-->
 		</Producible>
 	</Unit>
 	

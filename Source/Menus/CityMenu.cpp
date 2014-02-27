@@ -33,7 +33,8 @@ void CityMenu::SetCity( City* pCity )
 
 	for ( auto it : producibles )
 	{
-		m_pMenu->GetElement<Engine::UIList>( "build_list_structures" )->AddElement( it->GetName().getStr() );
+		std::string name = it->GetName();
+		m_pMenu->GetElement<Engine::UIList>( "build_list_structures" )->AddElement( name );
 	}
 }
 

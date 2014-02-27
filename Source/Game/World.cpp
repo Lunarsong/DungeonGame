@@ -67,3 +67,13 @@ void World::SetEntityPosition( Engine::Entity* pEntity, int iX, int iY )
 
 	pComponent->SetPosition( iX, iY );
 }
+
+Component& TilePositionComponent::operator=( const Component& other )
+{
+	const TilePositionComponent& castOther = (const TilePositionComponent&)other;
+
+	m_pWorld = castOther.m_pWorld;
+	m_Position = castOther.m_Position;
+
+	return *this;
+}

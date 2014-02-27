@@ -107,6 +107,22 @@ bool Producible::VFromXML( tinyxml2::XMLElement* pData )
 	return true;
 }
 
+Engine::Component& Producible::operator=( const Component& other )
+{
+	const Producible& castOther = (const Producible&)other;
+
+	m_usProductionTime = castOther.m_usProductionTime;
+	m_Icon = castOther.m_Icon;
+
+	m_Cost = castOther.m_Cost;
+	m_Upkeep = castOther.m_Upkeep;
+	m_Prerequisites = castOther.m_Prerequisites;
+
+	m_eType = castOther.m_eType;
+
+	return *this;
+}
+
 tinyxml2::XMLElement* Producible::Prerequisite::VToXML( tinyxml2::XMLElement* pTo ) const
 {
 	throw "Unimplemented";

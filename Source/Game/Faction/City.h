@@ -4,12 +4,12 @@
 #include "../Combat/Unit.h"
 #include "Production.h"
 #include <Game/Entities/Component.h>
-#include <EntityData.h>
+#include <Game/Entities/Entity.h>
 #include "../Economy.h"
 
 class Faction;
 
-class CityData : public Engine::ComponentData
+/*class CityData : public Engine::ComponentData
 {
 public:
 	CityData();
@@ -22,7 +22,7 @@ public:
 
 	virtual bool VFromXML( tinyxml2::XMLElement* pData );
 
-};
+};*/
 
 class City : public Engine::Component
 {
@@ -45,12 +45,14 @@ public:
 
 	void UpdateProducibles();
 
-	const std::vector< const Engine::EntityData* >& GetProducibles() const { return m_Producibles; }
+	const std::vector< const Engine::Entity* >& GetProducibles() const { return m_Producibles; }
 
 	bool VerifyPrerequisites( const Producible& producible ) const;
 
 	void AdjustResource( const HashedString& hName, int iAmount );
 	int GetResourceAmount( const HashedString& hName ) const;
+
+	virtual Component& operator=( const Component& other );
 
 private:
 	// Owner Faction
@@ -60,7 +62,7 @@ private:
 	HashedString					m_hName;
 
 	// Produced & Producible
-	std::vector< const Engine::EntityData* >	m_Producibles;
+	std::vector< const Engine::Entity* >	m_Producibles;
 	std::map< HashedString, int >				m_Resources;
 	/*std::vector< const Building* >	m_Buildings;
 	std::vector< const Building* >	m_ProducibleBuildings;
@@ -73,5 +75,7 @@ private:
 	void UpdateProduction();
 	void FinishProduction( const HashedString& hProduction, int iAmount );
 	void StartProduction( const HashedString& hName );
+
+	const Engine::Entity* FindProducible( const HashedString& hName ) const;
 
 };

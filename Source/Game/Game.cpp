@@ -62,10 +62,7 @@ City* Game::CreateCity( const Point& pos, Faction& owner )
 	// Create a graphical entity
 	ITexture* pTexture = AssetManager::Get().GetAsset< ITexture >( "BTNSteelMelee.png" );
 
-	Material* pMaterial = new Material();
-	pMaterial->AddTextureRegister( "s_Texture01" );
-	pMaterial->SetShaderProgram( IRenderer::Get()->VGetShaderManager()->GetShaderProgram( PositionTextureNormal_DefaultShader ) );
-	pMaterial->SetTexture( 0, pTexture );
+	Material* pMaterial = AssetManager::Get().GetAsset<Material>( "Materials/GhoulMat.xmat" );
 
 	// Create entity
 	Entity* pCubeEntity = GameManager::CreateEntity();
@@ -76,8 +73,6 @@ City* Game::CreateCity( const Point& pos, Faction& owner )
 	pMesh->SetMaterial( pMaterial );
 
 	pCubeEntity->GetTransform().SetPosition( m_pWorld->GetPositionForTile( pos.x, pos.y ) );
-
-	pMaterial->Release();
 
 	// Create the city
 	City* pCity = pCubeEntity->AddComponent<City>();

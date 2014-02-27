@@ -67,6 +67,8 @@ public:
 
 	void SetWorld( World* pWorld ) { m_pWorld = pWorld; }
 
+	virtual Component& operator=( const Component& other );
+
 private:
 	World* m_pWorld;
 	Point m_Position;

@@ -2,7 +2,8 @@
 #include "Faction.h"
 
 #include <assert.h>
-#include "..\GameData.h"
+#include "../GameData.h"
+#include <Game/Entities/Entity.h>
 
 City::City(void)
 {
@@ -47,6 +48,18 @@ void City::FinishProduction( const HashedString& hProduction, int iAmount )
 	AdjustResource( hProduction, iAmount );
 
 	m_Faction->AdjustProduction( hProduction, iAmount );
+
+	const Engine::Entity* pData = FindProducible( hProduction );
+	if ( pData )
+	{
+		Engine::Entity* pEntity = Engine::Entity::Instantiate( pData );
+		pEntity->SetTransform( m_pOwner->GetTransform() );
+	}
+
+	else
+	{
+		throw "Missing data";
+	}
 }
 
 void City::SetFaction( Faction* pFaction )
@@ -103,10 +116,10 @@ void City::CancelBuild( Producible::Type eProductionType, int iIndex )
 
 void City::StartProduction( const HashedString& hName )
 {
-	const EntityData* pEntity = NULL;
+	const Entity* pEntity = NULL;
 	for ( auto it : m_Producibles )
 	{
-		if ( it->GetName() == hName )
+		if ( it->GetName() == hName.getStr() )
 		{
 			pEntity = it;
 			break;
@@ -168,7 +181,7 @@ bool City::VerifyPrerequisites( const Producible& producible ) const
 	return true;
 }
 
-tinyxml2::XMLElement* CityData::VToXML( tinyxml2::XMLElement* pTo ) const
+/*tinyxml2::XMLElement* CityData::VToXML( tinyxml2::XMLElement* pTo ) const
 {
 	throw "Unimplemented";
 
@@ -188,7 +201,7 @@ bool CityData::VFromXML( tinyxml2::XMLElement* pData )
 	}
 
 	return true;
-}
+}*/
 
 int City::GetResourceAmount( const HashedString& hResource ) const
 {
@@ -215,4 +228,34 @@ void City::AdjustResource( const HashedString& hResource, int iAmount )
 	}	
 
 	UpdateProducibles();
+}
+
+const Engine::Entity* City::FindProducible( const HashedString& hName ) const
+{
+	for ( const auto& it : m_Producibles )
+	{
+		if ( it->GetName() == hName.getStr() )
+		{
+			return it;
+		}
+	}
+
+	return NULL;
+}
+
+Component& City::operator=( const Component& other )
+{
+	const City& castOther = (const City&)other;
+
+	m_Faction = castOther.m_Faction;
+	m_hName = castOther.m_hName;
+	m_Producibles = castOther.m_Producibles;
+	m_Resources = castOther.m_Resources;
+
+	for ( int i = 0; i < Producible::TypeCount; ++i )
+	{
+		m_Production[ i ] = castOther.m_Production[ i ];
+	}
+
+	return *this;
 }

@@ -3,7 +3,7 @@
 #include <Externals/HashedString/HashedString.h>
 #include <Core/Resources/ISerializable.h>
 #include <map>
-#include <Game/Entities/ComponentData.h>
+#include <Game/Entities/Component.h>
 #include <vector>
 
 class Economy
@@ -15,7 +15,7 @@ public:
 
 };
 
-class Producible : public Engine::ComponentData
+class Producible : public Engine::Component
 {
 public:
 	Producible();
@@ -51,6 +51,7 @@ public:
 
 	virtual tinyxml2::XMLElement* VToXML( tinyxml2::XMLElement* pTo ) const;
 	virtual bool VFromXML( tinyxml2::XMLElement* pData );
+	virtual Component& operator=( const Component& other );
 
 	enum Type
 	{
